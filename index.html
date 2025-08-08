@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Store - Digital Downloads</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',secondary:'#8b5cf6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-section {
+            
+            background-size: cover;
+            background-position: center;
+            position: relative; /* necesario para el video absoluto */
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #6366f1;
+            cursor: pointer;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+        }
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #6366f1;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #6366f1;
+            border-color: #6366f1;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/">
+      <img src="logo_inicial.jpg" alt="Logo" class="h-10">
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Shop</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Categories</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">About</a>
+                <a href="#" class="text-gray-900 font-medium hover:text-primary transition-colors">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition-colors">
+                    <i class="ri-search-line text-gray-700"></i>
+                </div>
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition-colors">
+                    <i class="ri-user-line text-gray-700"></i>
+                </div>
+                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 cursor-pointer transition-colors relative">
+                    <i class="ri-shopping-cart-line text-gray-700"></i>
+                    <span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                </div>
+                <button class="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-gray-100">
+                    <i class="ri-menu-line text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Hero Section -->
+   <section class="hero-section relative">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+   <source src="video-intro.mp4" type="video/mp4" />
+  Tu navegador no soporta videos.
+</video>
+
+
+    <!-- Capa oscura sobre el video -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+
+    <!-- Contenido principal -->
+    <div class="container mx-auto px-4 py-24 relative z-20">
+        <div class="max-w-2xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Microdosis de salud</h1>
+            <p class="text-xl text-white mb-8">Distribuimos productos enfocados a la mujer para su bienestar y cuidado personal.</p>
+            <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-button font-medium shadow-lg hover:shadow-xl transition-all whitespace-nowrap">
+                ver ahora
+            </button>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Categories Section -->
+   <!-- Añade en tu <head> (o antes del cierre de </body>) los estilos y scripts de Swiper -->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<!-- Categories Section -->
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Explora Categorías</h2>
+
+    <!-- Swiper container -->
+    <div class="swiper categories-swiper">
+      <div class="swiper-wrapper">
+        <!-- Estrés -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-emotion-happy-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Estrés</h3>
+          <p class="text-gray-600 text-sm mt-2">Técnicas y guías para manejar el estrés</p>
+        </div>
+
+        <!-- Menopausia -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-heart-pulse-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Menopausia</h3>
+          <p class="text-gray-600 text-sm mt-2">Guías y cuidados durante la menopausia</p>
+        </div>
+
+        <!-- Cuidado personal -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-spa-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Cuidado Personal</h3>
+          <p class="text-gray-600 text-sm mt-2">Rutinas y consejos para el autocuidado</p>
+        </div>
+
+        <!-- Salud Hormonal -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-flask-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Salud Hormonal</h3>
+          <p class="text-gray-600 text-sm mt-2">Información y apoyo hormonal</p>
+        </div>
+
+        <!-- Alimentación Saludable -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-apple-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Alimentación Saludable</h3>
+          <p class="text-gray-600 text-sm mt-2">Dietas y recetas para bienestar</p>
+        </div>
+
+        <!-- Ejercicio y Movimiento -->
+        <div class="swiper-slide bg-gray-50 rounded-lg p-6 text-center transition-transform hover:scale-105 cursor-pointer">
+          <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+            <i class="ri-run-line text-primary ri-xl"></i>
+          </div>
+          <h3 class="font-medium text-lg">Ejercicio y Movimiento</h3>
+          <p class="text-gray-600 text-sm mt-2">Planes y tips para mantenerse activa</p>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- Paginación -->
+      <div class="swiper-pagination mt-8"></div>
+    </div>
+  </div>
+</section>
+<style>
+  .categories-swiper .swiper-button-prev,
+  .categories-swiper .swiper-button-next {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .categories-swiper:hover .swiper-button-prev,
+  .categories-swiper:hover .swiper-button-next {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
+
+
+<!-- Inicializa Swiper -->
+<script>
+  const swiper = new Swiper('.categories-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 12,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 12,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+      },
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+    },
+  });
+</script>
+
+
+
+    <!-- Productos Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Nuestros Productos</h2>
+                <div class="flex space-x-2">
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">
+                        <i class="ri-arrow-left-s-line"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">
+                        <i class="ri-arrow-right-s-line"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="crema-corporal.jpg">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Crema Corporal</h3>
+                        <p class="text-gray-600 text-sm mb-2">Hidratación profunda y cuidado para la piel de la mujer.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$24.99</span>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=minimalist%20financial%20budget%20tracker%20PDF%20cover%20page%20with%20clean%20design%2C%20soft%20mint%20green%20color%20accents%2C%20organized%20layout%20with%20charts%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=3&orientation=portrait" alt="Budget Tracker" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Financial Freedom Workbook</h3>
+                        <p class="text-gray-600 text-sm mb-2">Complete budget tracking and savings planner</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$19.99</span>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Digital Marketing Mastery</h3>
+                        <p class="text-gray-600 text-sm mb-2">Complete guide to modern marketing strategies</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$34.99</span>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=meal%20planning%20printable%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20food%20photography%20elements%2C%20soft%20orange%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=5&orientation=portrait" alt="Meal Planner" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-lg mb-1">Meal Prep Printable Bundle</h3>
+                        <p class="text-gray-600 text-sm mb-2">Weekly meal planning and grocery lists</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-lg">$12.99</span>
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-10">
+                <a href="#" class="text-primary font-medium hover:underline flex items-center">
+                    View All Products
+                    <i class="ri-arrow-right-line ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Benefits Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Our Digital PDFs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+                        <i class="ri-download-cloud-line text-primary ri-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Instant Download</h3>
+                    <p class="text-gray-600">Access your files immediately after purchase. No waiting required.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+                        <i class="ri-shield-check-line text-primary ri-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">Secure Payment</h3>
+                    <p class="text-gray-600">All transactions are encrypted and processed securely.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-primary/10 rounded-full">
+                        <i class="ri-file-list-3-line text-primary ri-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-medium mb-2">High-Quality Files</h3>
+                    <p class="text-gray-600">Professionally designed PDFs optimized for both screen and print.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Page -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Shop</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <div class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
+                    <h3 class="font-medium text-lg mb-4">Filters</h3>
+                    
+                    <!-- Categories Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Categories</h4>
+                        <div class="space-y-2">
+                            <label class="custom-checkbox block text-gray-700">
+                                Planners
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block text-gray-700">
+                                Workbooks
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block text-gray-700">
+                                Ebooks
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block text-gray-700">
+                                Printables
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range Filter -->
+                    <div class="mb-6">
+                        <h4 class="font-medium mb-3">Price Range</h4>
+                        <input type="range" min="0" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-full appearance-none">
+                        <div class="flex justify-between mt-2">
+                            <span class="text-sm text-gray-600">$0</span>
+                            <span class="text-sm text-gray-600">$100</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Sort By -->
+                    <div>
+                        <h4 class="font-medium mb-3">Sort By</h4>
+                        <div class="relative">
+                            <select class="w-full p-2 bg-gray-50 border border-gray-200 rounded appearance-none pr-8">
+                                <option>Newest</option>
+                                <option>Popular</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                            <div class="absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="lg:w-3/4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Product 1 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20business%20planner%20PDF%20cover%20page%20with%20minimalist%20design%2C%20clean%20layout%2C%20pastel%20blue%20accent%20colors%2C%20organized%20sections%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=2&orientation=portrait" alt="Business Planner" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Business Growth Planner</h3>
+                                <p class="text-gray-600 text-sm mb-2">Comprehensive 12-month business planning toolkit</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$24.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=minimalist%20financial%20budget%20tracker%20PDF%20cover%20page%20with%20clean%20design%2C%20soft%20mint%20green%20color%20accents%2C%20organized%20layout%20with%20charts%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=3&orientation=portrait" alt="Budget Tracker" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Financial Freedom Workbook</h3>
+                                <p class="text-gray-600 text-sm mb-2">Complete budget tracking and savings planner</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$19.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Digital Marketing Mastery</h3>
+                                <p class="text-gray-600 text-sm mb-2">Complete guide to modern marketing strategies</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$34.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 4 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=meal%20planning%20printable%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20food%20photography%20elements%2C%20soft%20orange%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=5&orientation=portrait" alt="Meal Planner" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Meal Prep Printable Bundle</h3>
+                                <p class="text-gray-600 text-sm mb-2">Weekly meal planning and grocery lists</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$12.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 5 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=self%20care%20journal%20PDF%20cover%20with%20minimalist%20design%2C%20soft%20pink%20accents%2C%20wellness%20theme%2C%20clean%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=6&orientation=portrait" alt="Self-Care Journal" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Self-Care Journal</h3>
+                                <p class="text-gray-600 text-sm mb-2">Daily wellness tracker and gratitude journal</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$15.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 6 -->
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=productivity%20system%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20task%20management%20theme%2C%20soft%20blue%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=7&orientation=portrait" alt="Productivity System" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-medium text-lg mb-1">Ultimate Productivity System</h3>
+                                <p class="text-gray-600 text-sm mb-2">Complete task management and goal setting</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-lg">$29.99</span>
+                                    <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-10">
+                        <div class="flex space-x-2">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">
+                                <i class="ri-arrow-left-s-line"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white shadow">1</a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">2</a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">3</a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow hover:bg-gray-100 transition-colors">
+                                <i class="ri-arrow-right-s-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Page -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-10">
+                <!-- Product Image -->
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 rounded-lg p-8 flex items-center justify-center">
+                        <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="max-w-full max-h-[500px] object-contain shadow-lg rounded-md">
+                    </div>
+                </div>
+                
+                <!-- Product Info -->
+                <div class="lg:w-1/2">
+                    <div class="flex items-center text-sm text-gray-500 mb-4">
+                        <a href="#" class="hover:text-primary">Home</a>
+                        <span class="mx-2">/</span>
+                        <a href="#" class="hover:text-primary">Ebooks</a>
+                        <span class="mx-2">/</span>
+                        <span>Digital Marketing Mastery</span>
+                    </div>
+                    
+                    <h1 class="text-3xl font-bold mb-2">Digital Marketing Mastery</h1>
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-gray-600 ml-2">4.7 (124 reviews)</span>
+                    </div>
+                    
+                    <p class="text-2xl font-bold text-primary mb-6">$34.99</p>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-medium mb-2">Description</h3>
+                        <p class="text-gray-700 mb-4">The Digital Marketing Mastery ebook is a comprehensive guide to modern marketing strategies. Whether you're a beginner or experienced marketer, this guide provides actionable insights to grow your online presence.</p>
+                        <p class="text-gray-700">Learn about SEO, social media marketing, content creation, email campaigns, and paid advertising with practical examples and case studies.</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h3 class="font-medium mb-2">What's Included</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="ri-check-line text-green-500 mr-2"></i>
+                                <span>200+ page comprehensive PDF ebook</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="ri-check-line text-green-500 mr-2"></i>
+                                <span>Printable worksheets and templates</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="ri-check-line text-green-500 mr-2"></i>
+                                <span>Social media content calendar</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="ri-check-line text-green-500 mr-2"></i>
+                                <span>SEO keyword research tools</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="font-medium mb-2">File Format</h3>
+                        <div class="flex items-center space-x-4 text-gray-700">
+                            <div class="flex items-center">
+                                <i class="ri-file-pdf-line mr-1"></i>
+                                <span>PDF</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-file-list-line mr-1"></i>
+                                <span>200 Pages</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="ri-download-line mr-1"></i>
+                                <span>15.2 MB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">
+                            Add to Cart
+                        </button>
+                        <button class="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Products -->
+            <div class="mt-20">
+                <h2 class="text-2xl font-bold mb-8">You May Also Like</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Related Product 1 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=social%20media%20strategy%20PDF%20cover%20with%20minimalist%20design%2C%20clean%20layout%20with%20social%20media%20icons%2C%20soft%20blue%20accent%20colors%2C%20professional%20layout%2C%20high%20quality%20photography&width=500&height=700&seq=8&orientation=portrait" alt="Social Media Strategy" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Social Media Strategy Guide</h3>
+                            <p class="text-gray-600 text-sm mb-2">Complete social platform growth blueprint</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$29.99</span>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Product 2 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=content%20creation%20workbook%20PDF%20cover%20with%20minimalist%20design%2C%20clean%20layout%20with%20content%20creation%20tools%2C%20soft%20purple%20accent%20colors%2C%20professional%20layout%2C%20high%20quality%20photography&width=500&height=700&seq=9&orientation=portrait" alt="Content Creation Workbook" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Content Creation Workbook</h3>
+                            <p class="text-gray-600 text-sm mb-2">Content planning and creation templates</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$19.99</span>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Product 3 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=SEO%20guide%20PDF%20cover%20with%20minimalist%20design%2C%20clean%20layout%20with%20search%20engine%20elements%2C%20soft%20green%20accent%20colors%2C%20professional%20layout%2C%20high%20quality%20photography&width=500&height=700&seq=10&orientation=portrait" alt="SEO Guide" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">SEO Optimization Guide</h3>
+                            <p class="text-gray-600 text-sm mb-2">Complete search engine ranking blueprint</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$24.99</span>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Product 4 -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg border border-gray-100">
+                        <div class="h-64 overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=email%20marketing%20PDF%20cover%20with%20minimalist%20design%2C%20clean%20layout%20with%20email%20elements%2C%20soft%20orange%20accent%20colors%2C%20professional%20layout%2C%20high%20quality%20photography&width=500&height=700&seq=11&orientation=portrait" alt="Email Marketing" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-medium text-lg mb-1">Email Marketing Playbook</h3>
+                            <p class="text-gray-600 text-sm mb-2">List building and campaign strategies</p>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-lg">$22.99</span>
+                                <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Page -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Your Cart</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Cart Items -->
+                <div class="lg:w-2/3">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <!-- Cart Item 1 -->
+                        <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-20 h-28 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-medium text-lg">Digital Marketing Mastery</h3>
+                                <p class="text-gray-600 text-sm">Complete guide to modern marketing strategies</p>
+                                <div class="mt-2 flex items-center">
+                                    <span class="font-bold text-lg">$34.99</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                                    <i class="ri-delete-bin-line text-gray-700"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cart Item 2 -->
+                        <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-20 h-28 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=minimalist%20financial%20budget%20tracker%20PDF%20cover%20page%20with%20clean%20design%2C%20soft%20mint%20green%20color%20accents%2C%20organized%20layout%20with%20charts%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=3&orientation=portrait" alt="Budget Tracker" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-medium text-lg">Financial Freedom Workbook</h3>
+                                <p class="text-gray-600 text-sm">Complete budget tracking and savings planner</p>
+                                <div class="mt-2 flex items-center">
+                                    <span class="font-bold text-lg">$19.99</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                                    <i class="ri-delete-bin-line text-gray-700"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Cart Item 3 -->
+                        <div class="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                            <div class="w-20 h-28 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                <img src="https://readdy.ai/api/search-image?query=meal%20planning%20printable%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20food%20photography%20elements%2C%20soft%20orange%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=5&orientation=portrait" alt="Meal Planner" class="w-full h-full object-cover object-top">
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-medium text-lg">Meal Prep Printable Bundle</h3>
+                                <p class="text-gray-600 text-sm">Weekly meal planning and grocery lists</p>
+                                <div class="mt-2 flex items-center">
+                                    <span class="font-bold text-lg">$12.99</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                                    <i class="ri-delete-bin-line text-gray-700"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="lg:w-1/3">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="font-bold text-xl mb-4">Order Summary</h3>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span>$67.97</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Discount</span>
+                                <span>-$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tax</span>
+                                <span>$0.00</span>
+                            </div>
+                            <div class="border-t pt-3 flex justify-between font-bold">
+                                <span>Total</span>
+                                <span>$67.97</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="coupon" class="block text-sm font-medium text-gray-700 mb-2">Discount Code</label>
+                            <div class="flex">
+                                <input type="text" id="coupon" class="flex-grow px-4 py-2 border border-gray-200 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Enter code">
+                                <button class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-r-lg whitespace-nowrap">Apply</button>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all mb-4 whitespace-nowrap">
+                            Proceed to Checkout
+                        </button>
+                        
+                        <div class="flex justify-center space-x-4 mt-4">
+                            <div class="w-10 h-6 flex items-center justify-center">
+                                <i class="ri-visa-fill text-blue-900 text-2xl"></i>
+                            </div>
+                            <div class="w-10 h-6 flex items-center justify-center">
+                                <i class="ri-mastercard-fill text-orange-500 text-2xl"></i>
+                            </div>
+                            <div class="w-10 h-6 flex items-center justify-center">
+                                <i class="ri-paypal-fill text-blue-700 text-2xl"></i>
+                            </div>
+                            <div class="w-10 h-6 flex items-center justify-center">
+                                <i class="ri-apple-fill text-gray-800 text-2xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Page -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Checkout</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Checkout Form -->
+                <div class="lg:w-2/3">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="font-bold text-xl mb-6">Contact Information</h3>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your@email.com">
+                            <p class="text-sm text-gray-500 mt-1">Your download link will be sent to this email</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="firstname" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="firstname" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="John">
+                            </div>
+                            <div>
+                                <label for="lastname" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="lastname" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <h3 class="font-bold text-xl mb-6 mt-10">Payment Method</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer bg-white">
+                                <input type="radio" name="payment" class="h-5 w-5 text-primary" checked>
+                                <div class="ml-3">
+                                    <span class="font-medium">Credit Card</span>
+                                </div>
+                                <div class="ml-auto flex space-x-2">
+                                    <i class="ri-visa-fill text-blue-900 text-xl"></i>
+                                    <i class="ri-mastercard-fill text-orange-500 text-xl"></i>
+                                    <i class="ri-bank-card-fill text-gray-700 text-xl"></i>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer bg-white">
+                                <input type="radio" name="payment" class="h-5 w-5 text-primary">
+                                <div class="ml-3">
+                                    <span class="font-medium">PayPal</span>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="ri-paypal-fill text-blue-700 text-xl"></i>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer bg-white">
+                                <input type="radio" name="payment" class="h-5 w-5 text-primary">
+                                <div class="ml-3">
+                                    <span class="font-medium">Apple Pay</span>
+                                </div>
+                                <div class="ml-auto">
+                                    <i class="ri-apple-fill text-gray-800 text-xl"></i>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg border border-gray-200 mb-6">
+                            <div class="grid grid-cols-1 gap-6">
+                                <div>
+                                    <label for="cardnumber" class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                                    <input type="text" id="cardnumber" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="1234 5678 9012 3456">
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="expiry" class="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+                                        <input type="text" id="expiry" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="MM/YY">
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
+                                        <input type="text" id="cvv" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="123">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="cardholder" class="block text-sm font-medium text-gray-700 mb-2">Cardholder Name</label>
+                                    <input type="text" id="cardholder" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="John Doe">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="flex items-center h-5">
+                                <input id="terms" type="checkbox" class="h-4 w-4 text-primary border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="terms" class="text-gray-700">I agree to the <a href="#" class="text-primary hover:underline">Terms and Conditions</a> and <a href="#" class="text-primary hover:underline">Privacy Policy</a></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="lg:w-1/3">
+                    <div class="bg-gray-50 rounded-lg p-6 sticky top-6">
+                        <h3 class="font-bold text-xl mb-4">Order Summary</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <div class="w-16 h-20 flex-shrink-0 bg-white rounded overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="ml-4 flex-grow">
+                                    <h4 class="font-medium">Digital Marketing Mastery</h4>
+                                    <p class="text-sm text-gray-600">PDF Ebook</p>
+                                    <p class="font-bold mt-1">$34.99</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-16 h-20 flex-shrink-0 bg-white rounded overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=minimalist%20financial%20budget%20tracker%20PDF%20cover%20page%20with%20clean%20design%2C%20soft%20mint%20green%20color%20accents%2C%20organized%20layout%20with%20charts%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=3&orientation=portrait" alt="Budget Tracker" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="ml-4 flex-grow">
+                                    <h4 class="font-medium">Financial Freedom Workbook</h4>
+                                    <p class="text-sm text-gray-600">PDF Workbook</p>
+                                    <p class="font-bold mt-1">$19.99</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-16 h-20 flex-shrink-0 bg-white rounded overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=meal%20planning%20printable%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20food%20photography%20elements%2C%20soft%20orange%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=5&orientation=portrait" alt="Meal Planner" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="ml-4 flex-grow">
+                                    <h4 class="font-medium">Meal Prep Printable Bundle</h4>
+                                    <p class="text-sm text-gray-600">PDF Printables</p>
+                                    <p class="font-bold mt-1">$12.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4 space-y-3 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span>$67.97</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Discount</span>
+                                <span>-$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tax</span>
+                                <span>$0.00</span>
+                            </div>
+                            <div class="border-t pt-3 flex justify-between font-bold">
+                                <span>Total</span>
+                                <span>$67.97</span>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">
+                            Complete Purchase
+                        </button>
+                        
+                        <div class="mt-4 text-center text-sm text-gray-600 flex items-center justify-center">
+                            <i class="ri-lock-line mr-1"></i>
+                            <span>Secure checkout</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Dashboard -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">My Account</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-6 border-b border-gray-100">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold">
+                                    JD
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="font-medium">James Davidson</h3>
+                                    <p class="text-sm text-gray-600">james.davidson@example.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-2">
+                            <a href="#" class="flex items-center p-3 rounded-lg bg-primary/10 text-primary">
+                                <i class="ri-download-line w-5 h-5 flex items-center justify-center mr-3"></i>
+                                <span>My Downloads</span>
+                            </a>
+                            <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                                <i class="ri-shopping-bag-line w-5 h-5 flex items-center justify-center mr-3"></i>
+                                <span>Order History</span>
+                            </a>
+                            <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                                <i class="ri-user-settings-line w-5 h-5 flex items-center justify-center mr-3"></i>
+                                <span>Account Settings</span>
+                            </a>
+                            <a href="#" class="flex items-center p-3 rounded-lg text-gray-700 hover:bg-gray-50">
+                                <i class="ri-logout-box-line w-5 h-5 flex items-center justify-center mr-3"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="lg:w-3/4">
+                    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                        <h3 class="font-bold text-xl mb-4">My Downloads</h3>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full">
+                                <thead>
+                                    <tr class="text-left border-b border-gray-100">
+                                        <th class="pb-3 font-medium">Product</th>
+                                        <th class="pb-3 font-medium">Order Date</th>
+                                        <th class="pb-3 font-medium">License</th>
+                                        <th class="pb-3 font-medium">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <div class="w-12 h-16 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                                    <img src="https://readdy.ai/api/search-image?query=digital%20marketing%20ebook%20PDF%20cover%20with%20modern%20clean%20design%2C%20soft%20purple%20accents%2C%20social%20media%20icons%2C%20professional%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=4&orientation=portrait" alt="Digital Marketing Ebook" class="w-full h-full object-cover object-top">
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Digital Marketing Mastery</h4>
+                                                    <p class="text-sm text-gray-600">PDF Ebook</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600">April 15, 2025</td>
+                                        <td class="py-4"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Personal</span></td>
+                                        <td class="py-4">
+                                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+                                                Download
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-100">
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <div class="w-12 h-16 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                                    <img src="https://readdy.ai/api/search-image?query=minimalist%20financial%20budget%20tracker%20PDF%20cover%20page%20with%20clean%20design%2C%20soft%20mint%20green%20color%20accents%2C%20organized%20layout%20with%20charts%20visible%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=3&orientation=portrait" alt="Budget Tracker" class="w-full h-full object-cover object-top">
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Financial Freedom Workbook</h4>
+                                                    <p class="text-sm text-gray-600">PDF Workbook</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600">April 15, 2025</td>
+                                        <td class="py-4"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Personal</span></td>
+                                        <td class="py-4">
+                                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+                                                Download
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">
+                                            <div class="flex items-center">
+                                                <div class="w-12 h-16 flex-shrink-0 bg-gray-50 rounded overflow-hidden">
+                                                    <img src="https://readdy.ai/api/search-image?query=meal%20planning%20printable%20PDF%20cover%20with%20minimalist%20clean%20design%2C%20food%20photography%20elements%2C%20soft%20orange%20accents%2C%20organized%20layout%2C%20high%20quality%20professional%20photography&width=500&height=700&seq=5&orientation=portrait" alt="Meal Planner" class="w-full h-full object-cover object-top">
+                                                </div>
+                                                <div class="ml-3">
+                                                    <h4 class="font-medium">Meal Prep Printable Bundle</h4>
+                                                    <p class="text-sm text-gray-600">PDF Printables</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-gray-600">April 15, 2025</td>
+                                        <td class="py-4"><span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Personal</span></td>
+                                        <td class="py-4">
+                                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button text-sm whitespace-nowrap">
+                                                Download
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="font-bold text-xl mb-6">Account Settings</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="account-firstname" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="account-firstname" value="James" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="account-lastname" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" id="account-lastname" value="Davidson" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="account-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="account-email" value="james.davidson@example.com" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="account-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                                <input type="password" id="account-password" value="••••••••" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-end">
+                            <button class="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-button font-medium shadow-md hover:shadow-lg transition-all whitespace-nowrap">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-4 inline-block">logo</a>
+                    <p class="text-gray-400 mb-4">Premium digital PDFs for personal and professional growth.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-primary transition-colors">
+                            <i class="ri-pinterest-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Planners</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Workbooks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Ebooks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Printables</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Templates</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers and updates.</p>
+                    <div class="flex">
+                        <input type="email" class="flex-grow px-4 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg whitespace-nowrap">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 PDF Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">License</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom checkbox functionality
+            const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    // Additional functionality can be added here
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Range slider functionality
+            const rangeSlider = document.querySelector('input[type="range"]');
+            if (rangeSlider) {
+                rangeSlider.addEventListener('input', function() {
+                    // Additional functionality can be added here
+                });
+            }
+        });
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    </script>
+</body>
+</html>
