@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Microdosis de Salud - Productos Naturistas</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -22,11 +21,8 @@
       },
     };
   </script>
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- Remixicon -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <style>
     body {
@@ -34,13 +30,11 @@
     }
 
     .hero-section {
-    position: relative;
-    height: 3000px;
-    background-size: cover;
-    background-position: center;
+      position: relative;
+      height: 500px;
+      background-size: cover;
+      background-position: center;
     }
-
-
 
     /* Swiper navigation visibility on hover */
     .categories-swiper .swiper-button-prev,
@@ -69,7 +63,7 @@
       cursor: pointer;
       user-select: none;
       display: block;
-      color: #166534; /* verde oscuro tailwind */
+      color: #166534;
     }
 
     .custom-checkbox input {
@@ -87,13 +81,13 @@
       height: 20px;
       width: 20px;
       background-color: #fff;
-      border: 2px solid #4ade80; /* verde principal */
-      border-radius: 0.375rem; /* rounded-md */
+      border: 2px solid #4ade80;
+      border-radius: 0.375rem;
       transform: translateY(-50%);
     }
 
     .custom-checkbox:hover input~.checkmark {
-      border-color: #22c55e; /* verde secundario */
+      border-color: #22c55e;
     }
 
     .custom-checkbox input:checked~.checkmark {
@@ -127,7 +121,7 @@
       width: 100%;
       height: 6px;
       border-radius: 6px;
-      background: #bbf7d0; /* verde palido */
+      background: #bbf7d0;
       outline: none;
     }
 
@@ -151,12 +145,74 @@
       cursor: pointer;
       border: none;
     }
+
+    #blog a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    #blog a:hover {
+      color: #22c55e;
+    }
+
+    #blog a i {
+      transition: transform 0.3s ease;
+    }
+
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 300px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.5s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .category-card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+      z-index: 2;
+      border-radius: 12px;
+    }
+
+    .category-card .content {
+      position: relative;
+      z-index: 3;
+      padding: 1.5rem;
+      color: #fff;
+    }
   </style>
 </head>
 
 <body class="bg-gray-50 flex flex-col min-h-screen">
 
-  <!-- Header -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold text-green-600">Microdosis de Salud</a>
@@ -165,14 +221,13 @@
         <a href="#productos" class="hover:text-primary font-semibold">Productos</a>
         <a href="#shop" class="hover:text-primary font-semibold">Tienda</a>
         <a href="#categorias" class="hover:text-primary font-semibold">Categorías</a>
-        <a href="#acercade" class="hover:text-primary font-semibold">Acercad de</a>
+        <a href="#acercade" class="hover:text-primary font-semibold">Acerca de</a>
         <a href="#footer" class="hover:text-primary font-semibold">Contacto</a>
       </nav>
       <div class="flex items-center space-x-4">
         <button aria-label="Buscar" class="text-gray-600 hover:text-primary text-xl"><i class="ri-search-line"></i></button>
         <button aria-label="Usuario" class="text-gray-600 hover:text-primary text-xl"><i class="ri-user-line"></i></button>
 
-        <!-- Botón carrito -->
         <button id="cart-toggle" aria-label="Carrito" class="relative text-gray-600 hover:text-primary text-xl">
           <i class="ri-shopping-cart-line"></i>
           <span id="cart-count" class="absolute -top-1 -right-2 bg-primary text-white rounded-full px-1 text-xs font-bold">0</span>
@@ -182,104 +237,106 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
     <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
       <div class="flex flex-col space-y-2 px-6 py-4">
         <a href="#hero" class="hover:text-primary font-semibold">Inicio</a>
         <a href="#productos" class="hover:text-primary font-semibold">Productos</a>
         <a href="#shop" class="hover:text-primary font-semibold">Tienda</a>
         <a href="#categorias" class="hover:text-primary font-semibold">Categorías</a>
-        <a href="#acercade" class="hover:text-primary font-semibold">Acercad de</a>
+        <a href="#acercade" class="hover:text-primary font-semibold">Acerca de</a>
         <a href="#footer" class="hover:text-primary font-semibold">Contacto</a>
       </div>
     </nav>
   </header>
 
-  <!-- Hero Section -->
- <section class="hero-section relative h-[500px]">
-  <!-- Video de fondo -->
-  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-    <source src="video-intro.mp4" type="video/mp4" />
-    Tu navegador no soporta el video.
-  </video>
+  <section id="hero" class="hero-section relative h-[500px]">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="video-intro.mp4" type="video/mp4" />
+      Tu navegador no soporta el video.
+    </video>
 
-  <!-- Capa oscura opcional para mejorar lectura -->
-  <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
 
-  <!-- Contenido encima del video -->
-  <div class="relative z-20 container mx-auto px-6 py-24 max-w-3xl text-white">
-    <h1 class="text-5xl font-extrabold mb-4 leading-snug drop-shadow-lg">Microdosis de Salud</h1>
-    <p class="text-xl mb-8 drop-shadow-md">Distribuimos productos naturistas enfocados a la mujer para su bienestar y cuidado personal.</p>
-    <a href="#productos" class="inline-block bg-primary hover:bg-secondary px-8 py-3 rounded-button font-semibold shadow-lg transition">Ver ahora</a>
-  </div>
-</section>
-
-
- <!-- Categories Section -->
-<section id="categorias" class="py-16 bg-white">
-  <div class="container mx-auto px-16">
-    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Explora Categorías</h2>
-
-    <div class="swiper categories-swiper">
-      <div class="swiper-wrapper">
-
-       <!-- Suplementos Naturales -->
-        <div class="swiper-slide bg-green-50 rounded-lg p-4 text-center transition-transform hover:scale-105 cursor-pointer shadow-lg">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Suplementos Naturales" class="w-full h-40 object-cover object-center rounded-md" loading="lazy" />
-          <h3 class="font-semibold text-lg text-green-700 mt-4">Suplementos Naturales</h3>
-          <p class="text-green-600 text-sm mt-1">Vitaminas y hierbas para tu salud</p>
-        </div>
-
-        <!-- Aceites Esenciales -->
-        <div class="swiper-slide bg-green-50 p-6 text-center transition-transform hover:scale-105 cursor-pointer shadow-lg">
-          <div class="mx-auto mb-4 w-32 h-32 overflow-hidden border-4 border-primary shadow-lg">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Aceites Esenciales" class="w-full h-full object-cover object-center" loading="lazy">
-          </div>
-          <h3 class="font-semibold text-lg text-green-700">Aceites Esenciales</h3>
-          <p class="text-green-600 text-sm mt-1">Aromaterapia y cuidado corporal</p>
-        </div>
-
-        <!-- Cuidado Personal -->
-        <div class="swiper-slide bg-green-50 p-6 text-center transition-transform hover:scale-105 cursor-pointer shadow-lg">
-          <div class="mx-auto mb-4 w-32 h-32 overflow-hidden border-4 border-primary shadow-lg">
-            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=401&q=80" alt="Cuidado Personal" class="w-full h-full object-cover object-center" loading="lazy">
-          </div>
-          <h3 class="font-semibold text-lg text-green-700">Cuidado Personal</h3>
-          <p class="text-green-600 text-sm mt-1">Productos naturales para la piel y el cabello</p>
-        </div>
-
-        <!-- Alimentación Saludable -->
-        <div class="swiper-slide bg-green-50 p-6 text-center transition-transform hover:scale-105 cursor-pointer shadow-lg">
-          <div class="mx-auto mb-4 w-32 h-32 overflow-hidden border-4 border-primary shadow-lg">
-            <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=400&q=80" alt="Alimentación Saludable" class="w-full h-full object-cover object-center" loading="lazy">
-          </div>
-          <h3 class="font-semibold text-lg text-green-700">Alimentación Saludable</h3>
-          <p class="text-green-600 text-sm mt-1">Superalimentos y productos orgánicos</p>
-        </div>
-
-        <!-- Bienestar Femenino -->
-        <div class="swiper-slide bg-green-50 p-6 text-center transition-transform hover:scale-105 cursor-pointer shadow-lg">
-          <div class="mx-auto mb-4 w-32 h-32 overflow-hidden border-4 border-primary shadow-lg">
-            <img src="https://images.unsplash.com/photo-1488229297570-58520851e868?auto=format&fit=crop&w=400&q=80" alt="Bienestar Femenino" class="w-full h-full object-cover object-center" loading="lazy">
-          </div>
-          <h3 class="font-semibold text-lg text-green-700">Bienestar Femenino</h3>
-          <p class="text-green-600 text-sm mt-1">Apoyo hormonal y menopausia</p>
-        </div>
-
-      </div>
-
-      <!-- Navigation -->
-      <div class="swiper-button-prev text-primary"></div>
-      <div class="swiper-button-next text-primary"></div>
-
-      <!-- Pagination -->
-      <div class="swiper-pagination mt-8"></div>
+    <div class="relative z-20 container mx-auto px-6 py-24 max-w-3xl text-white">
+      <h1 class="text-5xl font-extrabold mb-4 leading-snug drop-shadow-lg">Microdosis de Salud</h1>
+      <p class="text-xl mb-8 drop-shadow-md">Distribuimos productos naturistas enfocados a la mujer para su bienestar y cuidado personal.</p>
+      <a href="#productos" class="inline-block bg-primary hover:bg-secondary px-8 py-3 rounded-button font-semibold shadow-lg transition">Ver ahora</a>
     </div>
-  </div>
-</section>
+  </section>
 
 
-  <!-- Productos Destacados Section -->
+  <section id="categorias" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Explora Nuestras Categorías</h2>
+
+      <div class="swiper categories-swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <a href="#shop" class="category-card">
+              <img src="suplementos.png" alt="Suplementos Naturales" loading="lazy" />
+              <div class="overlay"></div>
+              <div class="content">
+                <h3 class="font-bold text-2xl mb-1">Suplementos</h3>
+                <p class="text-sm text-gray-200">Vitaminas y hierbas para tu salud</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="#shop" class="category-card">
+              <img src="aceites-essenciales.jpg" alt="Aceites Esenciales" loading="lazy">
+              <div class="overlay"></div>
+              <div class="content">
+                <h3 class="font-bold text-2xl mb-1">Aceites Esenciales</h3>
+                <p class="text-sm text-gray-200">Aromaterapia y cuidado corporal</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="#shop" class="category-card">
+              <img src="cuidado-personal.png" alt="Cuidado Personal" loading="lazy">
+              <div class="overlay"></div>
+              <div class="content">
+                <h3 class="font-bold text-2xl mb-1">Cuidado Personal</h3>
+                <p class="text-sm text-gray-200">Productos naturales para la piel y el cabello</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="#shop" class="category-card">
+              <img src="alimentacion.png" alt="Alimentación Saludable" loading="lazy">
+              <div class="overlay"></div>
+              <div class="content">
+                <h3 class="font-bold text-2xl mb-1">Alimentación</h3>
+                <p class="text-sm text-gray-200">Superalimentos y productos orgánicos</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="swiper-slide">
+            <a href="#shop" class="category-card">
+              <img src="bienestar-fem.png" alt="Bienestar Femenino" loading="lazy">
+              <div class="overlay"></div>
+              <div class="content">
+                <h3 class="font-bold text-2xl mb-1">Bienestar Femenino</h3>
+                <p class="text-sm text-gray-200">Apoyo hormonal y menopausia</p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+        <div class="swiper-button-prev text-primary"></div>
+        <div class="swiper-button-next text-primary"></div>
+
+        <div class="swiper-pagination mt-8"></div>
+      </div>
+    </div>
+  </section>
+
+
   <section id="productos" class="py-16 bg-gray-50">
     <div class="container mx-auto px-6">
       <div class="flex justify-between items-center mb-8">
@@ -287,12 +344,10 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="featured-products">
-        <!-- Producto cards insertados dinámicamente por JS -->
-      </div>
+        </div>
     </div>
   </section>
 
-  <!-- View All Products Link -->
   <section class="py-8 bg-white">
     <div class="container mx-auto px-6">
       <div class="flex justify-center mt-10">
@@ -304,25 +359,20 @@
     </div>
   </section>
 
-  <!-- Shop Page -->
   <section id="shop" class="py-16 bg-gray-50">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold mb-8 text-green-900">Tienda</h2>
 
       <div class="flex flex-col lg:flex-row gap-8">
-        <!-- Filters Sidebar -->
         <aside class="lg:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
           <h3 class="font-semibold text-lg mb-4 text-green-800">Filtros</h3>
 
-          <!-- Categories Filter -->
           <div class="mb-6">
             <h4 class="font-semibold mb-3 text-green-700">Categorías</h4>
             <div class="space-y-2" id="filters-categories">
-              <!-- Dinámico por JS -->
-            </div>
+              </div>
           </div>
 
-          <!-- Price Range Filter -->
           <div class="mb-6">
             <h4 class="font-semibold mb-3 text-green-700">Rango de Precio</h4>
             <input type="range" min="0" max="100" value="100" step="1" class="w-full h-2 bg-green-200 rounded-full appearance-none cursor-pointer" aria-label="Rango de Precio" id="filter-price" />
@@ -332,7 +382,6 @@
             </div>
           </div>
 
-          <!-- Sort By -->
           <div>
             <h4 class="font-semibold mb-3 text-green-700">Ordenar por</h4>
             <div class="relative">
@@ -349,23 +398,18 @@
           </div>
         </aside>
 
-        <!-- Products Grid -->
         <main class="lg:w-3/4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="shop-products">
-            <!-- Productos insertados dinámicamente JS -->
-          </div>
+            </div>
 
-          <!-- Pagination -->
           <div class="flex justify-center mt-10 space-x-2" id="pagination">
-            <!-- Paginación generada por JS -->
-          </div>
+            </div>
         </main>
       </div>
     </div>
   </section>
-  
 
-  <!-- Carrito Modal -->
+
   <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex justify-end">
     <div class="bg-white w-full max-w-md h-full flex flex-col shadow-lg">
       <div class="flex justify-between items-center p-4 border-b border-gray-200">
@@ -388,13 +432,11 @@
     </div>
   </div>
 
-  <!-- Checkout Page -->
   <section id="checkout" class="py-16 bg-white hidden">
     <div class="container mx-auto px-6 max-w-4xl">
       <h2 class="text-3xl font-bold mb-8 text-green-900">Checkout</h2>
 
       <div class="flex flex-col lg:flex-row gap-8">
-        <!-- Checkout Form -->
         <div class="lg:w-2/3">
           <form id="checkout-form" class="bg-gray-50 rounded-lg p-6" novalidate>
             <h3 class="font-bold text-xl mb-6">Información de Contacto</h3>
@@ -493,128 +535,94 @@
     </div>
   </section>
 
-<!-- Hero Acerca de -->
-<section id="acercade" class="py-20 bg-green-50">
-  <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
-    <!-- Texto Misión y Visión -->
-    <div class="md:w-1/2 text-center md:text-left">
-      <h2 class="text-4xl font-bold text-green-900 mb-6">Acerca de Microdosis de Salud</h2>
-      <div class="mb-8">
-        <h3 class="text-2xl font-semibold mb-2 text-green-800">Misión</h3>
-        <p class="text-green-700 leading-relaxed">
-          Ofrecer productos naturistas de alta calidad que promuevan el bienestar integral de la mujer, fomentando un estilo de vida saludable y en armonía con la naturaleza.
-        </p>
+  <section id="acercade" class="py-20 bg-green-50">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
+      <div class="md:w-1/2 text-center md:text-left">
+        <h2 class="text-4xl font-bold text-green-900 mb-6">Acerca de Microdosis de Salud</h2>
+        <div class="mb-8">
+          <h3 class="text-2xl font-semibold mb-2 text-green-800">Misión</h3>
+          <p class="text-green-700 leading-relaxed">
+            Ofrecer productos naturistas de alta calidad que promuevan el bienestar integral de la mujer, fomentando un estilo de vida saludable y en armonía con la naturaleza.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-semibold mb-2 text-green-800">Visión</h3>
+          <p class="text-green-700 leading-relaxed">
+            Ser la marca líder en el mercado de productos naturistas para el cuidado femenino, reconocida por la confianza, calidad y compromiso con la salud natural.
+          </p>
+        </div>
       </div>
-      <div>
-        <h3 class="text-2xl font-semibold mb-2 text-green-800">Visión</h3>
-        <p class="text-green-700 leading-relaxed">
-          Ser la marca líder en el mercado de productos naturistas para el cuidado femenino, reconocida por la confianza, calidad y compromiso con la salud natural.
-        </p>
+
+      <div class="md:w-1/2 rounded-lg shadow-lg overflow-hidden w-full max-w-md mx-auto">
+        <video src="seda.mp4" autoplay muted loop playsinline controls class="w-full h-auto rounded-lg">
+          Tu navegador no soporta la reproducción de video.
+        </video>
       </div>
     </div>
+  </section>
 
-    <!-- Video -->
-    <div class="md:w-1/2 rounded-lg shadow-lg overflow-hidden w-full max-w-md mx-auto">
-      <video 
-        src="seda.mp4" 
-        autoplay 
-        muted 
-        loop 
-        playsinline
-        controls 
-        class="w-full h-auto rounded-lg"
-      >
-        Tu navegador no soporta la reproducción de video.
-      </video>
+  <section id="blog" class="py-16 bg-white">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <h2 class="text-3xl font-bold text-green-900 mb-12 text-center">Blog & Noticias</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Artículo 1" class="w-full h-48 object-cover" loading="lazy" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Cómo mejorar tu bienestar día a día</h3>
+            <p class="text-green-700 mb-4 text-sm">Consejos prácticos para integrar hábitos saludables y naturales en tu rutina diaria.</p>
+            <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
+              Leer más
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Artículo 2" class="w-full h-48 object-cover" loading="lazy" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Beneficios de los aceites esenciales</h3>
+            <p class="text-green-700 mb-4 text-sm">Descubre cómo utilizar aceites naturales para armonizar cuerpo y mente con aromaterapia.</p>
+            <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
+              Leer más
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </article>
+
+        <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+          <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=600&q=80" alt="Artículo 3" class="w-full h-48 object-cover" loading="lazy" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-green-900 mb-2">Alimentación saludable para la mujer</h3>
+            <p class="text-green-700 mb-4 text-sm">Ideas de nutrición natural para fortalecer el cuerpo y mantener el equilibrio hormonal.</p>
+            <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
+              Leer más
+              <i class="ri-arrow-right-line ml-1"></i>
+            </a>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- Blog Section -->
-<section id="blog" class="py-16 bg-white">
-  <div class="container mx-auto px-6 max-w-7xl">
-    <h2 class="text-3xl font-bold text-green-900 mb-12 text-center">Blog & Noticias</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Post 1 -->
-      <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Artículo 1" class="w-full h-48 object-cover" loading="lazy" />
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-green-900 mb-2">Cómo mejorar tu bienestar día a día</h3>
-          <p class="text-green-700 mb-4 text-sm">Consejos prácticos para integrar hábitos saludables y naturales en tu rutina diaria.</p>
-          <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
-            Leer más
-            <i class="ri-arrow-right-line ml-1"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- Post 2 -->
-      <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Artículo 2" class="w-full h-48 object-cover" loading="lazy" />
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-green-900 mb-2">Beneficios de los aceites esenciales</h3>
-          <p class="text-green-700 mb-4 text-sm">Descubre cómo utilizar aceites naturales para armonizar cuerpo y mente con aromaterapia.</p>
-          <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
-            Leer más
-            <i class="ri-arrow-right-line ml-1"></i>
-          </a>
-        </div>
-      </article>
-
-      <!-- Post 3 -->
-      <article class="bg-green-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-        <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=600&q=80" alt="Artículo 3" class="w-full h-48 object-cover" loading="lazy" />
-        <div class="p-6">
-          <h3 class="text-xl font-semibold text-green-900 mb-2">Alimentación saludable para la mujer</h3>
-          <p class="text-green-700 mb-4 text-sm">Ideas de nutrición natural para fortalecer el cuerpo y mantener el equilibrio hormonal.</p>
-          <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
-            Leer más
-            <i class="ri-arrow-right-line ml-1"></i>
-          </a>
-        </div>
-      </article>
-
-    </div>
-  </div>
     <div class="text-center mt-12">
       <a href="#" class="text-primary font-semibold hover:underline inline-flex items-center">
         Ver más artículos
         <i class="ri-arrow-right-line ml-1"></i>
-      </a>  
-    <style>
-        #blog a {
-        color: #4ade80; /* verde claro */
-        text-decoration: none;
-        }
-    
-        #blog a:hover {
-        color: #22c55e; /* verde secundario */
-        }
-    
-        #blog a i {
-        transition: transform 0.3s ease;
-        }
-    </style>
-    </section>
+      </a>
+    </div>
+  </section>
 
 
 
-  <!-- Footer -->
   <footer id="footer" class="bg-green-900 text-green-100 pt-16 pb-8 mt-auto">
     <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <h2 class="text-2xl font-bold mb-4">Microdosis de Salud</h2>
         <p class="text-green-300">Tu tienda naturista confiable para el bienestar femenino y cuidado natural.</p>
         <div class="flex space-x-4 mt-6">
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i
-              class="ri-facebook-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i
-              class="ri-twitter-x-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i
-              class="ri-instagram-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i
-              class="ri-pinterest-fill"></i></a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i class="ri-facebook-fill"></i></a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i class="ri-twitter-x-fill"></i></a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i class="ri-instagram-fill"></i></a>
+          <a href="#" class="w-10 h-10 flex items-center justify-center bg-green-700 rounded-full hover:bg-primary transition"><i class="ri-pinterest-fill"></i></a>
         </div>
       </div>
       <div>
@@ -632,7 +640,7 @@
         <ul class="space-y-2 text-green-300">
           <li><a href="#hero" class="hover:text-primary transition">Inicio</a></li>
           <li><a href="#shop" class="hover:text-primary transition">Tienda</a></li>
-          <li><a href="#acerca de" class="hover:text-primary transition">Nosotros</a></li>
+          <li><a href="#acercade" class="hover:text-primary transition">Nosotros</a></li>
           <li><a href="#footer" class="hover:text-primary transition">Contacto</a></li>
           <li><a href="#" class="hover:text-primary transition">Preguntas Frecuentes</a></li>
         </ul>
@@ -641,13 +649,7 @@
         <h3 class="font-semibold text-lg mb-4">Newsletter</h3>
         <p class="text-green-300 mb-4">Suscríbete para recibir ofertas especiales y novedades.</p>
         <form id="newsletter-form" class="flex">
-          <input
-            type="email"
-            placeholder="Tu correo electrónico"
-            class="flex-grow px-4 py-2 rounded-l-lg border-0 focus:outline-none"
-            aria-label="Correo electrónico"
-            required
-          />
+          <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-2 rounded-l-lg border-0 focus:outline-none" aria-label="Correo electrónico" required />
           <button class="bg-primary hover:bg-secondary px-4 py-2 rounded-r-lg text-white font-semibold" type="submit">Suscribir</button>
         </form>
       </div>
@@ -657,517 +659,384 @@
     </div>
   </footer>
 
-  <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-  <!-- Scripts -->
-// Datos de productos ejemplo (naturistas)
-<script>
-const productos = [
-  {
-    id: 1,
-    name: "Crema Corporal Natural",
-    description: "Hidratación y cuidado para la piel con ingredientes orgánicos.",
-    price: 24.99,
-    img: "crema-corporal.jpg",
-    category: "Cuidado Personal",
-    popular: true,
-    dateAdded: "2025-08-01"
-  },
-  {
-    id: 2,
-    name: "Shampoo Anticaída",
-    description: "Previene la caída y fortalece el cabello con ingredientes naturales.",
-    price: 19.99,
-    img: "shampoo-anticaida.jpg",
-    category: "Cuidado Personal",
-    popular: true,
-    dateAdded: "2025-07-25"
-  },
-  {
-    id: 3,
-    name: "Aceite de Menta",
-    description: "Refresca y ayuda al cuidado del cuero cabelludo.",
-    price: 34.99,
-    img: "aceite-menta.jpg",
-    category: "Aceites Esenciales",
-    popular: false,
-    dateAdded: "2025-07-15"
-  },
-  {
-    id: 4,
-    name: "Aceites Esenciales",
-    description: "Aromaterapia y cuidado corporal natural.",
-    price: 12.99,
-    img: "aceites-esenciales.jpg",
-    category: "Aceites Esenciales",
-    popular: false,
-    dateAdded: "2025-07-10"
-  },
-  {
-    id: 5,
-    name: "Suplemento Herbal Bienestar",
-    description: "Mejora tu salud con extractos naturales.",
-    price: 29.99,
-    img: "suplemento-herbal.jpg",
-    category: "Suplementos Naturales",
-    popular: true,
-    dateAdded: "2025-07-30"
-  },
-  {
-    id: 6,
-    name: "Té Detox Natural",
-    description: "Limpieza y vitalidad con ingredientes orgánicos.",
-    price: 14.99,
-    img: "te-detox.jpg",
-    category: "Alimentación Saludable",
-    popular: false,
-    dateAdded: "2025-08-05"
-  },
-  {
-    id: 7,
-    name: "Crema Facial Orgánica",
-    description: "Cuidado delicado para una piel radiante.",
-    price: 39.99,
-    img: "crema-facial.jpg",
-    category: "Cuidado Personal",
-    popular: true,
-    dateAdded: "2025-08-06"
-  },
-  {
-    id: 8,
-    name: "Bálsamo de Caléndula",
-    description: "Alivio natural para piel sensible.",
-    price: 11.99,
-    img: "balsamo-calendula.jpg",
-    category: "Cuidado Personal",
-    popular: false,
-    dateAdded: "2025-07-28"
-  },
-];
+  <script>
+    // Datos de productos ejemplo (naturistas)
+    const productos = [{
+        id: 1,
+        name: "Crema Corporal Natural",
+        description: "Hidratación y cuidado para la piel con ingredientes orgánicos.",
+        price: 24.99,
+        img: "crema-corporal.jpg",
+        category: "Cuidado Personal",
+        popular: true,
+        dateAdded: "2025-08-01"
+      },
+      {
+        id: 2,
+        name: "Shampoo Anticaída",
+        description: "Previene la caída y fortalece el cabello con ingredientes naturales.",
+        price: 19.99,
+        img: "shampoo-anticaida.jpg",
+        category: "Cuidado Personal",
+        popular: true,
+        dateAdded: "2025-07-25"
+      },
+      {
+        id: 3,
+        name: "Aceite de Menta",
+        description: "Refresca y ayuda al cuidado del cuero cabelludo.",
+        price: 34.99,
+        img: "aceite-menta.jpg",
+        category: "Aceites Esenciales",
+        popular: false,
+        dateAdded: "2025-07-15"
+      },
+      {
+        id: 4,
+        name: "Set de Aceites Esenciales",
+        description: "Aromaterapia y cuidado corporal natural.",
+        price: 12.99,
+        img: "https://images.unsplash.com/photo-1547989453-e30b65f4c541?auto=format&fit=crop&w=400&q=80",
+        category: "Aceites Esenciales",
+        popular: false,
+        dateAdded: "2025-07-10"
+      },
+      {
+        id: 5,
+        name: "Suplemento Herbal Bienestar",
+        description: "Mejora tu salud con extractos naturales.",
+        price: 29.99,
+        img: "https://images.unsplash.com/photo-1576092040416-833e79e612ed?auto=format&fit=crop&w=400&q=80",
+        category: "Suplementos Naturales",
+        popular: true,
+        dateAdded: "2025-07-30"
+      },
+      {
+        id: 6,
+        name: "Té Detox Natural",
+        description: "Limpieza y vitalidad con ingredientes orgánicos.",
+        price: 14.99,
+        img: "https://images.unsplash.com/photo-1589182390163-95c8621437bb?auto=format&fit=crop&w=400&q=80",
+        category: "Alimentación Saludable",
+        popular: false,
+        dateAdded: "2025-08-05"
+      },
+      {
+        id: 7,
+        name: "Crema Facial Orgánica",
+        description: "Cuidado delicado para una piel radiante.",
+        price: 39.99,
+        img: "https://images.unsplash.com/photo-1596462502278-27bfbc0744de?auto=format&fit=crop&w=400&q=80",
+        category: "Cuidado Personal",
+        popular: true,
+        dateAdded: "2025-08-06"
+      },
+      {
+        id: 8,
+        name: "Bálsamo de Caléndula",
+        description: "Alivio natural para piel sensible.",
+        price: 11.99,
+        img: "https://images.unsplash.com/photo-1588691888062-817865c19e5d?auto=format&fit=crop&w=400&q=80",
+        category: "Cuidado Personal",
+        popular: false,
+        dateAdded: "2025-07-28"
+      },
+    ];
 
-// Categorías disponibles
-const categories = ["Suplementos Naturales", "Aceites Esenciales", "Cuidado Personal", "Alimentación Saludable", "Bienestar Femenino"];
+    // Funcionalidad para el menú móvil
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const checkoutPage = document.getElementById('checkout');
+    const shopPage = document.getElementById('shop');
 
-// Variables globales carrito y filtros
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const productsPerPage = 6;
-let currentPage = 1;
-let filteredCategories = new Set(categories); // todas activadas inicialmente
-let maxPriceFilter = 100;
-let currentSort = "nuevo"; // más recientes por defecto
-
-document.addEventListener("DOMContentLoaded", () => {
-  initSwiper();
-  renderCategoriesFilters();
-  renderFeaturedProducts();
-  renderShopProducts();
-  renderCart();
-  setupEventListeners();
-  updateFilterPriceLabel(maxPriceFilter);
-});
-
-// Inicializa carrusel Swiper de categorías
-function initSwiper() {
-  new Swiper('.categories-swiper', {
-    slidesPerView: 1,
-    spaceBetween: 12,
-    loop: true,
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      768: { slidesPerView: 3 },
-      1024: { slidesPerView: 4 }
-    }
-  });
-}
-
-// Renderiza filtros de categorías con checkboxes interactivos
-function renderCategoriesFilters() {
-  const container = document.getElementById("filters-categories");
-  container.innerHTML = "";
-  categories.forEach(cat => {
-    const label = document.createElement('label');
-    label.className = "custom-checkbox";
-    label.innerHTML = `
-      ${cat}
-      <input type="checkbox" value="${cat}" checked />
-      <span class="checkmark"></span>
-    `;
-    container.appendChild(label);
-  });
-}
-
-// Renderiza productos destacados (popular=true)
-function renderFeaturedProducts() {
-  const container = document.getElementById("featured-products");
-  container.innerHTML = "";
-  const destacados = productos.filter(p => p.popular);
-  destacados.forEach(product => {
-    container.appendChild(createProductCard(product));
-  });
-}
-
-// Renderiza productos en tienda según filtros, orden y paginación
-function renderShopProducts(page = 1) {
-  currentPage = page;
-  const container = document.getElementById("shop-products");
-  container.innerHTML = "";
-
-  // Filtrar productos según categorías activas y precio máximo
-  let filtered = productos.filter(p =>
-    filteredCategories.has(p.category) &&
-    p.price <= maxPriceFilter
-  );
-
-  // Ordenar productos según opción elegida
-  switch (currentSort) {
-    case "precioAsc":
-      filtered.sort((a, b) => a.price - b.price);
-      break;
-    case "precioDesc":
-      filtered.sort((a, b) => b.price - a.price);
-      break;
-    case "popular":
-      filtered.sort((a, b) => (b.popular === a.popular ? 0 : b.popular ? 1 : -1));
-      break;
-    case "nuevo":
-    default:
-      filtered.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-      break;
-  }
-
-  // Paginación
-  const totalPages = Math.ceil(filtered.length / productsPerPage);
-  if (page > totalPages && totalPages > 0) currentPage = totalPages;
-  const pagedItems = filtered.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage);
-
-  pagedItems.forEach(product => {
-    container.appendChild(createProductCard(product));
-  });
-
-  renderPagination(totalPages);
-}
-
-// Crea la tarjeta HTML de un producto
-function createProductCard(product) {
-  const article = document.createElement('article');
-  article.className = "bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:shadow-lg";
-
-  article.innerHTML = `
-    <div class="h-64 overflow-hidden">
-      <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover object-center" loading="lazy" />
-    </div>
-    <div class="p-4">
-      <h3 class="font-semibold text-lg mb-1 text-green-900">${product.name}</h3>
-      <p class="text-green-700 text-sm mb-2">${product.description}</p>
-      <div class="flex justify-between items-center">
-        <span class="font-bold text-lg text-green-900">$${product.price.toFixed(2)}</span>
-        <button class="bg-primary hover:bg-secondary text-white px-4 py-2 rounded-button text-sm whitespace-nowrap btn-add-cart" 
-            data-id="${product.id}">
-          Agregar al carrito
-        </button>
-      </div>
-    </div>
-  `;
-
-  return article;
-}
-
-// Renderiza botones de paginación
-function renderPagination(totalPages) {
-  const container = document.getElementById("pagination");
-  container.innerHTML = "";
-
-  if (totalPages <= 1) return;
-
-  function createPageBtn(pageNum, label = null) {
-    const btn = document.createElement('a');
-    btn.href = "#shop";
-    btn.className = `w-10 h-10 flex items-center justify-center rounded-full shadow cursor-pointer select-none text-green-900 ${pageNum === currentPage ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100'}`;
-    btn.textContent = label || pageNum;
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      renderShopProducts(pageNum);
-      window.scrollTo({top: 0, behavior: 'smooth'});
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
-    return btn;
-  }
 
-  // Botón anterior
-  const prev = createPageBtn(Math.max(1, currentPage - 1), "←");
-  container.appendChild(prev);
+    // Funcionalidad para el Swiper
+    document.addEventListener("DOMContentLoaded", function() {
+      new Swiper(".categories-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        },
+      });
 
-  // Botones página (máximo 5)
-  let startPage = Math.max(1, currentPage - 2);
-  let endPage = Math.min(totalPages, startPage + 4);
-  if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
+      // Lógica de la Tienda y Carrito (reescrita y completada)
+      const featuredProductsContainer = document.getElementById('featured-products');
+      const shopProductsContainer = document.getElementById('shop-products');
+      const filtersCategories = document.getElementById('filters-categories');
+      const filterPrice = document.getElementById('filter-price');
+      const filterPriceLabel = document.getElementById('filter-price-label');
+      const sortBySelect = document.getElementById('sort-by');
+      const paginationContainer = document.getElementById('pagination');
 
-  for (let i = startPage; i <= endPage; i++) {
-    container.appendChild(createPageBtn(i));
-  }
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = document.getElementById('cart-count');
+      const cartModal = document.getElementById('cart-modal');
+      const cartToggle = document.getElementById('cart-toggle');
+      const cartClose = document.getElementById('cart-close');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartTotalSpan = document.getElementById('cart-total');
+      const emptyCartBtn = document.getElementById('empty-cart');
+      const emptyCartMsg = document.getElementById('empty-cart-msg');
+      const checkoutBtn = document.getElementById('checkout-btn');
 
-  // Botón siguiente
-  const next = createPageBtn(Math.min(totalPages, currentPage + 1), "→");
-  container.appendChild(next);
-}
+      const productsPerPage = 8;
+      let currentPage = 1;
 
-// Actualiza label del filtro de precio
-function updateFilterPriceLabel(value) {
-  const label = document.getElementById("filter-price-label");
-  label.textContent = `$${value}`;
-}
-
-// Guarda carrito en localStorage
-function saveCart() {
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// Renderiza el carrito en la interfaz
-function renderCart() {
-  const cartCount = document.getElementById("cart-count");
-  const cartItemsContainer = document.getElementById("cart-items");
-  const cartTotalEl = document.getElementById("cart-total");
-  const emptyCartMsg = document.getElementById("empty-cart-msg");
-
-  cartItemsContainer.innerHTML = "";
-
-  if (cart.length === 0) {
-    emptyCartMsg.style.display = "block";
-  } else {
-    emptyCartMsg.style.display = "none";
-  }
-
-  cart.forEach((item, idx) => {
-    const div = document.createElement("div");
-    div.className = "flex items-center justify-between border-b border-gray-200 pb-2";
-
-    div.innerHTML = `
-      <div class="flex-grow">
-        <p class="font-semibold text-green-800">${item.name}</p>
-        <p class="text-gray-600 text-sm">$${item.price.toFixed(2)} c/u</p>
-      </div>
-      <div class="flex items-center space-x-2">
-        <input type="number" min="1" value="${item.quantity}" data-index="${idx}" class="w-12 text-center border border-gray-300 rounded" aria-label="Cantidad para ${item.name}" />
-        <button data-index="${idx}" aria-label="Eliminar ${item.name}" class="text-red-500 hover:text-red-700 text-xl font-bold">&times;</button>
-      </div>
-    `;
-
-    // Cambiar cantidad con validación
-    div.querySelector('input[type="number"]').addEventListener("change", e => {
-      let val = parseInt(e.target.value);
-      if (isNaN(val) || val < 1) {
-        val = 1;
-        e.target.value = 1;
+      // Renderiza los productos en la cuadrícula
+      function renderProducts(productsToRender, containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        if (productsToRender.length === 0) {
+          container.innerHTML = '<p class="col-span-full text-center text-gray-500">No se encontraron productos con estos filtros.</p>';
+          return;
+        }
+        productsToRender.forEach(product => {
+          const productCard = document.createElement('div');
+          productCard.classList.add('bg-white', 'rounded-lg', 'shadow-md', 'p-4', 'flex', 'flex-col', 'items-center', 'text-center', 'hover:shadow-lg', 'transition-shadow');
+          productCard.innerHTML = `
+            <img src="${product.img}" alt="${product.name}" class="w-full h-48 object-cover rounded-md mb-4" loading="lazy" />
+            <h3 class="font-semibold text-lg text-green-900">${product.name}</h3>
+            <p class="text-sm text-gray-600 mb-2">${product.description}</p>
+            <span class="font-bold text-xl text-primary mb-4">$${product.price.toFixed(2)}</span>
+            <button class="bg-primary hover:bg-secondary text-white font-semibold py-2 px-4 rounded-button transition-colors mt-auto w-full add-to-cart-btn" data-id="${product.id}">
+              Añadir al carrito
+            </button>
+          `;
+          container.appendChild(productCard);
+        });
       }
-      cart[e.target.dataset.index].quantity = val;
-      saveCart();
+
+      // Renderiza los productos destacados
+      const featuredProducts = productos.filter(p => p.popular);
+      renderProducts(featuredProducts, 'featured-products');
+
+      // Funcionalidad de filtros y paginación
+      function applyFiltersAndSort() {
+        let filteredProducts = [...productos];
+
+        // Filter by category
+        const checkedCategories = Array.from(document.querySelectorAll('#filters-categories input:checked')).map(checkbox => checkbox.value);
+        if (checkedCategories.length > 0) {
+          filteredProducts = filteredProducts.filter(p => checkedCategories.includes(p.category));
+        }
+
+        // Filter by price
+        const maxPrice = parseFloat(filterPrice.value);
+        filteredProducts = filteredProducts.filter(p => p.price <= maxPrice);
+
+        // Sort
+        const sortValue = sortBySelect.value;
+        if (sortValue === 'nuevo') {
+          filteredProducts.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+        } else if (sortValue === 'popular') {
+          filteredProducts.sort((a, b) => b.popular - a.popular);
+        } else if (sortValue === 'precioAsc') {
+          filteredProducts.sort((a, b) => a.price - b.price);
+        } else if (sortValue === 'precioDesc') {
+          filteredProducts.sort((a, b) => b.price - a.price);
+        }
+
+        renderPagination(filteredProducts);
+        renderCurrentPage(filteredProducts);
+      }
+
+      function renderCurrentPage(filteredProducts) {
+        const start = (currentPage - 1) * productsPerPage;
+        const end = start + productsPerPage;
+        const productsToDisplay = filteredProducts.slice(start, end);
+        renderProducts(productsToDisplay, 'shop-products');
+      }
+
+      function renderPagination(filteredProducts) {
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+        for (let i = 1; i <= totalPages; i++) {
+          const pageBtn = document.createElement('button');
+          pageBtn.textContent = i;
+          pageBtn.classList.add('px-3', 'py-1', 'rounded-md', 'font-semibold', 'transition-colors');
+          if (i === currentPage) {
+            pageBtn.classList.add('bg-primary', 'text-white');
+          } else {
+            pageBtn.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-primary', 'hover:text-white');
+          }
+          pageBtn.addEventListener('click', () => {
+            currentPage = i;
+            renderPagination(filteredProducts);
+            renderCurrentPage(filteredProducts);
+          });
+          paginationContainer.appendChild(pageBtn);
+        }
+      }
+
+      // Renderiza los filtros de categorías dinámicamente
+      function renderCategoryFilters() {
+        const categories = [...new Set(productos.map(p => p.category))];
+        categories.forEach(category => {
+          const label = document.createElement('label');
+          label.classList.add('custom-checkbox', 'text-sm');
+          label.innerHTML = `
+            <input type="checkbox" value="${category}" />
+            <span class="checkmark"></span>
+            ${category}
+          `;
+          filtersCategories.appendChild(label);
+        });
+        filtersCategories.addEventListener('change', () => {
+          currentPage = 1;
+          applyFiltersAndSort();
+        });
+      }
+
+      // Event listeners para los filtros
+      filterPrice.addEventListener('input', () => {
+        filterPriceLabel.textContent = `$${filterPrice.value}`;
+        currentPage = 1;
+        applyFiltersAndSort();
+      });
+
+      sortBySelect.addEventListener('change', () => {
+        currentPage = 1;
+        applyFiltersAndSort();
+      });
+
+      // Inicializa la tienda
+      renderCategoryFilters();
+      applyFiltersAndSort();
+
+      // Lógica del carrito
+      function updateCartCount() {
+        const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+        cartCount.textContent = totalItems;
+        if (totalItems > 0) {
+          cartCount.classList.remove('hidden');
+        } else {
+          cartCount.classList.add('hidden');
+        }
+      }
+
+      function renderCart() {
+        cartItemsContainer.innerHTML = '';
+        if (cart.length === 0) {
+          emptyCartMsg.classList.remove('hidden');
+        } else {
+          emptyCartMsg.classList.add('hidden');
+          let total = 0;
+          cart.forEach(item => {
+            total += item.price * item.quantity;
+            const cartItemEl = document.createElement('div');
+            cartItemEl.classList.add('flex', 'items-center', 'space-x-4');
+            cartItemEl.innerHTML = `
+              <img src="${item.img}" alt="${item.name}" class="w-16 h-16 object-cover rounded-md" />
+              <div class="flex-grow">
+                <h4 class="font-semibold text-green-900">${item.name}</h4>
+                <p class="text-sm text-gray-600">$${item.price.toFixed(2)} x ${item.quantity}</p>
+              </div>
+              <button class="text-red-500 hover:text-red-700 remove-from-cart-btn" data-id="${item.id}">
+                <i class="ri-delete-bin-line text-lg"></i>
+              </button>
+            `;
+            cartItemsContainer.appendChild(cartItemEl);
+          });
+          cartTotalSpan.textContent = `$${total.toFixed(2)}`;
+        }
+      }
+
+      function addToCart(productId) {
+        const product = productos.find(p => p.id == productId);
+        if (product) {
+          const existingItem = cart.find(item => item.id === productId);
+          if (existingItem) {
+            existingItem.quantity++;
+          } else {
+            cart.push({
+              ...product,
+              quantity: 1
+            });
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          renderCart();
+          alert(`${product.name} ha sido añadido al carrito.`);
+        }
+      }
+
+      function removeFromCart(productId) {
+        cart = cart.filter(item => item.id != productId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+      }
+
+      function emptyCart() {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        renderCart();
+      }
+
+      // Event listeners para el carrito
+      document.body.addEventListener('click', (e) => {
+        if (e.target.closest('.add-to-cart-btn')) {
+          const productId = e.target.closest('.add-to-cart-btn').dataset.id;
+          addToCart(parseInt(productId));
+        }
+        if (e.target.closest('.remove-from-cart-btn')) {
+          const productId = e.target.closest('.remove-from-cart-btn').dataset.id;
+          removeFromCart(parseInt(productId));
+        }
+      });
+
+      cartToggle.addEventListener('click', () => {
+        cartModal.classList.remove('hidden');
+        renderCart();
+      });
+      cartClose.addEventListener('click', () => cartModal.classList.add('hidden'));
+      emptyCartBtn.addEventListener('click', emptyCart);
+      
+      // Lógica corregida del botón de Pagar
+      checkoutBtn.addEventListener('click', () => {
+        if (cart.length > 0) {
+          cartModal.classList.add('hidden');
+          checkoutPage.classList.remove('hidden');
+          shopPage.classList.add('hidden');
+          // Desplazarse a la sección de checkout si es necesario
+          document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        } else {
+          alert('Tu carrito está vacío. Agrega productos para continuar.');
+        }
+      });
+
+      // Inicializa el carrito
+      updateCartCount();
       renderCart();
     });
-
-    // Eliminar producto
-    div.querySelector("button").addEventListener("click", e => {
-      const index = e.target.dataset.index;
-      cart.splice(index, 1);
-      saveCart();
-      renderCart();
-    });
-
-    cartItemsContainer.appendChild(div);
-  });
-
-  // Actualizar total y contador
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  cartTotalEl.textContent = `$${total.toFixed(2)}`;
-  cartCount.textContent = cart.length;
-  cartCount.style.display = cart.length > 0 ? "inline-block" : "none";
-}
-
-// Agrega producto al carrito por id
-function addToCart(id) {
-  const existing = cart.find(i => i.id === id);
-  if (existing) {
-    existing.quantity++;
-  } else {
-    const prod = productos.find(p => p.id === id);
-    if (prod) {
-      cart.push({ id: prod.id, name: prod.name, price: prod.price, quantity: 1 });
-    }
-  }
-  saveCart();
-  renderCart(); // <-- Actualizar UI inmediatamente al agregar
-}
-
-// Mostrar/Ocultar carrito modal y asegurarse de que renderiza contenido actualizado
-function toggleCart(show) {
-  const modal = document.getElementById("cart-modal");
-  if (!modal) return;
-  if (show) {
-    renderCart();  // <-- Renderizar justo antes de mostrar el modal
-    modal.classList.remove("hidden");
-  } else {
-    modal.classList.add("hidden");
-  }
-}
-
-
-// Mostrar/Ocultar carrito modal
-function toggleCart(show) {
-  const modal = document.getElementById("cart-modal");
-  if (show) {
-    modal.classList.remove("hidden");
-  } else {
-    modal.classList.add("hidden");
-  }
-}
-
-// Mostrar sección checkout y ocultar otras
-function showCheckout() {
-  document.getElementById("checkout").classList.remove("hidden");
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-// Ocultar checkout
-function hideCheckout() {
-  document.getElementById("checkout").classList.add("hidden");
-}
-
-function setupEventListeners() {
-  // Menú móvil toggle
-  document.getElementById("menu-toggle").addEventListener("click", () => {
-    document.getElementById("mobile-menu").classList.toggle("hidden");
-  });
-
-  // Carrito toggle
-  document.getElementById("cart-toggle").addEventListener("click", () => {
-    toggleCart(true);
-  });
-
-  // Cerrar carrito
-  document.getElementById("cart-close").addEventListener("click", () => {
-    toggleCart(false);
-  });
-
-  // Vaciar carrito
-  document.getElementById("empty-cart").addEventListener("click", emptyCart);
-
-  // Funciones para mostrar/ocultar carrito modal
-function toggleCart(show) {
-  const modal = document.getElementById("cart-modal");
-  if (!modal) return;
-  if (show) modal.classList.remove("hidden");
-  else modal.classList.add("hidden");
-}
-
-// Función para mostrar checkout
-function showCheckout() {
-  const checkoutSection = document.getElementById("checkout");
-  if (checkoutSection) checkoutSection.classList.remove("hidden");
-}
-
-// Evento click para botón pagar
-document.getElementById("checkout-btn").addEventListener("click", e => {
-  e.preventDefault();
-  toggleCart(false);        // Oculta el carrito
-  showCheckout();           // Muestra sección checkout
-  // Scroll para visibilidad
-  document.getElementById("checkout").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-
-function emptyCart() {
-  if (confirm("¿Estás seguro de vaciar el carrito?")) {
-    cart = [];
-    saveCart();
-    renderCart();
-  }
-}
-
-
-  // Delegación eventos para botones Agregar al carrito
-  document.body.addEventListener("click", e => {
-    if (e.target.classList.contains("btn-add-cart")) {
-      e.preventDefault();
-      const id = Number(e.target.dataset.id);
-      if (id) {
-        addToCart(id);
-      } else {
-        alert("Producto no identificado para agregar al carrito");
-      }
-    }
-  });
-
-  // Filtro: input rango precio
-  document.getElementById("filter-price").addEventListener("input", (e) => {
-    maxPriceFilter = Number(e.target.value);
-    updateFilterPriceLabel(maxPriceFilter);
-    renderShopProducts(1);
-  });
-
-  // Filtro: ordenar
-  document.getElementById("sort-by").addEventListener("change", (e) => {
-    currentSort = e.target.value;
-    renderShopProducts(1);
-  });
-
-  // Filtro: checkbox categorías
-  document.getElementById("filters-categories").addEventListener("change", e => {
-    if (e.target.type === "checkbox") {
-      const val = e.target.value;
-      if (e.target.checked) {
-        filteredCategories.add(val);
-      } else {
-        filteredCategories.delete(val);
-      }
-      renderShopProducts(1);
-    }
-  });
-
-  // Newsletter formulario simple
-  document.getElementById("newsletter-form").addEventListener("submit", e => {
-    e.preventDefault();
-    const emailInput = e.target.querySelector('input[type="email"]');
-    if (emailInput.checkValidity()) {
-      alert(`Gracias por suscribirte con ${emailInput.value}!`);
-      emailInput.value = "";
-    } else {
-      alert("Por favor ingresa un correo válido.");
-    }
-  });
-
-  // Checkout formulario envío simulado
-  document.getElementById("checkout-form").addEventListener("submit", e => {
-    e.preventDefault();
-
-    if (!e.target.checkValidity()) {
-      alert("Por favor completa todos los campos requeridos correctamente.");
-      return;
-    }
-
-    alert("Gracias por tu compra! Pronto recibirás un correo con la información.");
-    cart = [];
-    saveCart();
-    renderCart();
-    hideCheckout();
-  });
-
-  // Mostrar u ocultar campos info Tarjeta según método pago
-  const paymentRadios = document.querySelectorAll('input[name="payment"]');
-  const ccInfo = document.getElementById("credit-card-info");
-
-  function updatePaymentInfoVisibility() {
-    const selected = [...paymentRadios].find(r => r.checked).value;
-    ccInfo.style.display = (selected === "creditcard") ? "block" : "none";
-  }
-
-  paymentRadios.forEach(radio => {
-    radio.addEventListener("change", updatePaymentInfoVisibility);
-  });
-  updatePaymentInfoVisibility();
-}
-</script>
-    
-
+  </script>
 </body>
 
 </html>
