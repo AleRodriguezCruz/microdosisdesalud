@@ -199,6 +199,7 @@
       .mobile-filters {
         display: none;
       }
+
       .desktop-filters {
         display: block;
       }
@@ -211,7 +212,8 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
       <div class="container mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" class="text-3xl font-bold font-sans text-dark-slate">
-          <img src="logo_inicial.jpg" alt="Microdosis de Salud Logo" class="h-12" onerror="this.onerror=null; this.src='https://placehold.co/150x40/042636/209F9B?text=Logo';" />
+          <img src="logo_inicial.jpg" alt="Microdosis de Salud Logo" class="h-12"
+            onerror="this.onerror=null; this.src='https://placehold.co/150x40/042636/209F9B?text=Logo';" />
         </a>
         <nav class="hidden md:flex space-x-8 text-dark-slate font-semibold">
           <a href="#hero" class="hover:text-primary-gold transition-colors">Inicio</a>
@@ -220,11 +222,14 @@
           <a href="#acercade" class="hover:text-primary-gold transition-colors">Acerca de</a>
         </nav>
         <div class="flex items-center space-x-4">
-          <button id="cart-toggle" aria-label="Carrito" class="relative text-dark-slate hover:text-primary-gold text-2xl transition-colors">
+          <button id="cart-toggle" aria-label="Carrito"
+            class="relative text-dark-slate hover:text-primary-gold text-2xl transition-colors">
             <i class="ri-shopping-cart-line"></i>
-            <span id="cart-count" class="absolute -top-1 -right-2 bg-primary-gold text-white rounded-full px-1 text-xs font-bold">0</span>
+            <span id="cart-count"
+              class="absolute -top-1 -right-2 bg-primary-gold text-white rounded-full px-1 text-xs font-bold">0</span>
           </button>
-          <button aria-label="Menú" class="md:hidden text-dark-slate text-2xl" id="menu-toggle"><i class="ri-menu-line"></i></button>
+          <button aria-label="Menú" class="md:hidden text-dark-slate text-2xl" id="menu-toggle"><i
+              class="ri-menu-line"></i></button>
         </div>
       </div>
       <nav id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
@@ -240,13 +245,17 @@
     <main class="flex-grow">
       <section id="hero" class="hero-section relative">
         <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-          <source src="video-intro.mp4" type="video/mp4" onerror="this.onerror=null; this.src='https://placehold.co/1920x500/F5F5DC/B38B59?text=Video+de+Introduccion';" />
+          <source src="video-intro.mp4" type="video/mp4"
+            onerror="this.onerror=null; this.src='https://placehold.co/1920x500/F5F5DC/B38B59?text=Video+de+Introduccion';" />
         </video>
         <div class="absolute inset-0 bg-dark-slate bg-opacity-60 z-10"></div>
         <div class="relative z-20 container mx-auto px-6 py-24 max-w-3xl text-white">
-          <h1 class="text-5xl md:text-6xl font-extrabold font-sans leading-tight mb-4 drop-shadow-lg">Microdosis de Salud</h1>
-          <p class="text-xl md:text-2xl mb-8 drop-shadow-md font-body">Distribuimos productos naturistas enfocados a la mujer para su bienestar y cuidado personal.</p>
-          <a href="#productos" class="inline-block bg-primary-gold hover:bg-elegant-brown px-10 py-4 rounded-button font-semibold shadow-lg transition-colors font-body text-lg">Ver
+          <h1 class="text-5xl md:text-6xl font-extrabold font-sans leading-tight mb-4 drop-shadow-lg">Microdosis de Salud
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 drop-shadow-md font-body">Distribuimos productos naturistas enfocados a la
+            mujer para su bienestar y cuidado personal.</p>
+          <a href="#productos"
+            class="inline-block bg-primary-gold hover:bg-elegant-brown px-10 py-4 rounded-button font-semibold shadow-lg transition-colors font-body text-lg">Ver
             ahora</a>
         </div>
       </section>
@@ -340,7 +349,8 @@
       </section>
 
       <section class="py-8 bg-dark-slate text-center">
-        <a href="#shop-page" class="text-primary-gold font-semibold hover:underline transition-colors flex items-center justify-center">
+        <a href="#shop-page"
+          class="text-primary-gold font-semibold hover:underline transition-colors flex items-center justify-center">
           Ver todos los productos <i class="ri-arrow-right-line ml-2"></i>
         </a>
       </section>
@@ -374,7 +384,8 @@
                   <div>
                     <h4 class="font-semibold mb-3 text-dark-slate">Ordenar por</h4>
                     <div class="relative">
-                      <select class="w-full p-2 bg-white border border-gray-300 rounded appearance-none pr-8 cursor-pointer text-dark-slate"
+                      <select
+                        class="w-full p-2 bg-white border border-gray-300 rounded appearance-none pr-8 cursor-pointer text-dark-slate"
                         aria-label="Ordenar por" id="sort-by-mobile">
                         <option value="nuevo">Más recientes</option>
                         <option value="popular">Populares</option>
@@ -394,7 +405,8 @@
               </div>
               <div class="mb-6">
                 <h4 class="font-semibold mb-3 text-dark-slate">Rango de Precio</h4>
-                <input type="range" min="0" max="100" value="100" step="1" class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
+                <input type="range" min="0" max="100" value="100" step="1"
+                  class="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
                   aria-label="Rango de Precio" id="filter-price-desktop" />
                 <div class="flex justify-between mt-2 text-sm text-gray-600">
                   <span>$0</span>
@@ -404,7 +416,8 @@
               <div>
                 <h4 class="font-semibold mb-3 text-dark-slate">Ordenar por</h4>
                 <div class="relative">
-                  <select class="w-full p-2 bg-white border border-gray-300 rounded appearance-none pr-8 cursor-pointer text-dark-slate"
+                  <select
+                    class="w-full p-2 bg-white border border-gray-300 rounded appearance-none pr-8 cursor-pointer text-dark-slate"
                     aria-label="Ordenar por" id="sort-by-desktop">
                     <option value="nuevo">Más recientes</option>
                     <option value="popular">Populares</option>
@@ -431,17 +444,21 @@
           <form id="checkout-form" class="space-y-4">
             <div>
               <label for="name" class="block text-lg font-medium text-gray-700">Nombre Completo</label>
-              <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
+              <input type="text" id="name" name="name" required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
             </div>
             <div>
               <label for="address" class="block text-lg font-medium text-gray-700">Dirección</label>
-              <input type="text" id="address" name="address" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
+              <input type="text" id="address" name="address" required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
             </div>
             <div>
               <label for="city" class="block text-lg font-medium text-gray-700">Ciudad</label>
-              <input type="text" id="city" name="city" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
+              <input type="text" id="city" name="city" required
+                class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-gold focus:border-primary-gold" />
             </div>
-            <button id="pay-transfer-btn" type="button" class="w-full bg-primary-gold text-white py-3 px-4 rounded-button font-semibold text-lg button-effect mt-4 hover:bg-elegant-brown">
+            <button id="pay-transfer-btn" type="button"
+              class="w-full bg-primary-gold text-white py-3 px-4 rounded-button font-semibold text-lg button-effect mt-4 hover:bg-elegant-brown">
               Pagar con Transferencia
             </button>
           </form>
@@ -453,11 +470,15 @@
               <p><span class="font-bold">Total a pagar:</span> <span id="transfer-total"
                   class="font-bold text-primary-gold text-xl"></span></p>
               <p><span class="font-bold">Banco:</span> Banco Banorte</p>
-              <p><span class="font-bold">CLABE:</span> 072180007890123456</p>
+              <p><span class="font-bold">CLABE:</span> <span id="clabe-number">072180007890123456</span>
+                <button id="copy-clabe-btn" class="ml-2 text-primary-gold hover:text-elegant-brown transition-colors"
+                  aria-label="Copiar CLABE"><i class="ri-file-copy-line"></i></button>
+              </p>
               <p><span class="font-bold">Número de Cuenta:</span> 0123456789</p>
               <p><span class="font-bold">Titular:</span> Microdosis de Salud S.A. de C.V.</p>
             </div>
-            <button id="transfer-done-btn" class="w-full bg-dark-slate text-white py-3 px-4 rounded-button font-semibold text-lg button-effect mt-6 hover:bg-gray-700">
+            <button id="transfer-done-btn"
+              class="w-full bg-dark-slate text-white py-3 px-4 rounded-button font-semibold text-lg button-effect mt-6 hover:bg-gray-700">
               He Realizado la Transferencia
             </button>
             <div id="transfer-message-box" class="mt-4 text-center text-primary-gold hidden"></div>
@@ -488,7 +509,8 @@
             </div>
           </div>
           <div class="md:w-1/2 rounded-lg shadow-lg overflow-hidden w-full max-w-md mx-auto">
-            <video src="seda.mp4" autoplay muted loop playsinline controls class="w-full h-auto rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F5F5DC/B38B59?text=Video+Acerca+de';" >
+            <video src="seda.mp4" autoplay muted loop playsinline controls class="w-full h-auto rounded-lg"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/F5F5DC/B38B59?text=Video+Acerca+de';" >
               Tu navegador no soporta la reproducción de video.
             </video>
           </div>
@@ -504,7 +526,8 @@
                 alt="Artículo 1" class="w-full h-48 object-cover" loading="lazy" />
               <div class="p-6">
                 <h3 class="text-xl font-semibold font-sans text-dark-slate mb-2">Cómo mejorar tu bienestar día a día</h3>
-                <p class="text-gray-600 mb-4 text-sm font-body">Consejos prácticos para integrar hábitos saludables y naturales en tu rutina diaria.</p>
+                <p class="text-gray-600 mb-4 text-sm font-body">Consejos prácticos para integrar hábitos saludables y
+                  naturales en tu rutina diaria.</p>
                 <a href="#" class="text-primary-gold font-semibold hover:underline inline-flex items-center">
                   Leer más
                   <i class="ri-arrow-right-line ml-1"></i>
@@ -516,7 +539,8 @@
                 alt="Artículo 2" class="w-full h-48 object-cover" loading="lazy" />
               <div class="p-6">
                 <h3 class="text-xl font-semibold font-sans text-dark-slate mb-2">Beneficios de los aceites esenciales</h3>
-                <p class="text-gray-600 mb-4 text-sm font-body">Descubre cómo utilizar aceites naturales para armonizar cuerpo y mente con aromaterapia.</p>
+                <p class="text-gray-600 mb-4 text-sm font-body">Descubre cómo utilizar aceites naturales para armonizar
+                  cuerpo y mente con aromaterapia.</p>
                 <a href="#" class="text-primary-gold font-semibold hover:underline inline-flex items-center">
                   Leer más
                   <i class="ri-arrow-right-line ml-1"></i>
@@ -528,7 +552,8 @@
                 alt="Artículo 3" class="w-full h-48 object-cover" loading="lazy" />
               <div class="p-6">
                 <h3 class="text-xl font-semibold font-sans text-dark-slate mb-2">Alimentación saludable para la mujer</h3>
-                <p class="text-gray-600 mb-4 text-sm font-body">Ideas de nutrición natural para fortalecer el cuerpo y mantener el equilibrio hormonal.</p>
+                <p class="text-gray-600 mb-4 text-sm font-body">Ideas de nutrición natural para fortalecer el cuerpo y
+                  mantener el equilibrio hormonal.</p>
                 <a href="#" class="text-primary-gold font-semibold hover:underline inline-flex items-center">
                   Leer más
                   <i class="ri-arrow-right-line ml-1"></i>
@@ -552,10 +577,18 @@
         <h2 class="text-3xl font-bold font-sans mb-4">Microdosis de Salud</h2>
         <p class="text-gray-300 font-body">Tu tienda naturista confiable para el bienestar femenino y cuidado natural.</p>
         <div class="flex space-x-4 mt-6">
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i class="ri-facebook-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i class="ri-twitter-x-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i class="ri-instagram-fill"></i></a>
-          <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i class="ri-pinterest-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-facebook-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-twitter-x-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-instagram-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-pinterest-fill"></i></a>
         </div>
       </div>
       <div>
@@ -581,9 +614,11 @@
         <h3 class="text-lg font-semibold mb-4 font-sans">Newsletter</h3>
         <p class="text-gray-300 mb-4 font-body">Suscríbete para recibir ofertas especiales y novedades.</p>
         <form id="newsletter-form" class="flex flex-col sm:flex-row">
-          <input type="email" placeholder="Tu correo electrónico" class="flex-grow px-4 py-2 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none border-0 focus:outline-none text-gray-800"
+          <input type="email" placeholder="Tu correo electrónico"
+            class="flex-grow px-4 py-2 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none border-0 focus:outline-none text-gray-800"
             aria-label="Correo electrónico" required />
-          <button class="bg-primary-gold hover:bg-elegant-brown px-4 py-2 rounded-b-lg sm:rounded-r-lg sm:rounded-bl-none text-white font-semibold transition-colors mt-2 sm:mt-0"
+          <button
+            class="bg-primary-gold hover:bg-elegant-brown px-4 py-2 rounded-b-lg sm:rounded-r-lg sm:rounded-bl-none text-white font-semibold transition-colors mt-2 sm:mt-0"
             type="submit">Suscribir</button>
         </form>
       </div>
@@ -602,12 +637,15 @@
       <div id="cart-empty-message" class="text-center text-gray-500 hidden mt-4">
         Tu carrito está vacío.
       </div>
-      <div id="cart-message-box" class="mt-4 p-2 rounded-md bg-red-100 text-red-600 text-center hidden" role="alert"></div>
+      <div id="cart-message-box" class="mt-4 p-2 rounded-md bg-red-100 text-red-600 text-center hidden" role="alert">
+      </div>
       <div class="mt-6 pt-4 border-t border-gray-200 flex justify-between items-center">
         <span class="text-xl font-bold text-dark-slate">Total: <span id="cart-total-price">$0.00</span></span>
-        <button id="checkout-btn" class="bg-primary-gold hover:bg-elegant-brown text-white px-6 py-2 rounded-button font-semibold">Pagar</button>
+        <button id="checkout-btn"
+          class="bg-primary-gold hover:bg-elegant-brown text-white px-6 py-2 rounded-button font-semibold">Pagar</button>
       </div>
-      <button id="empty-cart-btn" class="mt-4 w-full text-red-500 hover:text-red-700 font-semibold">Vaciar Carrito</button>
+      <button id="empty-cart-btn" class="mt-4 w-full text-red-500 hover:text-red-700 font-semibold">Vaciar
+        Carrito</button>
     </div>
   </div>
   <div id="order-confirm-modal" class="fixed inset-0 bg-gray-600 bg-opacity-70 hidden justify-center items-center z-50">
@@ -616,57 +654,98 @@
         <i class="ri-checkbox-circle-fill text-5xl"></i>
       </div>
       <h3 class="text-3xl font-bold font-sans mb-2">¡Pedido Confirmado!</h3>
-      <p class="text-gray-600 mb-6 font-body">Hemos recibido tu pedido y los detalles de tu transferencia. Te contactaremos en
+      <p class="text-gray-600 mb-6 font-body">Hemos recibido tu pedido y los detalles de tu transferencia. Te
+        contactaremos en
         breve para confirmar el envío.</p>
-      <button id="confirm-modal-close-btn" class="bg-primary-gold hover:bg-elegant-brown text-white px-6 py-2 rounded-button font-semibold">Aceptar</button>
+      <button id="confirm-modal-close-btn"
+        class="bg-primary-gold hover:bg-elegant-brown text-white px-6 py-2 rounded-button font-semibold">Aceptar</button>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script>
-    const products = [{ 
-    id: 1, name: 'Crema Corporal Natural', 
+    const products = [
+  {
+    id: 1,
+    name: 'Crema Corporal Natural',
     price: 15.00,
-    image: 'crema-corporal.jpg', 
-    category: 'Cuidado Personal', 
-    featured: true, 
-    description: 'Hidratación y cuidado para la piel con ingredientes orgánicos..', 
-    rating: 5 
-    }
-    , { id: 2, name: 'Shampoo Anticaída', 
-        price: 12.50, image: 'shampoo-anticaida.jpg', 
-        category: 'Cuidado Personal', 
-        featured: true, 
-        description: 'Previene la caída y fortalece el cabello con ingredientes naturales.', 
-        rating: 4 
-    }
-    , { 
-        id: 3, name: 'Aceite de Menta', 
-        price: 22.00, 
-        image: 'aceite-menta.jpg', 
-        category: 'Aceites Esenciales', 
-        featured: false, description: 'Refresca y ayuda al cuidado del cuero cabelludo.', 
-        rating: 5 }, 
-        { 
-            
-        id: 4, name: 'Set de Aceites Esenciales', 
-        price: 8.75, 
-        image: 'aceites-essenciales.jpg', 
-        category: 'Aceites Esenciales', 
-        featured: true, description: 'Aromaterapia y cuidado corporal natural.', 
-        rating: 3 },
-         { 
-        id: 5, name: 'Cápsulas de Maca Andina', 
-        price: 18.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Maca', 
-        category: 'Bienestar Femenino', 
-        featured: false, 
-        description: 'Suplemento natural de maca para balance hormonal y energía.', 
-        rating: 5 }, 
-        { 
-        id: 6, name: 'Shampoo Sólido de Coco', 
-        price: 10.50, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Shampoo', 
-        category: 'Cuidado Personal', featured: false, 
-        description: 'Shampoo en barra natural con aceite de coco para todo tipo de cabello.', rating: 4 }, { id: 7, name: 'Infusión para el sueño', price: 9.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Infusion', category: 'Bienestar Femenino', featured: true, description: 'Infusión relajante con manzanilla y valeriana para un descanso profundo.', rating: 5 }, { id: 8, name: 'Set de Microdosis', price: 45.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Set+Microdosis', category: 'Suplementos', featured: true, description: 'Un set de microdosis para el bienestar integral de la mujer.', rating: 5 }, ];
-    
+    image: 'crema-corporal.jpg',
+    category: 'Cuidado Personal',
+    featured: true,
+    description: 'Hidratación y cuidado para la piel con ingredientes orgánicos.',
+    rating: 5
+  },
+  {
+    id: 2,
+    name: 'Shampoo Anticaída',
+    price: 12.50,
+    image: 'shampoo-anticaida.jpg',
+    category: 'Cuidado Personal',
+    featured: true,
+    description: 'Previene la caída y fortalece el cabello con ingredientes naturales.',
+    rating: 4
+  },
+  {
+    id: 3,
+    name: 'Aceite de Menta',
+    price: 22.00,
+    image: 'aceite-menta.jpg',
+    category: 'Aceites Esenciales',
+    featured: false,
+    description: 'Refresca y ayuda al cuidado del cuero cabelludo.',
+    rating: 5
+  },
+  {
+    id: 4,
+    name: 'Set de Aceites Esenciales',
+    price: 8.75,
+    image: 'aceites-essenciales.jpg',
+    category: 'Aceites Esenciales',
+    featured: true,
+    description: 'Aromaterapia y cuidado corporal natural.',
+    rating: 3
+  },
+  {
+    id: 5,
+    name: 'Jabon',
+    price: 18.00,
+    image: 'jabon.jpg',
+    category: 'Bienestar Femenino',
+    featured: false,
+    description: 'Jabon .',
+    rating: 5
+  },
+  {
+    id: 6,
+    name: 'Shampoo Sólido de Coco',
+    price: 10.50,
+    image: 'shampoo-anticaspa.jpg',
+    category: 'Cuidado Personal',
+    featured: false,
+    description: 'Shampoo en barra natural con aceite de coco para todo tipo de cabello.',
+    rating: 4
+  },
+  {
+    id: 7,
+    name: 'Infusión para el sueño',
+    price: 9.00,
+    image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Infusion',
+    category: 'Bienestar Femenino',
+    featured: true,
+    description: 'Infusión relajante con manzanilla y valeriana para un descanso profundo.',
+    rating: 5
+  },
+  {
+    id: 8,
+    name: 'Set de Microdosis',
+    price: 45.00,
+    image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Set+Microdosis',
+    category: 'Suplementos',
+    featured: true,
+    description: 'Un set de microdosis para el bienestar integral de la mujer.',
+    rating: 5
+  }
+];
+
     const cart = [];
 
     function createFeaturedProductCard(product) {
@@ -945,6 +1024,8 @@
       const transferDoneBtn = document.getElementById('transfer-done-btn');
       const orderConfirmModal = document.getElementById('order-confirm-modal');
       const confirmModalCloseBtn = document.getElementById('confirm-modal-close-btn');
+      const copyClabeBtn = document.getElementById('copy-clabe-btn');
+      const clabeNumberSpan = document.getElementById('clabe-number');
 
       if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
@@ -954,7 +1035,9 @@
             checkoutSection.classList.remove('hidden');
             const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
             transferTotal.textContent = `$${total.toFixed(2)}`;
-            checkoutSection.scrollIntoView({ behavior: 'smooth' });
+            checkoutSection.scrollIntoView({
+              behavior: 'smooth'
+            });
           } else {
             alert('Tu carrito está vacío. Agrega productos para continuar.');
           }
@@ -987,6 +1070,22 @@
           orderConfirmModal.classList.add('hidden');
           orderConfirmModal.classList.remove('flex');
           checkoutSection.classList.add('hidden');
+        });
+      }
+      
+      if (copyClabeBtn && clabeNumberSpan) {
+        copyClabeBtn.addEventListener('click', () => {
+          const textToCopy = clabeNumberSpan.textContent;
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalIcon = copyClabeBtn.innerHTML;
+            copyClabeBtn.innerHTML = '<i class="ri-check-line text-green-500"></i>';
+            setTimeout(() => {
+              copyClabeBtn.innerHTML = originalIcon;
+            }, 2000);
+          }).catch(err => {
+            console.error('Error al copiar el texto: ', err);
+            alert('No se pudo copiar el texto. Por favor, cópialo manualmente.');
+          });
         });
       }
     });
