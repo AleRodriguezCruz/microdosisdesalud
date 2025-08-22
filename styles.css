@@ -84,3 +84,17 @@ body { font-family: 'Poppins', sans-serif; }
 .service-card .service-button:hover { background-color: #4b6278; }
 
 .custom-checkbox { cursor: pointer; } .custom-checkbox input[type="checkbox"] { display: none; } .custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid #bdc3c7; border-radius: 4px; transition: background-color 0.2s; } .custom-checkbox:hover .checkmark { background-color: #dfe4e5; } .custom-checkbox input[type="checkbox"]:checked + .checkmark { background-color: #B38B59; border-color: #B38B59; } .custom-checkbox .checkmark::after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); } .custom-checkbox input[type="checkbox"]:checked + .checkmark::after { display: block; }
+
+/* --- MEJORA PROFESIONAL PARA MÓVILES --- */
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 500px; /* Reduce la altura de la sección principal en pantallas más pequeñas */
+  }
+
+  .category-card-title-large,
+  .product-card-content h3,
+  .service-card .service-title {
+    font-size: 1.25rem; /* Ajusta el tamaño de los títulos para que no sean tan grandes en móvil */
+  }
+}
