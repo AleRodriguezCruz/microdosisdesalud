@@ -143,11 +143,62 @@
         </main>
     </div>
     
-    <footer id="footer" class="bg-dark-slate text-white pt-16 pb-8 mt-auto">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-          &copy; 2025 Microdosis de Salud. Todos los derechos reservados.
+     <footer id="footer" class="bg-dark-slate text-white pt-16 pb-8 mt-auto">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h2 class="text-3xl font-bold font-sans mb-4">Microdosis de Salud</h2>
+        <p class="text-gray-300 font-body">Tu tienda naturista confiable para el bienestar femenino y cuidado natural.</p>
+        <div class="flex space-x-4 mt-6">
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-facebook-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-twitter-x-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-instagram-fill"></i></a>
+          <a href="#"
+            class="w-10 h-10 flex items-center justify-center bg-gray-700 rounded-full hover:bg-primary-gold transition text-white"><i
+              class="ri-pinterest-fill"></i></a>
         </div>
-    </footer>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4 font-sans">Categorías</h3>
+        <ul class="space-y-2 text-gray-300 font-body">
+          <li><a href="#shop-page" class="hover:text-primary-gold transition">Suplementos Naturales</a></li>
+          <li><a href="#shop-page" class="hover:text-primary-gold transition">Aceites Esenciales</a></li>
+          <li><a href="#shop-page" class="hover:text-primary-gold transition">Cuidado Personal</a></li>
+          <li><a href="#shop-page" class="hover:text-primary-gold transition">Alimentación Saludable</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg mb-4 font-sans">Enlaces Rápidos</h3>
+        <ul class="space-y-2 text-gray-300 font-body">
+          <li><a href="#hero" class="hover:text-primary-gold transition">Inicio</a></li>
+          <li><a href="#shop-page" class="hover:text-primary-gold transition">Tienda</a></li>
+          <li><a href="#acercade" class="hover:text-primary-gold transition">Nosotros</a></li>
+          <li><a href="#footer" class="hover:text-primary-gold transition">Contacto</a></li>
+          <li><a href="#" class="hover:text-primary-gold transition">Preguntas Frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-4 font-sans">Newsletter</h3>
+        <p class="text-gray-300 mb-4 font-body">Suscríbete para recibir ofertas especiales y novedades.</p>
+        <form id="newsletter-form" class="flex flex-col sm:flex-row">
+          <input type="email" placeholder="Tu correo electrónico"
+            class="flex-grow px-4 py-2 rounded-t-lg sm:rounded-l-lg sm:rounded-tr-none border-0 focus:outline-none text-gray-800"
+            aria-label="Correo electrónico" required />
+          <button
+            class="bg-primary-gold hover:bg-elegant-brown px-4 py-2 rounded-b-lg sm:rounded-r-lg sm:rounded-bl-none text-white font-semibold transition-colors mt-2 sm:mt-0"
+            type="submit">Suscribir</button>
+        </form>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 text-center text-gray-400 mt-8 border-t border-gray-700 pt-8 font-body">
+      &copy; 2024 Microdosis de Salud. Todos los derechos reservados.
+    </div>
+  </footer>
     
     <div id="cart-modal" class="fixed inset-0 bg-gray-600 bg-opacity-70 hidden justify-center items-center z-[60]">
       <div class="bg-white p-6 rounded-xl shadow-xl w-11/12 md:w-1/2 lg:w-1/3">
@@ -212,7 +263,9 @@
         </div>
     </div>
     
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
+
