@@ -1,59 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- BASE DE DATOS ACTUALIZADA ---
-    const data = {
-        "Infancia": {
-            services: [
-                { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", icon: "ri-nurse-line" },
-                { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", icon: "ri-health-book-line" },
-                { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", icon: "ri-ruler-2-line" },
-                { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", icon: "ri-windy-line" },
-                { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", icon: "ri-empathize-line" }
-            ],
-            products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'aceite-menta.jpg', description: "Refuerzo divertido y delicioso.", featured: true },
-                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'aceites-essenciales.jpg', description: "Hidratación suave para pieles sensibles." },
-                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'shampoo-anticaspa.jpg' , description: "Fórmula sin lágrimas que limpia y protege." },
-                { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'jabon.jpg', description: "Limpieza natural que calma la piel." }
-            ]
-        },
-        "Pubertad y Adolescencia": {
-            services: [
-                { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", icon: "ri-women-line" },
-                { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", icon: "ri-search-eye-line" },
-                { type: 'service', name: "Consulta General Individual", description: "Espacio seguro para resolver dudas de salud.", icon: "ri-user-heart-line" },
-                { type: 'service', name: "Control de Peso y Talla", description: "Asesoría nutricional para un desarrollo saludable.", icon: "ri-scales-line" },
-                { type: 'service', name: "Dermatología (Acné)", description: "Tratamientos personalizados para el control del acné.", icon: "ri-empathize-line" },
-                { type: 'service', name: "Salud Sexual y ETS", description: "Prevención y orientación sobre enfermedades de transmisión sexual.", icon: "ri-shield-heart-line" },
-                { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnóstico y tratamiento de condiciones específicas.", icon: "ri-stethoscope-line" },
-                { type: 'service', name: "Detección de Riesgos", description: "Apoyo para identificar y manejar comportamientos de riesgo.", icon: "ri-psychotherapy-line" }
-            ],
-            products: [
-                { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Kit+Periodo', description: "Todo lo necesario para afrontar la menarquia.", featured: true },
-                { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'shampoo-anticaida.jpg', description: "Fórmula suave para pieles jóvenes." }
-            ]
-        },
-        "Edad Reproductiva": {
-            services: [{ type: 'service', name: "Consulta Ginecológica Anual", description: "Chequeo, Papanicolau y resolución de dudas.", icon: "ri-stethoscope-line" }],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Acido+Folico', description: "Esencial para la planificación del embarazo.", featured: true }]
-        },
-        "Embarazo": {
-            services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", icon: "ri-service-line" }],
-            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Prenatales', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
-        },
-        "Climaterio y Menopausia": {
-            services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", icon: "ri-refresh-line" }],
-            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Isoflavonas', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
-        },
-        "Plenitud": {
-            services: [{ type: 'service', name: "Consulta Geriátrica Integral", description: "Atención enfocada en la salud y vitalidad en la edad dorada.", icon: "ri-user-heart-line" }],
-            products: [
-                { type: 'product', id: 60, name: "Calcio Reforzado con Vitamina D", price: 29.50, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Calcio', description: "Fortalece los huesos y previene la osteoporosis.", featured: true },
-                { type: 'product', id: 70, name: "Suplemento de Omega-3", price: 22.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Omega-3', description: "Apoya la salud cardiovascular y cognitiva.", featured: true }
-            ]
-        }
-    };
-    
+   const data = {
+    "Infancia": {
+        services: [
+            { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", icon: "ri-stethoscope-line" },
+            { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", icon: "ri-baby-line" },
+            { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", icon: "ri-baby-line" },
+            { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", icon: "ri-windy-line" },
+            { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", icon: "ri-sparkling-2-line" }
+        ],
+        products: [
+            { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'aceite-menta.jpg', description: "Refuerzo divertido y delicioso.", featured: true },
+            { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'aceites-essenciales.jpg', description: "Hidratación suave para pieles sensibles." },
+            { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'shampoo-anticaspa.jpg' , description: "Fórmula sin lágrimas que limpia y protege." },
+            { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'jabon.jpg', description: "Limpieza natural que calma la piel." }
+        ]
+    },
+    "Pubertad y Adolescencia": {
+        services: [
+            { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", icon: "ri-women-line" },
+            { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", icon: "ri-women-line" },
+            { type: 'service', name: "Consulta General Individual", description: "Espacio seguro para resolver dudas de salud.", icon: "ri-user-heart-line" },
+            { type: 'service', name: "Control de Peso y Talla", description: "Asesoría nutricional para un desarrollo saludable.", icon: "ri-scales-line" },
+            { type: 'service', name: "Dermatología (Acné)", description: "Tratamientos personalizados para el control del acné.", icon: "ri-empathize-line" },
+            { type: 'service', name: "Salud Sexual y ETS", description: "Prevención y orientación sobre enfermedades de transmisión sexual.", icon: "ri-shield-heart-line" },
+            { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnóstico y tratamiento de condiciones específicas.", icon: "ri-stethoscope-line" },
+            { type: 'service', name: "Detección de Riesgos", description: "Apoyo para identificar y manejar comportamientos de riesgo.", icon: "ri-psychotherapy-line" }
+        ],
+        products: [
+            { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Kit+Periodo', description: "Todo lo necesario para afrontar la menarquia.", featured: true },
+            { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'shampoo-anticaida.jpg', description: "Fórmula suave para pieles jóvenes." }
+        ]
+    },
+    "Edad Reproductiva": {
+        services: [{ type: 'service', name: "Consulta Ginecológica Anual", description: "Chequeo, Papanicolau y resolución de dudas.", icon: "ri-stethoscope-line" }],
+        products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Acido+Folico', description: "Esencial para la planificación del embarazo.", featured: true }]
+    },
+    "Embarazo": {
+        services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", icon: "ri-service-line" }],
+        products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Prenatales', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
+    },
+    "Climaterio y Menopausia": {
+        services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", icon: "ri-refresh-line" }],
+        products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Isoflavonas', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
+    }
+};    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const allItems = Object.entries(data).flatMap(([category, content]) => [
         ...(content.products || []).map(p => ({ ...p, category })),
@@ -228,4 +220,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('appointment-form').reset();
         appointmentModal.classList.add('hidden');
     });
+
 });
