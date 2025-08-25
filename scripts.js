@@ -2,41 +2,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- BASE DE DATOS ACTUALIZADA ---
    const data = {
-    "Infancia": {
-        services: [
-            { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", icon: "ri-stethoscope-line" },
-            { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", icon: "ri-baby-line" },
-            { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", icon: "ri-baby-line" },
-            { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", icon: "ri-windy-line" },
-            { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", icon: "ri-sparkling-2-line" }
+        "Infancia": {
+            services: [
+                { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg" },
+                { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
+                { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", image: "infancia/tallaypeso.jpg" },
+                { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", image: "infancia/alergias.jpg" },
+                { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
+            ],
+            products: [
+                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://images.unsplash.com/photo-1607823444243-760a1e046a2f?q=80&w=800&auto=format&fit=crop', description: "Refuerzo divertido y delicioso.", featured: true },
+                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop', description: "Hidratación suave para pieles sensibles." },
+                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'https://images.unsplash.com/photo-1599462653991-6a41eff238a3?q=80&w=800&auto=format&fit=crop', description: "Fórmula sin lágrimas que limpia y protege." },
+                { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'https://images.unsplash.com/photo-1610422558296-7a8c8a179951?q=80&w=800&auto=format&fit=crop', description: "Limpieza natural que calma la piel." }
+            ]
+        },
+        "Pubertad y Adolescencia": {
+            services: [
+                { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", image: "pubertad/mestruacion.jpg" },
+                { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", image: "pubertad/SOP.jpg" },
+                { type: 'service', name: "Consulta General Individual", description: "Diagnostico y tratamiento de enfermedades propias de la mujer.", image: "pubertad/consulta.jpg" },
+                { type: 'service', name: "Control de Peso y Talla", description: "Asesoría nutricional para un desarrollo saludable.", image: "pubertad/talla.jpg" },
+                { type: 'service', name: "Dermatología (Acné)", description: "Tratamientos personalizados para el control del acné.", image: "pubertad/dermatologia.jpg" },
+                { type: 'service', name: "Salud Sexual y ETS", description: "Prevención y orientación sobre enfermedades de transmisión sexual.", image: "pubertad/ets.jpg" },
+                { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnóstico y tratamiento de condiciones específicas.", image: "pubertad/ginecologia.jpg" },
+                { type: 'service', name: "Detección de Riesgos", description: "Apoyo para identificar y manejar comportamientos de riesgo.", image: "pubertad/deteccionderiesgo.jpg" }
+            ],
+            products: [
+                { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://images.unsplash.com/photo-1604781444060-123f157c11e5?q=80&w=800&auto=format&fit=crop', description: "Todo lo necesario para afrontar la menarquia.", featured: true },
+                { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5c14?q=80&w=800&auto=format&fit=crop', description: "Fórmula suave para pieles jóvenes." }
+            ]
+        },
+        "Edad Reproductiva": {
+            services: [
+            { 
+            type: 'service', 
+            name: "Consulta Ginecológica ", 
+            description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", 
+            image: "https://images.unsplash.com/photo-1579684385127-6c636a8e8b6b?q=80&w=800&auto=format&fit=crop" 
+             },
+            { 
+            type: 'service', 
+            name: "Salud Sexual y ETS", 
+            description: "Orientación confidencial sobre salud sexual, métodos de prevención, diagnóstico y tratamiento de ETS.", 
+            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" 
+             },
+            { 
+            type: 'service', 
+            name: "Trastornos Ginecológicos", 
+            description: "Diagnosticamos y tratamos condiciones como miomas, endometriosis o irregularidades menstruales.", 
+            image: "https://images.unsplash.com/photo-1588776814546-da631a357412?q=80&w=800&auto=format&fit=crop" 
+            },
+            { 
+            type: 'service', 
+            name: "Control de Sobrepeso y Obesidad", 
+            description: "Desarrollamos un plan integral y personalizado para ayudarte a alcanzar un peso saludable y mejorar tu calidad de vida.", 
+            image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop" 
+            },
+            { 
+            type: 'service', 
+            name: "Asesoría en Anticoncepción", 
+            description: "Te ayudamos a elegir el método anticonceptivo que mejor se adapte a tu cuerpo, estilo de vida y planes a futuro.", 
+            image: "https://images.unsplash.com/photo-1584515933487-779824d2793b?q=80&w=800&auto=format&fit=crop" 
+            },
+            { 
+            type: 'service', 
+            name: "Consulta Preconcepcional", 
+            description: "Preparamos tu cuerpo para un embarazo saludable con asesoría sobre nutrición, suplementos y cuidados previos.", 
+            image: "https://images.unsplash.com/photo-1505453976333-5b235a681358?q=80&w=800&auto=format&fit=crop" 
+            },
+            { 
+            type: 'service', 
+            name: "Tratamiento para SOP", 
+            description: "Manejo integral del Síndrome de Ovario Poliquístico para controlar síntomas y mejorar tu salud hormonal.", 
+            image: "https://images.unsplash.com/photo-1622254843325-e490a0a945c9?q=80&w=800&auto=format&fit=crop" 
+            }
         ],
-        products: [
-            { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'aceite-menta.jpg', description: "Refuerzo divertido y delicioso.", featured: true },
-            { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'aceites-essenciales.jpg', description: "Hidratación suave para pieles sensibles." },
-            { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'shampoo-anticaspa.jpg' , description: "Fórmula sin lágrimas que limpia y protege." },
-            { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'jabon.jpg', description: "Limpieza natural que calma la piel." }
-        ]
-    },
-    "Pubertad y Adolescencia": {
-        services: [
-            { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", icon: "ri-women-line" },
-            { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", icon: "ri-women-line" },
-            { type: 'service', name: "Consulta General Individual", description: "Espacio seguro para resolver dudas de salud.", icon: "ri-user-heart-line" },
-            { type: 'service', name: "Control de Peso y Talla", description: "Asesoría nutricional para un desarrollo saludable.", icon: "ri-scales-line" },
-            { type: 'service', name: "Dermatología (Acné)", description: "Tratamientos personalizados para el control del acné.", icon: "ri-empathize-line" },
-            { type: 'service', name: "Salud Sexual y ETS", description: "Prevención y orientación sobre enfermedades de transmisión sexual.", icon: "ri-shield-heart-line" },
-            { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnóstico y tratamiento de condiciones específicas.", icon: "ri-stethoscope-line" },
-            { type: 'service', name: "Detección de Riesgos", description: "Apoyo para identificar y manejar comportamientos de riesgo.", icon: "ri-psychotherapy-line" }
-        ],
-        products: [
-            { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Kit+Periodo', description: "Todo lo necesario para afrontar la menarquia.", featured: true },
-            { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'shampoo-anticaida.jpg', description: "Fórmula suave para pieles jóvenes." }
-        ]
-    },
-    "Edad Reproductiva": {
-        services: [{ type: 'service', name: "Consulta Ginecológica Anual", description: "Chequeo, Papanicolau y resolución de dudas.", icon: "ri-stethoscope-line" }],
-        products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Acido+Folico', description: "Esencial para la planificación del embarazo.", featured: true }]
-    },
+
+
+            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://images.unsplash.com/photo-1631751327313-a9b3a5ea237a?q=80&w=800&auto=format&fit=crop', description: "Esencial para la planificación del embarazo.", featured: true }]
+        },
+   
     "Embarazo": {
         services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", icon: "ri-service-line" }],
         products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Prenatales', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
@@ -222,3 +268,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
