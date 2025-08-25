@@ -75,13 +75,58 @@ body { font-family: 'Poppins', sans-serif; }
 .categories-swiper .swiper-button-next, .categories-swiper .swiper-button-prev { background-color: rgba(0, 0, 0, 0.6); width: 44px; height: 44px; border-radius: 8px; color: #ffffff !important; }
 .categories-swiper .swiper-button-next::after, .categories-swiper .swiper-button-prev::after { font-size: 20px; }
 .products-swiper .swiper-button-next, .products-swiper .swiper-button-prev { color: #B38B59 !important; }
-.service-card { background-color: #ffffff; border: 2px dashed #B38B59; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; align-items: center; text-align: center; height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.service-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(179, 139, 89, 0.2); }
-.service-card .service-icon { font-size: 3rem; color: #B38B59; margin-bottom: 1rem; }
-.service-card .service-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.25rem; color: #2C3E50; margin-bottom: 0.5rem; }
-.service-card .service-description { font-size: 0.9rem; color: #7f8c8d; flex-grow: 1; margin-bottom: 1.5rem; }
-.service-card .service-button { background-color: #2C3E50; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 25px; font-weight: 600; transition: background-color 0.3s ease; width: 100%; }
-.service-card .service-button:hover { background-color: #4b6278; }
+.service-card {
+            background-color: #ffffff;
+            border: 2px dashed #B38B59;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(179, 139, 89, 0.2);
+        }
+
+        /* --- ESTA ES LA PARTE NUEVA QUE NECESITAS AÑADIR --- */
+        .service-image {
+            width: 80px;      /* Ancho de la imagen */
+            height: 80px;     /* Alto de la imagen */
+            border-radius: 50%; /* Para hacerla redonda */
+            object-fit: cover;  /* Evita que la imagen se deforme */
+            margin-bottom: 1rem; /* Espacio debajo de la imagen */
+        }
+        /* --- FIN DE LA PARTE NUEVA --- */
+
+        .service-card .service-title {
+            font-family: 'Playfair Display', serif; /* Asegúrate de tener esta fuente o cámbiala */
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+        }
+        .service-card .service-description {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        .service-card .service-button {
+            background-color: #2C3E50;
+            color: #ffffff;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        .service-card .service-button:hover {
+            background-color: #4b6278;
+        }
 
 .custom-checkbox { cursor: pointer; } .custom-checkbox input[type="checkbox"] { display: none; } .custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid #bdc3c7; border-radius: 4px; transition: background-color 0.2s; } .custom-checkbox:hover .checkmark { background-color: #dfe4e5; } .custom-checkbox input[type="checkbox"]:checked + .checkmark { background-color: #B38B59; border-color: #B38B59; } .custom-checkbox .checkmark::after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); } .custom-checkbox input[type="checkbox"]:checked + .checkmark::after { display: block; }
 
@@ -98,3 +143,4 @@ body { font-family: 'Poppins', sans-serif; }
     font-size: 1.25rem; /* Ajusta el tamaño de los títulos para que no sean tan grandes en móvil */
   }
 }
+
