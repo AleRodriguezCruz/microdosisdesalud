@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- BASE DE DATOS ACTUALIZADA ---
-   const data = {
-        "Infancia": {
+    // --- BASE DE DATOS CON IMÁGENES MÁS RELEVANTES ---
+    const data = {
+       "Infancia": {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg" },
                 { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
@@ -82,16 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://images.unsplash.com/photo-1631751327313-a9b3a5ea237a?q=80&w=800&auto=format&fit=crop', description: "Esencial para la planificación del embarazo.", featured: true }]
         },
-   
-    "Embarazo": {
-        services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", icon: "ri-service-line" }],
-        products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Prenatales', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
-    },
-    "Climaterio y Menopausia": {
-        services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", icon: "ri-refresh-line" }],
-        products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://placehold.co/400x300/F7F7F7/2C3E50?text=Isoflavonas', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
-    }
-};    
+        "Embarazo": {
+            services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", image: "https://images.unsplash.com/photo-1584988223218-975dd76503f1?q=80&w=800&auto=format&fit=crop" }],
+            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://images.unsplash.com/photo-1584308666744-8480404b65ae?q=80&w=800&auto=format&fit=crop', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
+        },
+        "Climaterio y Menopausia": {
+            services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" }],
+            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
+        }
+    };
+    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const allItems = Object.entries(data).flatMap(([category, content]) => [
         ...(content.products || []).map(p => ({ ...p, category })),
@@ -102,7 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardContent = `<img src="${product.image}" alt="${product.name}" class="${isFeatured ? 'h-52' : 'h-48'} w-full object-cover"><div class="product-card-content"><h3 class="text-lg font-semibold">${product.name}</h3><p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p><div class="flex justify-between items-center mt-4"><span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span><button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button></div></div>`;
         return isFeatured ? `<div class="swiper-slide"><div class="product-card h-full">${cardContent}</div></div>` : `<div class="product-card">${cardContent}</div>`;
     }
-    function createServiceCard(service) { return `<div class="service-card"><i class="${service.icon} service-icon"></i><h3 class="service-title">${service.name}</h3><p class="service-description">${service.description}</p><button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button></div>`; }
+
+    // --- FUNCIÓN CORREGIDA PARA USAR IMÁGENES ---
+    // Recuerda añadir la clase .service-image a tu CSS
+    function createServiceCard(service) { 
+        return `<div class="service-card"><img src="${service.image}" alt="${service.name}" class="service-image"><h3 class="service-title">${service.name}</h3><p class="service-description">${service.description}</p><button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button></div>`; 
+    }
 
     function renderFilteredResults(items) {
         const servicesContainer = document.getElementById('shop-services');
@@ -268,4 +273,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
