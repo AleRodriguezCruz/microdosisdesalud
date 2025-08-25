@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- BASE DE DATOS CON IMÁGENES MÁS RELEVANTES ---
+    // --- BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
-       "Infancia": {
+        "Infancia": {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg" },
                 { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
-                { type: 'product', id: 10, name: "Shampoo", price: 25.00, image: 'shampoo-anticaida.jpg', description: "Refuerzo divertido y delicioso.", featured: true },
-                { type: 'product', id: 12, name: "Crema Corporal", price: 18.00, image: 'crema-corporal.jpg', description: "Hidratación suave para pieles sensibles." },
-                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'aceites-essenciales.jpg', description: "Fórmula sin lágrimas que limpia y protege." },
+                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://images.unsplash.com/photo-1607823444243-760a1e046a2f?q=80&w=800&auto=format&fit=crop', description: "Refuerzo divertido y delicioso.", featured: true },
+                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop', description: "Hidratación suave para pieles sensibles." },
+                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'https://images.unsplash.com/photo-1599462653991-6a41eff238a3?q=80&w=800&auto=format&fit=crop', description: "Fórmula sin lágrimas que limpia y protege." },
                 { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'https://images.unsplash.com/photo-1610422558296-7a8c8a179951?q=80&w=800&auto=format&fit=crop', description: "Limpieza natural que calma la piel." }
             ]
         },
@@ -35,51 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "Edad Reproductiva": {
             services: [
-            { 
-            type: 'service', 
-            name: "Consulta Ginecológica ", 
-            description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", 
-            image: "https://images.unsplash.com/photo-1579684385127-6c636a8e8b6b?q=80&w=800&auto=format&fit=crop" 
-             },
-            { 
-            type: 'service', 
-            name: "Salud Sexual y ETS", 
-            description: "Orientación confidencial sobre salud sexual, métodos de prevención, diagnóstico y tratamiento de ETS.", 
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" 
-             },
-            { 
-            type: 'service', 
-            name: "Trastornos Ginecológicos", 
-            description: "Diagnosticamos y tratamos condiciones como miomas, endometriosis o irregularidades menstruales.", 
-            image: "https://images.unsplash.com/photo-1588776814546-da631a357412?q=80&w=800&auto=format&fit=crop" 
-            },
-            { 
-            type: 'service', 
-            name: "Control de Sobrepeso y Obesidad", 
-            description: "Desarrollamos un plan integral y personalizado para ayudarte a alcanzar un peso saludable y mejorar tu calidad de vida.", 
-            image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop" 
-            },
-            { 
-            type: 'service', 
-            name: "Asesoría en Anticoncepción", 
-            description: "Te ayudamos a elegir el método anticonceptivo que mejor se adapte a tu cuerpo, estilo de vida y planes a futuro.", 
-            image: "https://images.unsplash.com/photo-1584515933487-779824d2793b?q=80&w=800&auto=format&fit=crop" 
-            },
-            { 
-            type: 'service', 
-            name: "Consulta Preconcepcional", 
-            description: "Preparamos tu cuerpo para un embarazo saludable con asesoría sobre nutrición, suplementos y cuidados previos.", 
-            image: "https://images.unsplash.com/photo-1505453976333-5b235a681358?q=80&w=800&auto=format&fit=crop" 
-            },
-            { 
-            type: 'service', 
-            name: "Tratamiento para SOP", 
-            description: "Manejo integral del Síndrome de Ovario Poliquístico para controlar síntomas y mejorar tu salud hormonal.", 
-            image: "https://images.unsplash.com/photo-1622254843325-e490a0a945c9?q=80&w=800&auto=format&fit=crop" 
-            }
-        ],
-
-
+                { type: 'service', name: "Consulta Ginecológica ", description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", image: "https://images.unsplash.com/photo-1579684385127-6c636a8e8b6b?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Salud Sexual y ETS", description: "Orientación confidencial sobre salud sexual, métodos de prevención, diagnóstico y tratamiento de ETS.", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnosticamos y tratamos condiciones como miomas, endometriosis o irregularidades menstruales.", image: "https://images.unsplash.com/photo-1588776814546-da631a357412?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Control de Sobrepeso y Obesidad", description: "Desarrollamos un plan integral y personalizado para ayudarte a alcanzar un peso saludable y mejorar tu calidad de vida.", image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Asesoría en Anticoncepción", description: "Te ayudamos a elegir el método anticonceptivo que mejor se adapte a tu cuerpo, estilo de vida y planes a futuro.", image: "https://images.unsplash.com/photo-1584515933487-779824d2793b?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Consulta Preconcepcional", description: "Preparamos tu cuerpo para un embarazo saludable con asesoría sobre nutrición, suplementos y cuidados previos.", image: "https://images.unsplash.com/photo-1505453976333-5b235a681358?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico para controlar síntomas y mejorar tu salud hormonal.", image: "https://images.unsplash.com/photo-1622254843325-e490a0a945c9?q=80&w=800&auto=format&fit=crop" }
+            ],
             products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://images.unsplash.com/photo-1631751327313-a9b3a5ea237a?q=80&w=800&auto=format&fit=crop', description: "Esencial para la planificación del embarazo.", featured: true }]
         },
         "Embarazo": {
@@ -91,24 +54,46 @@ document.addEventListener('DOMContentLoaded', () => {
             products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
         }
     };
-    
+
+    // --- VARIABLES GLOBALES ---
+    let servicesSwiper = null;
+    let productsSwiper = null;
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const allItems = Object.entries(data).flatMap(([category, content]) => [
         ...(content.products || []).map(p => ({ ...p, category })),
         ...(content.services || []).map(s => ({ ...s, category }))
     ]);
 
+    // --- FUNCIONES PARA CREAR TARJETAS ---
     function createProductCard(product, isFeatured) {
-        const cardContent = `<img src="${product.image}" alt="${product.name}" class="${isFeatured ? 'h-52' : 'h-48'} w-full object-cover"><div class="product-card-content"><h3 class="text-lg font-semibold">${product.name}</h3><p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p><div class="flex justify-between items-center mt-4"><span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span><button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button></div></div>`;
-        return isFeatured ? `<div class="swiper-slide"><div class="product-card h-full">${cardContent}</div></div>` : `<div class="product-card">${cardContent}</div>`;
+        const cardContent = `
+            <img src="${product.image}" alt="${product.name}" class="${isFeatured ? 'h-52' : 'h-48'} w-full object-cover">
+            <div class="product-card-content">
+                <h3 class="text-lg font-semibold">${product.name}</h3>
+                <p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span>
+                    <button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button>
+                </div>
+            </div>`;
+        
+        return `<div class="swiper-slide">
+                    <div class="product-card h-full">${cardContent}</div>
+                </div>`;
     }
 
-    // --- FUNCIÓN CORREGIDA PARA USAR IMÁGENES ---
-    // Recuerda añadir la clase .service-image a tu CSS
-    function createServiceCard(service) { 
-        return `<div class="service-card"><img src="${service.image}" alt="${service.name}" class="service-image"><h3 class="service-title">${service.name}</h3><p class="service-description">${service.description}</p><button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button></div>`; 
+    function createServiceCard(service) {
+        return `<div class="swiper-slide">
+                    <div class="service-card">
+                        <img src="${service.image}" alt="${service.name}" class="service-image">
+                        <h3 class="service-title">${service.name}</h3>
+                        <p class="service-description">${service.description}</p>
+                        <button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button>
+                    </div>
+                </div>`;
     }
 
+    // --- FUNCIONES DE RENDERIZADO Y FILTROS ---
     function renderFilteredResults(items) {
         const servicesContainer = document.getElementById('shop-services');
         const productsContainer = document.getElementById('shop-products-grid');
@@ -117,8 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const noResultsMsg = document.getElementById('no-results-message');
         const shopPrompt = document.getElementById('shop-prompt');
 
-        const hasActiveFilters = document.querySelectorAll('.filter-category:checked').length > 0;
+        if (servicesSwiper) {
+            servicesSwiper.destroy(true, true);
+            servicesSwiper = null;
+        }
+        if (productsSwiper) {
+            productsSwiper.destroy(true, true);
+            productsSwiper = null;
+        }
 
+        const hasActiveFilters = document.querySelectorAll('.filter-category:checked').length > 0;
         if (!hasActiveFilters) {
             shopPrompt.classList.remove('hidden');
             servicesSection.classList.add('hidden');
@@ -132,12 +125,60 @@ document.addEventListener('DOMContentLoaded', () => {
         const products = items.filter(item => item.type === 'product');
 
         servicesSection.classList.toggle('hidden', services.length === 0);
-        servicesContainer.innerHTML = services.map(createServiceCard).join('');
+        if (services.length > 0) {
+            servicesContainer.innerHTML = `
+                <div class="swiper-wrapper">${services.map(createServiceCard).join('')}</div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            `;
+        }
 
         productsSection.classList.toggle('hidden', products.length === 0);
-        productsContainer.innerHTML = products.map(p => createProductCard(p, false)).join('');
+        if (products.length > 0) {
+            productsContainer.innerHTML = `
+                <div class="swiper-wrapper">${products.map(p => createProductCard(p, false)).join('')}</div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            `;
+        }
 
         noResultsMsg.classList.toggle('hidden', items.length > 0);
+
+        const swiperOptions = {
+            loop: false,
+            spaceBetween: 15,
+            slidesPerView: 1.3,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 20
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
+            }
+        };
+
+        if (services.length > 0) {
+            servicesContainer.classList.add('swiper'); 
+            servicesSwiper = new Swiper(servicesContainer, swiperOptions);
+        }
+        
+        if (products.length > 0) {
+            productsContainer.classList.add('swiper');
+            productsSwiper = new Swiper(productsContainer, swiperOptions);
+        }
     }
     
     function renderFeaturedProducts() {
@@ -165,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderFilteredResults(filteredItems);
     }
 
+    // --- FUNCIONES DEL CARRITO DE COMPRAS ---
     function updateCartUI() {
         localStorage.setItem('cart', JSON.stringify(cart));
         const cartItemsContainer = document.getElementById('cart-items');
@@ -203,13 +245,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartUI();
     }
     
+    // --- INICIALIZACIÓN Y EVENT LISTENERS ---
+    
     renderFilters();
     renderFeaturedProducts();
     applyFilters();
     updateCartUI();
 
     document.querySelectorAll('.filter-category').forEach(el => el.addEventListener('change', applyFilters));
-
     document.querySelectorAll('.category-card').forEach(card => {
         card.addEventListener('click', e => {
             e.preventDefault();
@@ -238,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 20, navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3.5, spaceBetween: 40 } } });
     new Swiper('.products-swiper', { loop: true, slidesPerView: 1.2, spaceBetween: 15, navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 40 } } });
     
+    // --- MANEJO DE MODALES Y MENÚS ---
     document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
     
     const cartModal = document.getElementById('cart-modal');
@@ -273,4 +317,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
