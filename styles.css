@@ -192,7 +192,7 @@ body {
 
 /* --- 7. OTROS ELEMENTOS (CHECKBOX, HERO) --- */
 .custom-checkbox input[type="checkbox"]:checked+.checkmark { background-color: var(--brand-color); border-color: var(--brand-color); }
-.hero-section { position: relative; height: 700px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
+.hero-section { position: relative; height: 900px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
 .custom-checkbox { cursor: pointer; }
 .custom-checkbox input[type="checkbox"] { display: none; }
 .custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid #bdc3c7; border-radius: 4px; transition: background-color 0.2s; }
@@ -223,3 +223,4 @@ body {
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
