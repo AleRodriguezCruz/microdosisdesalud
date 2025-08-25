@@ -76,15 +76,28 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* --- TARJETAS DE PRODUCTO --- */
-.product-card {
-    background-color: #fff;
+/* --- TARJETAS DE PRODUCTO Y SERVICIO (ESTILOS COMPARTIDOS) --- */
+.product-card,
+.service-card {
+    background-color: #ffffff;
     border-radius: 12px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover,
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card {
     border: 1px solid #e0e0e0;
+}
+.product-card:hover {
+    box-shadow: 0 10px 20px rgba(66, 213, 217, 0.15); /* Sombra con el color turquesa */
 }
 
 .product-card img {
@@ -103,45 +116,91 @@ body {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
     font-size: 1.25rem;
-    color: #2C3E50;
+    color: #7F523D; /* elegant-brown */
 }
 
 .product-card-content p {
     font-size: 0.9rem;
-    color: #7f8c8d;
+    color: #2C3E50; /* dark-slate */
     margin-top: 0.5rem;
     flex-grow: 1;
 }
 
-/* --- BOTÓN AÑADIR AL CARRITO (AHORA TURQUESA) --- */
-.add-to-cart-btn {
-    background-color: #42D5D9; /* Color principal actualizado */
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: background-color 0.3s ease;
+/* --- TARJETAS DE SERVICIOS (ESTILOS ESPECÍFICOS) --- */
+.service-card {
+    border: 2px dashed #B38B59; /* primary-gold */
+    padding: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card:hover {
+    box-shadow: 0 10px 20px rgba(66, 213, 217, 0.2); /* Sombra con el color turquesa */
+}
+
+.service-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.service-card .service-title {
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 1.25rem;
+    color: #7F523D; /* elegant-brown */
+    margin-bottom: 0.5rem;
+}
+
+.service-card .service-description {
+    font-size: 0.9rem;
+    color: #2C3E50; /* dark-slate */
+    flex-grow: 1;
+    margin-bottom: 1.5rem;
+}
+
+/* --- BOTONES DE ACCIÓN (COLOR TURQUESA ACTUALIZADO) --- */
+.add-to-cart-btn,
+.service-button {
+    background-color: #42D5D9; /* Color turquesa */
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
     border: none;
     cursor: pointer;
 }
 
-.add-to-cart-btn:hover {
-    background-color: #31BABD; /* Tono más oscuro para hover */
+.add-to-cart-btn:hover,
+.service-button:hover {
+    background-color: #31BABD; /* Turquesa oscuro para hover */
 }
 
+.add-to-cart-btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+}
+
+.service-button {
+    width: 100%;
+}
+
+
 /* --- NAVEGACIÓN DE SWIPER/CARRUSEL --- */
+.swiper:hover .swiper-button-next,
+.swiper:hover .swiper-button-prev {
+    opacity: 1;
+    visibility: visible;
+}
+
 .swiper .swiper-button-next,
 .swiper .swiper-button-prev {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.swiper:hover .swiper-button-next,
-.swiper:hover .swiper-button-prev {
-    opacity: 1;
-    visibility: visible;
 }
 
 .categories-swiper .swiper-button-next,
@@ -158,71 +217,19 @@ body {
     font-size: 20px;
 }
 
-/* Flechas del carrusel de productos (AHORA TURQUESA) */
+/* Estilos para las flechas de los carruseles (COLOR TURQUESA ACTUALIZADO) */
 .products-swiper .swiper-button-next,
-.products-swiper .swiper-button-prev {
-    color: #42D5D9 !important; /* Color principal actualizado */
+.products-swiper .swiper-button-prev,
+#shop-services .swiper-button-next,
+#shop-services .swiper-button-prev,
+#shop-products-grid .swiper-button-next,
+#shop-products-grid .swiper-button-prev {
+    color: #42D5D9 !important; /* Color turquesa */
+    --swiper-navigation-size: 30px;
 }
 
-/* --- TARJETAS DE SERVICIOS --- */
-.service-card {
-    background-color: #ffffff;
-    border: 2px dashed #B38B59; /* Mantenemos el marrón aquí para un look único */
-    border-radius: 12px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(66, 213, 217, 0.2); /* Sombra con el nuevo color */
-}
-
-.service-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.service-card .service-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: #2C3E50;
-    margin-bottom: 0.5rem;
-}
-
-.service-card .service-description {
-    font-size: 0.9rem;
-    color: #7f8c8d;
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
-}
-
-.service-card .service-button {
-    background-color: #42D5D9;
-    color: #ffffff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-}
-
-.service-card .service-button:hover {
-    background-color: #31BABD; /* Tono más oscuro para hover (CORREGIDO) */
-}
-
-/* --- CHECKBOX PERSONALIZADO (AHORA TURQUESA) --- */
+/* --- CHECKBOX PERSONALIZADO (COLOR TURQUESA ACTUALIZADO) --- */
 .custom-checkbox {
     cursor: pointer;
 }
@@ -247,8 +254,8 @@ body {
 }
 
 .custom-checkbox input[type="checkbox"]:checked+.checkmark {
-    background-color: #42D5D9; /* Color principal actualizado */
-    border-color: #42D5D9;     /* Color principal actualizado */
+    background-color: #42D5D9; /* Color turquesa */
+    border-color: #42D5D9;
 }
 
 .custom-checkbox .checkmark::after {
