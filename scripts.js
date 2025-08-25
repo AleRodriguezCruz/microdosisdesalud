@@ -75,17 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // --- FUNCIONES PARA CREAR TARJETAS (CORREGIDAS) ---
+    // --- FUNCIONES PARA CREAR TARJETAS ---
     function createProductCard(product, { isCarousel = false, isFeatured = false } = {}) {
-        const imageHeightClass = isFeatured ? 'h-52' : 'h-48';
+        // Unificamos el tamaño para consistencia, destacados un poco más grandes
+        const imageHeightClass = isFeatured ? 'h-44' : 'h-36';
+
         const cardContent = `
             <div class="product-card">
                 <img src="${product.image}" alt="${product.name}" class="${imageHeightClass} w-full object-cover">
                 <div class="product-card-content">
-                    <h3 class="text-lg font-semibold">${product.name}</h3>
-                    <p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p>
-                    <div class="flex justify-between items-center mt-4">
-                        <span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span>
+                    <h3 class="text-base font-bold text-gray-800 line-clamp-2">${product.name}</h3>
+                    <p class="text-sm text-gray-600 my-2 line-clamp-2 flex-grow">${product.description}</p>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="text-lg font-semibold text-gray-900">$${product.price.toFixed(2)}</span>
                         <button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button>
                     </div>
                 </div>
@@ -98,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="service-card">
                 <img src="${service.image}" alt="${service.name}" class="service-image">
                 <h3 class="service-title">${service.name}</h3>
-                <p class="service-description">${service.description}</p>
-                <button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button>
+                <p class="service-description line-clamp-2">${service.description}</p>
+                <button class="service-button reserve-appointment-btn mt-auto" data-service-name="${service.name}">Reservar Cita</button>
             </div>`;
         return isCarousel ? `<div class="swiper-slide">${cardContent}</div>` : cardContent;
     }
@@ -157,10 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isMobileOrTablet) {
             const swiperOptions = {
-                loop: false, spaceBetween: 15, slidesPerView: 1.3,
+                loop: false,
+                spaceBetween: 12,
+                slidesPerView: 1.5,
                 pagination: { el: '.swiper-pagination', clickable: true },
                 navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-                breakpoints: { 768: { slidesPerView: 2.5, spaceBetween: 20 } }
+                breakpoints: {
+                    768: { slidesPerView: 2.5, spaceBetween: 20 }
+                }
             };
             if (services.length > 0) { servicesSwiper = new Swiper(servicesContainer, swiperOptions); }
             if (products.length > 0) { productsSwiper = new Swiper(productsContainer, swiperOptions); }
@@ -210,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkoutBtn.classList.remove('opacity-50');
             cart.forEach(item => {
                 total += item.price * item.quantity;
-                cartItemsContainer.innerHTML += `<div class="flex justify-between items-center"><p>${item.name} - $${item.price.toFixed(2)} x ${item.quantity}</p><button class="remove-from-cart-btn text-red-500 font-bold" data-product-id="${item.id}">X</button></div>`;
+                cartItemsContainer.innerHTML += `<div class="flex justify-between items-center py-2 border-b"><p class="text-sm">${item.name} <br> <span class="text-xs text-gray-500">$${item.price.toFixed(2)} x ${item.quantity}</span></p><button class="remove-from-cart-btn text-red-500 font-bold" data-product-id="${item.id}">X</button></div>`;
             });
         }
         cartCountEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -264,8 +270,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Carruseles estáticos (siempre son carruseles)
-    new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 20, navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3.5, spaceBetween: 40 } } });
-    new Swiper('.products-swiper', { loop: true, slidesPerView: 1.2, spaceBetween: 15, navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 40 } } });
+    new Swiper('.categories-swiper', { 
+        loop: true, 
+        slidesPerView: 1.5,
+        spaceBetween: 15, 
+        navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, 
+        pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, 
+        breakpoints: { 
+            640: { slidesPerView: 2.5, spaceBetween: 20 }, 
+            1024: { slidesPerView: 4, spaceBetween: 30 }
+        } 
+    });
+
+    new Swiper('.products-swiper', { 
+        loop: true, 
+        slidesPerView: 1.5,
+        spaceBetween: 15, 
+        navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, 
+        pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, 
+        breakpoints: { 
+            640: { slidesPerView: 2.5, spaceBetween: 20 }, 
+            1024: { slidesPerView: 4, spaceBetween: 30 }
+        } 
+    });
     
     // Manejo de Modales y Menús
     document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
