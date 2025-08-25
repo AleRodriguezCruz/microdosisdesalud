@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://images.unsplash.com/photo-1607823444243-760a1e046a2f?q=80&w=800&auto=format&fit=crop', description: "Refuerzo divertido y delicioso.", featured: true },
-                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop', description: "Hidratación suave para pieles sensibles." },
-                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'https://images.unsplash.com/photo-1599462653991-6a41eff238a3?q=80&w=800&auto=format&fit=crop', description: "Fórmula sin lágrimas que limpia y protege." },
+                { type: 'product', id: 10, name: "Shampoo", price: 25.00, image: 'shampoo-anticaida.jpg', description: "Refuerzo divertido y delicioso.", featured: true },
+                { type: 'product', id: 12, name: "Crema Corporal", price: 18.00, image: 'crema-corporal.jpg', description: "Hidratación suave para pieles sensibles." },
+                { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'aceites-essenciales.jpg', description: "Fórmula sin lágrimas que limpia y protege." },
                 { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'https://images.unsplash.com/photo-1610422558296-7a8c8a179951?q=80&w=800&auto=format&fit=crop', description: "Limpieza natural que calma la piel." }
             ]
         },
@@ -273,3 +273,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
