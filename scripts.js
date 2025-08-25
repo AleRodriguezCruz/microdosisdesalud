@@ -64,36 +64,47 @@ document.addEventListener('DOMContentLoaded', () => {
         ...(content.services || []).map(s => ({ ...s, category }))
     ]);
 
-    // --- FUNCIONES PARA CREAR TARJETAS ---
-    function createProductCard(product, isFeatured) {
+    // --- FUNCIÓN DE UTILIDAD ---
+    function debounce(func, delay = 250) {
+        let timeout;
+        return (...args) => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                func.apply(this, args);
+            }, delay);
+        };
+    }
+
+    // --- FUNCIONES PARA CREAR TARJETAS (CORREGIDAS) ---
+    function createProductCard(product, { isCarousel = false, isFeatured = false } = {}) {
+        const imageHeightClass = isFeatured ? 'h-52' : 'h-48';
         const cardContent = `
-            <img src="${product.image}" alt="${product.name}" class="${isFeatured ? 'h-52' : 'h-48'} w-full object-cover">
-            <div class="product-card-content">
-                <h3 class="text-lg font-semibold">${product.name}</h3>
-                <p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p>
-                <div class="flex justify-between items-center mt-4">
-                    <span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span>
-                    <button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button>
+            <div class="product-card">
+                <img src="${product.image}" alt="${product.name}" class="${imageHeightClass} w-full object-cover">
+                <div class="product-card-content">
+                    <h3 class="text-lg font-semibold">${product.name}</h3>
+                    <p class="text-gray-600 text-sm mt-1 flex-grow">${product.description}</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-xl font-bold text-elegant-brown">$${product.price.toFixed(2)}</span>
+                        <button class="add-to-cart-btn" data-product-id="${product.id}">Agregar</button>
+                    </div>
                 </div>
             </div>`;
-        
-        return `<div class="swiper-slide">
-                    <div class="product-card h-full">${cardContent}</div>
-                </div>`;
+        return isCarousel ? `<div class="swiper-slide">${cardContent}</div>` : cardContent;
     }
 
-    function createServiceCard(service) {
-        return `<div class="swiper-slide">
-                    <div class="service-card">
-                        <img src="${service.image}" alt="${service.name}" class="service-image">
-                        <h3 class="service-title">${service.name}</h3>
-                        <p class="service-description">${service.description}</p>
-                        <button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button>
-                    </div>
-                </div>`;
+    function createServiceCard(service, isCarousel) {
+        const cardContent = `
+            <div class="service-card">
+                <img src="${service.image}" alt="${service.name}" class="service-image">
+                <h3 class="service-title">${service.name}</h3>
+                <p class="service-description">${service.description}</p>
+                <button class="service-button reserve-appointment-btn" data-service-name="${service.name}">Reservar Cita</button>
+            </div>`;
+        return isCarousel ? `<div class="swiper-slide">${cardContent}</div>` : cardContent;
     }
 
-    // --- FUNCIONES DE RENDERIZADO Y FILTROS ---
+    // --- RENDERIZADO CONDICIONAL (CARRUSEL O CUADRÍCULA) ---
     function renderFilteredResults(items) {
         const servicesContainer = document.getElementById('shop-services');
         const productsContainer = document.getElementById('shop-products-grid');
@@ -102,14 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const noResultsMsg = document.getElementById('no-results-message');
         const shopPrompt = document.getElementById('shop-prompt');
 
-        if (servicesSwiper) {
-            servicesSwiper.destroy(true, true);
-            servicesSwiper = null;
-        }
-        if (productsSwiper) {
-            productsSwiper.destroy(true, true);
-            productsSwiper = null;
-        }
+        if (servicesSwiper) { servicesSwiper.destroy(true, true); servicesSwiper = null; }
+        if (productsSwiper) { productsSwiper.destroy(true, true); productsSwiper = null; }
 
         const hasActiveFilters = document.querySelectorAll('.filter-category:checked').length > 0;
         if (!hasActiveFilters) {
@@ -124,68 +129,50 @@ document.addEventListener('DOMContentLoaded', () => {
         const services = items.filter(item => item.type === 'service');
         const products = items.filter(item => item.type === 'product');
 
+        const isMobileOrTablet = window.matchMedia("(max-width: 1023px)").matches;
+
         servicesSection.classList.toggle('hidden', services.length === 0);
         if (services.length > 0) {
-            servicesContainer.innerHTML = `
-                <div class="swiper-wrapper">${services.map(createServiceCard).join('')}</div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            `;
+            if (isMobileOrTablet) {
+                servicesContainer.className = 'shop-carousel swiper';
+                servicesContainer.innerHTML = `<div class="swiper-wrapper">${services.map(service => createServiceCard(service, true)).join('')}</div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div>`;
+            } else {
+                servicesContainer.className = 'shop-grid';
+                servicesContainer.innerHTML = services.map(service => createServiceCard(service, false)).join('');
+            }
         }
 
         productsSection.classList.toggle('hidden', products.length === 0);
         if (products.length > 0) {
-            productsContainer.innerHTML = `
-                <div class="swiper-wrapper">${products.map(p => createProductCard(p, false)).join('')}</div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            `;
+            if (isMobileOrTablet) {
+                productsContainer.className = 'shop-carousel swiper';
+                productsContainer.innerHTML = `<div class="swiper-wrapper">${products.map(product => createProductCard(product, { isCarousel: true, isFeatured: false })).join('')}</div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div>`;
+            } else {
+                productsContainer.className = 'shop-grid';
+                productsContainer.innerHTML = products.map(product => createProductCard(product, { isCarousel: false, isFeatured: false })).join('');
+            }
         }
 
         noResultsMsg.classList.toggle('hidden', items.length > 0);
 
-        const swiperOptions = {
-            loop: false,
-            spaceBetween: 15,
-            slidesPerView: 1.3,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 20
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                }
-            }
-        };
-
-        if (services.length > 0) {
-            servicesContainer.classList.add('swiper'); 
-            servicesSwiper = new Swiper(servicesContainer, swiperOptions);
-        }
-        
-        if (products.length > 0) {
-            productsContainer.classList.add('swiper');
-            productsSwiper = new Swiper(productsContainer, swiperOptions);
+        if (isMobileOrTablet) {
+            const swiperOptions = {
+                loop: false, spaceBetween: 15, slidesPerView: 1.3,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                breakpoints: { 768: { slidesPerView: 2.5, spaceBetween: 20 } }
+            };
+            if (services.length > 0) { servicesSwiper = new Swiper(servicesContainer, swiperOptions); }
+            if (products.length > 0) { productsSwiper = new Swiper(productsContainer, swiperOptions); }
         }
     }
     
+    // --- OTRAS FUNCIONES DE RENDERIZADO ---
     function renderFeaturedProducts() {
         const container = document.getElementById('featured-products');
         if (!container) return;
         const featured = allItems.filter(p => p.type === 'product' && p.featured);
-        container.innerHTML = featured.map(p => createProductCard(p, true)).join('');
+        container.innerHTML = featured.map(p => createProductCard(p, { isCarousel: true, isFeatured: true })).join('');
     }
 
     function renderFilters() {
@@ -196,17 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- FUNCIÓN PRINCIPAL DE FILTRADO ---
     function applyFilters() {
-        const selectedCategories = Array.from(document.querySelectorAll('#filters-categories-desktop .filter-category:checked')).map(cb => cb.value);
-        if (selectedCategories.length === 0) {
-            renderFilteredResults([]);
-            return;
-        }
+        const selectedCategories = Array.from(document.querySelectorAll('.filter-category:checked')).map(cb => cb.value);
         let filteredItems = allItems.filter(item => selectedCategories.includes(item.category));
         renderFilteredResults(filteredItems);
     }
 
-    // --- FUNCIONES DEL CARRITO DE COMPRAS ---
+    // --- FUNCIONES DEL CARRITO ---
     function updateCartUI() {
         localStorage.setItem('cart', JSON.stringify(cart));
         const cartItemsContainer = document.getElementById('cart-items');
@@ -253,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
 
     document.querySelectorAll('.filter-category').forEach(el => el.addEventListener('change', applyFilters));
+
     document.querySelectorAll('.category-card').forEach(card => {
         card.addEventListener('click', e => {
             e.preventDefault();
@@ -278,10 +263,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Carruseles estáticos (siempre son carruseles)
     new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 20, navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3.5, spaceBetween: 40 } } });
     new Swiper('.products-swiper', { loop: true, slidesPerView: 1.2, spaceBetween: 15, navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5, spaceBetween: 30 }, 1024: { slidesPerView: 3, spaceBetween: 40 } } });
     
-    // --- MANEJO DE MODALES Y MENÚS ---
+    // Manejo de Modales y Menús
     document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
     
     const cartModal = document.getElementById('cart-modal');
@@ -315,5 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('appointment-form').reset();
         appointmentModal.classList.add('hidden');
     });
-
+    
+    // Listener para redimensionar la ventana y adaptar el layout
+    window.addEventListener('resize', debounce(applyFilters));
 });
