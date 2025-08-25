@@ -1,289 +1,196 @@
+/* --- 1. CONFIGURACIÓN GLOBAL Y COLORES --- */
+:root {
+    --ml-yellow: #FFF159;
+    --ml-blue: #42D5D9;
+    --background-gray: #EBEBEB;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --shipping-green: #00A650;
+    --white: #FFFFFF;
+    --light-gray-border: #E0E0E0;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-gray);
+    color: var(--text-primary);
 }
 
-.hero-section {
-    position: relative;
-    height: 700px;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* --- TARJETAS DE CATEGORÍA --- */
-.category-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 350px;
-    display: block;
-    color: inherit;
-    text-decoration: none;
-}
-
-.category-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.category-card-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    transition: transform 0.5s ease;
-    filter: brightness(80%);
-}
-
-.category-card:hover .category-card-img {
-    transform: scale(1.05);
-    filter: brightness(100%);
-}
-
-.category-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 30%);
-    z-index: 2;
-}
-
-.category-card-content {
-    position: relative;
-    z-index: 3;
-    padding: 1.5rem;
-    color: #ffffff;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: left;
-}
-
-.category-card-title-large {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-/* --- TARJETAS DE PRODUCTO Y SERVICIO (ESTILOS COMPARTIDOS) --- */
-.product-card,
-.service-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover,
-.service-card:hover {
-    transform: translateY(-8px);
-}
-
+/* --- 2. TARJETAS DE PRODUCTO ESTILO MERCADO LIBRE --- */
 .product-card {
-    border: 1px solid #e0e0e0;
+    background-color: var(--white);
+    border-radius: 6px;
+    border: 1px solid transparent; /* Borde transparente para mantener el tamaño en hover */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
 }
+
 .product-card:hover {
-    box-shadow: 0 10px 20px rgba(66, 213, 217, 0.15); /* Sombra con el color turquesa */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--light-gray-border);
 }
 
 .product-card img {
     width: 100%;
     object-fit: cover;
+    border-bottom: 1px solid var(--light-gray-border);
 }
 
 .product-card-content {
-    padding: 1.5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
+/* Título del producto */
 .product-card-content h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    color: #7F523D; /* elegant-brown */
+    font-family: inherit; /* Usa la fuente del body */
+    font-weight: 400; /* Más ligero */
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
 }
 
+/* Descripción (no se usa mucho en ML, pero la estilizamos) */
 .product-card-content p {
-    font-size: 0.9rem;
-    color: #2C3E50; /* dark-slate */
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0;
+    margin-bottom: 1rem;
     flex-grow: 1;
 }
 
-/* --- TARJETAS DE SERVICIOS (ESTILOS ESPECÍFICOS) --- */
-.service-card {
-    border: 2px dashed #B38B59; /* primary-gold */
-    padding: 1.5rem;
-    align-items: center;
-    text-align: center;
+/* Precio del producto */
+.product-card-content .text-elegant-brown {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
-.service-card:hover {
-    box-shadow: 0 10px 20px rgba(66, 213, 217, 0.2); /* Sombra con el color turquesa */
+/* --- 3. BOTONES ESTILO MERCADO LIBRE --- */
+.add-to-cart-btn {
+    background-color: var(--ml-blue);
+    color: var(--white);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #2968C8; /* Azul más oscuro */
+}
+
+
+/* --- 4. TARJETAS DE SERVICIO (ESTILO SECUNDARIO) --- */
+/* Le damos un estilo más simple para diferenciarlas */
+.service-card {
+    background-color: var(--white);
+    border: 1px solid var(--light-gray-border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
 
 .service-image {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
 }
 
 .service-card .service-title {
-    font-family: 'Playfair Display', serif;
+    font-family: inherit;
     font-weight: 600;
-    font-size: 1.25rem;
-    color: #7F523D; /* elegant-brown */
+    font-size: 1.1rem;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
 .service-card .service-description {
     font-size: 0.9rem;
-    color: #2C3E50; /* dark-slate */
+    color: var(--text-secondary);
     flex-grow: 1;
     margin-bottom: 1.5rem;
 }
 
-/* --- BOTONES DE ACCIÓN (COLOR TURQUESA ACTUALIZADO) --- */
-.add-to-cart-btn,
+/* Botón de servicios con el mismo estilo */
 .service-button {
-    background-color: #42D5D9; /* Color turquesa */
-    color: #ffffff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
+    background-color: var(--ml-blue);
+    color: var(--white);
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
     font-weight: 600;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
+    width: 100%;
     border: none;
     cursor: pointer;
 }
 
-.add-to-cart-btn:hover,
 .service-button:hover {
-    background-color: #31BABD; /* Turquesa oscuro para hover */
-}
-
-.add-to-cart-btn {
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-}
-
-.service-button {
-    width: 100%;
+    background-color: #2968C8; /* Azul más oscuro */
 }
 
 
-/* --- NAVEGACIÓN DE SWIPER/CARRUSEL --- */
+/* --- 5. OTROS ELEMENTOS (SWIPER, CHECKBOX) --- */
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    color: var(--ml-blue) !important;
+}
+
 .swiper:hover .swiper-button-next,
 .swiper:hover .swiper-button-prev {
     opacity: 1;
     visibility: visible;
 }
 
-.swiper .swiper-button-next,
-.swiper .swiper-button-prev {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
 .categories-swiper .swiper-button-next,
 .categories-swiper .swiper-button-prev {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
     width: 44px;
     height: 44px;
-    border-radius: 8px;
-    color: #ffffff !important;
+    color: var(--white) !important;
 }
-
 .categories-swiper .swiper-button-next::after,
 .categories-swiper .swiper-button-prev::after {
     font-size: 20px;
 }
 
-/* Estilos para las flechas de los carruseles (COLOR TURQUESA ACTUALIZADO) */
-.products-swiper .swiper-button-next,
-.products-swiper .swiper-button-prev,
-#shop-services .swiper-button-next,
-#shop-services .swiper-button-prev,
-#shop-products-grid .swiper-button-next,
-#shop-products-grid .swiper-button-prev {
-    color: #42D5D9 !important; /* Color turquesa */
-    --swiper-navigation-size: 30px;
-}
-
-
-/* --- CHECKBOX PERSONALIZADO (COLOR TURQUESA ACTUALIZADO) --- */
-.custom-checkbox {
-    cursor: pointer;
-}
-
-.custom-checkbox input[type="checkbox"] {
-    display: none;
-}
-
-.custom-checkbox .checkmark {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #ECF0F1;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.custom-checkbox:hover .checkmark {
-    background-color: #dfe4e5;
-}
-
 .custom-checkbox input[type="checkbox"]:checked+.checkmark {
-    background-color: #42D5D9; /* Color turquesa */
-    border-color: #42D5D9;
+    background-color: var(--ml-blue);
+    border-color: var(--ml-blue);
 }
 
-.custom-checkbox .checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
-    left: 6px;
-    top: 2px;
-    width: 6px;
-    height: 12px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-}
-
-.custom-checkbox input[type="checkbox"]:checked+.checkmark::after {
-    display: block;
-}
-
-/* --- MEJORAS PARA MÓVILES --- */
-@media (max-width: 768px) {
-    .hero-section {
-        height: 500px;
-    }
-
-    .category-card-title-large,
-    .product-card-content h3,
-    .service-card .service-title {
-        font-size: 1.25rem;
-    }
-}
+/* Se mantienen las demás reglas de checkbox, hero-section, etc. que no afectan el tema */
+.hero-section { position: relative; height: 500px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
+.category-card { position: relative; overflow: hidden; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 350px; display: block; color: inherit; text-decoration: none; }
+.category-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
+.category-card-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.5s ease; filter: brightness(80%); }
+.category-card:hover .category-card-img { transform: scale(1.05); filter: brightness(100%); }
+.category-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 30%); z-index: 2; }
+.category-card-content { position: relative; z-index: 3; padding: 1.5rem; color: #ffffff; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; }
+.category-card-title-large { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+.custom-checkbox { cursor: pointer; }
+.custom-checkbox input[type="checkbox"] { display: none; }
+.custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid #bdc3c7; border-radius: 4px; transition: background-color 0.2s; }
+.custom-checkbox:hover .checkmark { background-color: #dfe4e5; }
+.custom-checkbox .checkmark::after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); }
+.custom-checkbox input[type="checkbox"]:checked+.checkmark::after { display: block; }
+@media (max-width: 768px) { .hero-section { height: 400px; } .category-card-title-large, .product-card-content h3, .service-card .service-title { font-size: 1.25rem; } }
