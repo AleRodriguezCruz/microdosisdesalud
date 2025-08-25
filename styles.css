@@ -1,11 +1,10 @@
 /* --- 1. CONFIGURACIÓN GLOBAL Y COLORES --- */
 :root {
-    --ml-yellow: #FFF159;
-    --ml-blue: #42D5D9;
-    --background-gray: #EBEBEB;
+    --brand-color: #42D5D9;
+    --brand-color-dark: #31BABD; /* Tono más oscuro para hover */
+    --background-gray: #F5F5F5; /* Un gris ligeramente más suave */
     --text-primary: #333333;
     --text-secondary: #666666;
-    --shipping-green: #00A650;
     --white: #FFFFFF;
     --light-gray-border: #E0E0E0;
 }
@@ -16,27 +15,46 @@ body {
     color: var(--text-primary);
 }
 
-/* --- 2. TARJETAS DE PRODUCTO ESTILO MERCADO LIBRE --- */
-.product-card {
+
+/* --- 2. ESTRUCTURA Y TÍTULOS DE SECCIÓN --- */
+/* Usa un <section> con esta clase para envolver cada parte de tu página */
+.section-container {
+    padding: 3rem 1rem; /* Espaciado vertical y horizontal */
+}
+
+/* Estilo para los títulos como "Categorías", "Nuestros Servicios" */
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+
+/* --- 3. TARJETAS DE PRODUCTO Y SERVICIO (ESTILOS UNIFICADOS) --- */
+.product-card,
+.service-card {
     background-color: var(--white);
-    border-radius: 6px;
-    border: 1px solid transparent; /* Borde transparente para mantener el tamaño en hover */
+    border-radius: 8px; /* Bordes un poco más redondeados */
+    border: 1px solid var(--light-gray-border);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 100%;
     transition: all 0.2s ease-in-out;
+    height: 100%; /* La tarjeta ocupa el 100% de su contenedor (el slide) */
 }
 
-.product-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: var(--light-gray-border);
+.product-card:hover,
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .product-card img {
     width: 100%;
+    aspect-ratio: 4 / 3; /* Proporción para que todas las imágenes se vean iguales */
     object-fit: cover;
-    border-bottom: 1px solid var(--light-gray-border);
 }
 
 .product-card-content {
@@ -46,62 +64,34 @@ body {
     flex-grow: 1;
 }
 
-/* Título del producto */
 .product-card-content h3 {
-    font-family: inherit; /* Usa la fuente del body */
-    font-weight: 400; /* Más ligero */
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-family: inherit;
+    font-weight: 600; /* Un poco más de peso */
+    font-size: 1rem;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
 
-/* Descripción (no se usa mucho en ML, pero la estilizamos) */
 .product-card-content p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     margin-top: 0;
     margin-bottom: 1rem;
     flex-grow: 1;
 }
 
-/* Precio del producto */
-.product-card-content .text-elegant-brown {
-    font-size: 1.5rem;
+.product-card-content .text-elegant-brown { /* Mantenemos la clase pero estilizamos para el precio */
+    font-size: 1.4rem;
     font-weight: 500;
     color: var(--text-primary);
 }
 
-/* --- 3. BOTONES ESTILO MERCADO LIBRE --- */
-.add-to-cart-btn {
-    background-color: var(--ml-blue);
-    color: var(--white);
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
 
-.add-to-cart-btn:hover {
-    background-color: #2968C8; /* Azul más oscuro */
-}
-
-
-/* --- 4. TARJETAS DE SERVICIO (ESTILO SECUNDARIO) --- */
-/* Le damos un estilo más simple para diferenciarlas */
+/* --- 4. TARJETAS DE SERVICIO --- */
 .service-card {
-    background-color: var(--white);
-    border: 1px solid var(--light-gray-border);
-    border-radius: 6px;
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     text-align: center;
-    height: 100%;
 }
 
 .service-image {
@@ -127,31 +117,49 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Botón de servicios con el mismo estilo */
+
+/* --- 5. BOTONES (ESTILO CONSISTENTE) --- */
+.add-to-cart-btn,
 .service-button {
-    background-color: var(--ml-blue);
+    background-color: var(--brand-color);
     color: var(--white);
     padding: 0.6rem 1.5rem;
     border-radius: 6px;
     font-weight: 600;
-    transition: background-color 0.2s ease;
-    width: 100%;
+    font-size: 0.9rem;
+    text-align: center;
     border: none;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
+.add-to-cart-btn:hover,
 .service-button:hover {
-    background-color: #2968C8; /* Azul más oscuro */
+    background-color: var(--brand-color-dark); /* CORREGIDO */
 }
 
 
-/* --- 5. OTROS ELEMENTOS (SWIPER, CHECKBOX) --- */
+/* --- 6. CARRUSELES Y NAVEGACIÓN --- */
+
+/* ¡NUEVO! Contenedor para dar altura fija a los slides de la tienda */
+#shop-services .swiper-slide,
+#shop-products-grid .swiper-slide {
+    height: auto; /* Dejamos que el contenido defina la altura */
+    display: flex;
+    padding-bottom: 1rem; /* Espacio para la sombra de la tarjeta */
+}
+
+/* Hacemos que la paginación sea del color de la marca */
+.swiper-pagination-bullet-active {
+    background-color: var(--brand-color) !important;
+}
+
 .swiper .swiper-button-next,
 .swiper .swiper-button-prev {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    color: var(--ml-blue) !important;
+    color: var(--brand-color) !important;
 }
 
 .swiper:hover .swiper-button-next,
@@ -160,6 +168,10 @@ body {
     visibility: visible;
 }
 
+/* Carrusel de categorías (el de las imágenes grandes) */
+.categories-swiper .swiper-slide {
+    height: 350px;
+}
 .categories-swiper .swiper-button-next,
 .categories-swiper .swiper-button-prev {
     background-color: rgba(0, 0, 0, 0.5);
@@ -173,20 +185,21 @@ body {
     font-size: 20px;
 }
 
-.custom-checkbox input[type="checkbox"]:checked+.checkmark {
-    background-color: var(--ml-blue);
-    border-color: var(--ml-blue);
-}
-
-/* Se mantienen las demás reglas de checkbox, hero-section, etc. que no afectan el tema */
-.hero-section { position: relative; height: 500px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
-.category-card { position: relative; overflow: hidden; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 350px; display: block; color: inherit; text-decoration: none; }
+.category-card { position: relative; overflow: hidden; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: block; color: inherit; text-decoration: none; }
 .category-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-.category-card-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.5s ease; filter: brightness(80%); }
-.category-card:hover .category-card-img { transform: scale(1.05); filter: brightness(100%); }
-.category-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 30%); z-index: 2; }
+.category-card-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.5s ease; filter: brightness(70%); }
+.category-card:hover .category-card-img { transform: scale(1.05); filter: brightness(90%); }
+.category-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 40%); z-index: 2; }
 .category-card-content { position: relative; z-index: 3; padding: 1.5rem; color: #ffffff; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; }
-.category-card-title-large { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+.category-card-title-large { font-family: inherit; /* TIPOGRAFÍA UNIFICADA */ font-size: 1.5rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
+
+
+/* --- 7. OTROS ELEMENTOS (CHECKBOX, HERO) --- */
+.custom-checkbox input[type="checkbox"]:checked+.checkmark {
+    background-color: var(--brand-color);
+    border-color: var(--brand-color);
+}
+.hero-section { position: relative; height: 700px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
 .custom-checkbox { cursor: pointer; }
 .custom-checkbox input[type="checkbox"] { display: none; }
 .custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid #bdc3c7; border-radius: 4px; transition: background-color 0.2s; }
@@ -194,3 +207,14 @@ body {
 .custom-checkbox .checkmark::after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); }
 .custom-checkbox input[type="checkbox"]:checked+.checkmark::after { display: block; }
 @media (max-width: 768px) { .hero-section { height: 400px; } .category-card-title-large, .product-card-content h3, .service-card .service-title { font-size: 1.25rem; } }
+/* --- 8. ESTILOS PARA LA CUADRÍCULA DE PRODUCTOS/SERVICIOS EN PC --- */
+
+/* Esta regla se aplica SÓLO en pantallas de 1024px o más grandes */
+@media (min-width: 1024px) {
+    .shop-grid {
+        display: grid;
+        /* Crea columnas automáticas que se ajustan al espacio disponible */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem; /* Espacio entre las tarjetas */
+    }
+}
