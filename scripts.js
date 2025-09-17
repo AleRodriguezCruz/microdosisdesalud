@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "Edad Reproductiva": {
             services: [
-                { type: 'service', name: "Consulta Ginecológica ", description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", image: "Total_Beauty_Choco_Cacahuate.webp" },
+                { type: 'service', name: "Consulta Ginecológica ", description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", image: "" },
                 { type: 'service', name: "Salud Sexual y ETS", description: "Orientación confidencial sobre salud sexual, métodos de prevención, diagnóstico y tratamiento de ETS.", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnosticamos y tratamos condiciones como miomas, endometriosis o irregularidades menstruales.", image: "https://images.unsplash.com/photo-1588776814546-da631a357412?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Control de Sobrepeso y Obesidad", description: "Desarrollamos un plan integral y personalizado para ayudarte a alcanzar un peso saludable y mejorar tu calidad de vida.", image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop" },
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Consulta Preconcepcional", description: "Preparamos tu cuerpo para un embarazo saludable con asesoría sobre nutrición, suplementos y cuidados previos.", image: "https://images.unsplash.com/photo-1505453976333-5b235a681358?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico para controlar síntomas y mejorar tu salud hormonal.", image: "https://images.unsplash.com/photo-1622254843325-e490a0a945c9?q=80&w=800&auto=format&fit=crop" }
             ],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'https://images.unsplash.com/photo-1631751327313-a9b3a5ea237a?q=80&w=800&auto=format&fit=crop', description: "Esencial para la planificación del embarazo.", featured: true }]
+            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo.", featured: true }]
         },
         "Embarazo": {
             services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", image: "https://images.unsplash.com/photo-1584988223218-975dd76503f1?q=80&w=800&auto=format&fit=crop" }],
@@ -332,4 +332,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
