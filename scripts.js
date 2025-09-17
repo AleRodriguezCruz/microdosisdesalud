@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         "Edad Reproductiva": {
             services: [
-                { type: 'service', name: "Consulta Ginecológica ", description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", image: "https://images.unsplash.com/photo-1579684385127-6c636a8e8b6b?q=80&w=800&auto=format&fit=crop" },
+                { type: 'service', name: "Consulta Ginecológica ", description: "Tu revisión es clave. Realizamos Papanicolau, exploración y resolvemos tus dudas para cuidar tu bienestar integral.", image: "Total_Beauty_Choco_Cacahuate.webp" },
                 { type: 'service', name: "Salud Sexual y ETS", description: "Orientación confidencial sobre salud sexual, métodos de prevención, diagnóstico y tratamiento de ETS.", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Trastornos Ginecológicos", description: "Diagnosticamos y tratamos condiciones como miomas, endometriosis o irregularidades menstruales.", image: "https://images.unsplash.com/photo-1588776814546-da631a357412?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Control de Sobrepeso y Obesidad", description: "Desarrollamos un plan integral y personalizado para ayudarte a alcanzar un peso saludable y mejorar tu calidad de vida.", image: "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=800&auto=format&fit=crop" },
@@ -332,3 +332,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
