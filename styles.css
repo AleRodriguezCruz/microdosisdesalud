@@ -1,16 +1,21 @@
-/* --- 1. CONFIGURACIÓN GLOBAL Y PALETA DE COLORES ELEGANTE --- */
+/* --- 1. CONFIGURACIÓN GLOBAL Y TU PALETA DE COLORES PERSONALIZADA --- */
 :root {
-    /* Paleta profesional, cálida y confiable */
-    --fondo-sitio: #FBF9F7;          /* Un blanco muy sutil con un toque cálido/crema */
-    --texto-principal: #3D405B;      /* Un azul/púrpura oscuro, más suave que el negro */
-    --texto-secundario: #8D99AE;    /* Un gris azulado para descripciones */
+    /* Tu paleta de colores pastel */
+    --color-rosa: #FFCCE6;
+    --color-azul: #C2E9FF;
+    --color-amarillo: #FAFFC2;
+    --color-verde: #E4FFC2;
     
-    /* --- ¡AQUÍ ESTÁ EL CAMBIO! --- */
-    --color-primario: #D4A5A5;      /* Rosa suave y elegante para el botón principal */
-    --color-primario-hover: #BF9292; /* Un tono más oscuro del rosa para interacciones */
+    /* Asignación de colores para el diseño */
+    --color-primario: var(--color-rosa);         /* Rosa para los botones principales */
+    --color-primario-hover: #F5B8D8;           /* Un rosa un poco más oscuro para interacciones */
     
-    --borde-sutil: #EDEDED;         /* Borde muy claro para separar elementos */
-    --fondo-tarjeta: #FFFFFF;       /* Blanco puro para las tarjetas */
+    /* Colores base para legibilidad y un look limpio */
+    --fondo-sitio: #FEFEFE;                     /* Blanco casi puro para un fondo limpio */
+    --texto-principal: #3D405B;                 /* Un azul oscuro para que el texto sea fácil de leer */
+    --texto-secundario: #8D99AE;               /* Un gris azulado para descripciones */
+    --borde-sutil: #F0F0F0;                    /* Borde muy claro para separar elementos */
+    --fondo-tarjeta: #FFFFFF;                  /* Blanco puro para las tarjetas */
 }
 
 body {
@@ -125,7 +130,7 @@ body {
 .service-button {
     display: inline-block;
     background-color: var(--color-primario);
-    color: white !important;
+    color: var(--texto-principal) !important; /* Texto oscuro para contraste sobre el rosa pálido */
     font-weight: 600;
     font-size: 0.8rem;
     text-align: center;
@@ -147,7 +152,7 @@ body {
 .add-to-cart-btn:hover,
 .service-button:hover {
     background-color: var(--color-primario-hover);
-    color: white !important;
+    color: var(--texto-principal) !important;
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
@@ -187,7 +192,8 @@ body {
 
 
 /* --- 7. OTROS ELEMENTOS (CHECKBOX, HERO) --- */
-.custom-checkbox input[type="checkbox"]:checked+.checkmark { background-color: var(--color-primario); border-color: var(--color-primario); }
+/* El checkbox ahora usará el color azul para detalles */
+.custom-checkbox input[type="checkbox"]:checked+.checkmark { background-color: var(--color-azul); border-color: var(--color-azul); }
 .hero-section { position: relative; height: 900px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
 .custom-checkbox { cursor: pointer; }
 .custom-checkbox input[type="checkbox"] { display: none; }
