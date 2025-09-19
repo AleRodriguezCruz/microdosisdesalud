@@ -1,11 +1,14 @@
 /* --- 1. CONFIGURACIÓN GLOBAL Y PALETA DE COLORES ELEGANTE --- */
 :root {
-    /* Paleta de colores profesional, cálida y confiable */
+    /* Paleta profesional, cálida y confiable */
     --fondo-sitio: #FBF9F7;          /* Un blanco muy sutil con un toque cálido/crema */
     --texto-principal: #3D405B;      /* Un azul/púrpura oscuro, más suave que el negro */
     --texto-secundario: #8D99AE;    /* Un gris azulado para descripciones */
-    --color-primario: #E07A5F;      /* Un coral/terracota cálido para el botón principal */
-    --color-primario-hover: #D46A4D; /* Un tono más oscuro del primario para interacciones */
+    
+    /* --- ¡AQUÍ ESTÁ EL CAMBIO! --- */
+    --color-primario: #D4A5A5;      /* Rosa suave y elegante para el botón principal */
+    --color-primario-hover: #BF9292; /* Un tono más oscuro del rosa para interacciones */
+    
     --borde-sutil: #EDEDED;         /* Borde muy claro para separar elementos */
     --fondo-tarjeta: #FFFFFF;       /* Blanco puro para las tarjetas */
 }
@@ -79,7 +82,6 @@ body {
     flex-grow: 1;
 }
 
-/* El precio ahora usa el color de texto principal para mantener la coherencia */
 .product-card-content .text-elegant-brown {
     font-size: 1.4rem;
     font-weight: 500;
@@ -123,22 +125,22 @@ body {
 .service-button {
     display: inline-block;
     background-color: var(--color-primario);
-    color: white !important; /* Texto en blanco para un contraste perfecto */
+    color: white !important;
     font-weight: 600;
-    font-size: 0.8rem; /* Un poco más pequeño para elegancia */
+    font-size: 0.8rem;
     text-align: center;
     text-decoration: none;
-    text-transform: uppercase; /* MAYÚSCULAS para una llamada a la acción clara */
-    letter-spacing: 1px;       /* Espaciado entre letras para un toque de diseño */
+    text-transform: uppercase;
+    letter-spacing: 1px;
     
     padding: 10px 24px;
-    border: none;              /* Sin borde, el color es suficiente */
-    border-radius: 50px;       /* Bordes muy redondeados para un look moderno y suave */
+    border: none;
+    border-radius: 50px;
     
-    margin-top: auto;          /* Empuja el botón al final de la tarjeta */
+    margin-top: auto;
     cursor: pointer;
     
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -146,7 +148,7 @@ body {
 .service-button:hover {
     background-color: var(--color-primario-hover);
     color: white !important;
-    transform: translateY(-3px); /* Efecto de "levantarse" al pasar el mouse */
+    transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
