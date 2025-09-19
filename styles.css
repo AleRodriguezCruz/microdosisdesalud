@@ -1,210 +1,113 @@
-/* --- 1. CONFIGURACIÓN GLOBAL Y COLORES --- */
+/* --- 1. CONFIGURACIÓN GLOBAL Y PALETA DE COLORES REFINADA --- */
 :root {
-    /* --- Nueva Paleta de Colores (Profesional y Cálida) --- */
-    --brand-color: #C2E9FF;          /* Azul Claro Principal */
-    --brand-color-dark: #A9D8F5;     /* Azul más oscuro para hover/activos */
-    --accent-color: #FFCCE6;         /* Rosa Pálido como acento cálido */
+    /* Paleta de colores profesional, cálida y confiable */
+    --color-primario: #6A8EAF;      /* Azul sereno (para fondos, enlaces) */
+    --color-acento: #D4A5A5;        /* Rosa suave/terracota (para botones y llamados a la acción) */
+    --color-acento-hover: #BF9292;  /* Un tono más oscuro del acento para interacciones */
     
-    /* Tonos neutros para texto y fondos */
-    --background-light: #F8F9FA;    /* Un gris muy claro, casi blanco */
-    --text-primary: #343A40;         /* Negro suave para texto principal */
-    --text-secondary: #6C757D;       /* Gris para texto secundario */
-    --white: #FFFFFF;
-    --border-color: #DEE2E6;         /* Borde sutil y limpio */
-
-    /* Colores adicionales de la paleta (para uso específico) */
-    --highlight-green: #E4FFC2;
-    --highlight-yellow: #FAFFC2;
+    --fondo-sitio: #FDFBFA;        /* Un blanco muy sutil con un toque cálido/crema */
+    --fondo-tarjeta: #FFFFFF;       /* Blanco puro para las tarjetas para que resalten */
+    --texto-principal: #333333;      /* Negro muy oscuro, fácil de leer */
+    --texto-secundario: #757575;   /* Gris medio para descripciones */
+    --borde-sutil: #EAEAEA;        /* Borde muy claro para separar elementos */
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--background-light); /* Usamos el nuevo fondo claro */
-    color: var(--text-primary);
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Se añade Poppins como fuente más moderna */
+    background-color: var(--fondo-sitio);
+    color: var(--texto-principal);
+    line-height: 1.6;
 }
 
-
-/* --- 2. ESTRUCTURA Y TÍTULOS DE SECCIÓN --- */
-.section-container {
-    padding: 3rem 1rem;
-}
-
+/* --- 2. TÍTULOS --- */
 .section-title {
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
+    margin-bottom: 2.5rem;
+    color: var(--texto-principal);
 }
 
-
-/* --- 3. TARJETAS DE PRODUCTO Y SERVICIO (ESTILOS UNIFICADOS) --- */
-.product-card,
-.service-card {
-    background-color: var(--white);
-    border-radius: 8px;
-    border: 1px solid var(--border-color); /* Usamos el nuevo color de borde */
+/* --- 3. TARJETAS DE PRODUCTO --- */
+.product-card {
+    background-color: var(--fondo-tarjeta);
+    border-radius: 12px; /* Bordes más redondeados */
+    border: 1px solid var(--borde-sutil);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
 }
 
-.product-card:hover,
-.service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08); /* Sombra un poco más sutil */
-}
-
-.product-card img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07); /* Sombra más suave */
 }
 
 .product-card-content {
-    padding: 1rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    text-align: center; /* Centramos el contenido para un look más limpio */
 }
 
 .product-card-content h3 {
-    font-family: inherit;
     font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-primary);
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
 .product-card-content p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-}
-
-.product-card-content .text-elegant-brown {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-
-/* --- 4. TARJETAS DE SERVICIO --- */
-.service-card {
-    padding: 1.5rem;
-    align-items: center;
-    text-align: center;
-}
-
-.service-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-}
-
-.service-card .service-title {
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-}
-
-.service-card .service-description {
     font-size: 0.9rem;
-    color: var(--text-secondary);
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
+    color: var(--texto-secundario);
+    flex-grow: 1; /* Empuja el precio y botón hacia abajo */
+    margin-bottom: 1rem;
 }
 
-
-/* --- 5. BOTONES (ESTILO CONSISTENTE) --- */
-.add-to-cart-btn,
-.service-button {
-    /* --- CAMBIO IMPORTANTE --- */
-    /* Para botones, podemos usar el color de acento para que resalten */
-    /* Si prefieres el azul, cámbialo a var(--brand-color) */
-    color: var(--accent-color) !important;
-    font-weight: 600; /* Damos más peso a los botones */
-    transition: all 0.2s ease;
+.product-card-content .price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primario); /* Usamos el azul para el precio */
+    margin-bottom: 1.25rem;
 }
 
-.add-to-cart-btn:hover,
-.service-button:hover {
-    color: var(--brand-color-dark) !important; /* Usamos el azul oscuro en hover */
+/* --- 4. BOTONES (EL CAMBIO MÁS IMPORTANTE) --- */
+/* Estilo base para todos los botones */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.swiper:hover .swiper-button-next,
-.swiper:hover .swiper-button-prev {
-    opacity: 1;
-    visibility: visible;
+/* Botón Primario (para "Agregar") */
+.btn-primary {
+    background-color: var(--color-acento);
+    color: var(--fondo-tarjeta); /* Texto blanco para alto contraste */
 }
 
-
-/* --- 6. SWIPER Y TARJETAS DE CATEGORÍA --- */
-.categories-swiper .swiper-slide {
-    height: 250px;
+.btn-primary:hover {
+    background-color: var(--color-acento-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.categories-swiper .swiper-button-next,
-.categories-swiper .swiper-button-prev {
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo más claro para los botones */
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    color: var(--text-primary) !important; /* Color oscuro para contraste */
-}
-.categories-swiper .swiper-button-next::after,
-.categories-swiper .swiper-button-prev::after {
-    font-size: 20px;
+/* Botón Secundario (opcional, para otras acciones) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primario);
+    border-color: var(--color-primario);
 }
 
-.category-card { position: relative; overflow: hidden; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%; display: block; color: inherit; text-decoration: none; }
-.category-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-.category-card-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.5s ease;  }
-.category-card:hover .category-card-img { transform: scale(1.05); filter: brightness(90%); }
-.category-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
-.category-card-content { position: relative; z-index: 3; padding: 1.5rem; color: #ffffff; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; }
-.category-card-title-large { font-family: inherit; font-size: 1.3rem; font-weight: 700; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); }
-
-
-/* --- 7. OTROS ELEMENTOS (CHECKBOX, HERO) --- */
-.custom-checkbox input[type="checkbox"]:checked+.checkmark { background-color: var(--brand-color); border-color: var(--brand-color); }
-.hero-section { position: relative; height: 900px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
-.custom-checkbox { cursor: pointer; }
-.custom-checkbox input[type="checkbox"] { display: none; }
-.custom-checkbox .checkmark { position: relative; display: inline-block; width: 20px; height: 20px; background-color: #ECF0F1; border: 1px solid var(--border-color); border-radius: 4px; transition: background-color 0.2s; }
-.custom-checkbox:hover .checkmark { background-color: #dfe4e5; }
-.custom-checkbox .checkmark::after { content: ""; position: absolute; display: none; left: 6px; top: 2px; width: 6px; height: 12px; border: solid white; border-width: 0 3px 3px 0; transform: rotate(45deg); }
-.custom-checkbox input[type="checkbox"]:checked+.checkmark::after { display: block; }
-
-@media (max-width: 1023px) {
-    .hero-section { height: 400px; } 
-    .section-title { font-size: 1.5rem; }
-    .category-card-title-large, .product-card-content h3, .service-card .service-title { font-size: 1.1rem; } 
-}
-
-
-/* --- 8. CUADRÍCULA EN PC --- */
-@media (min-width: 1024px) {
-    .shop-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-    }
-}
-
-
-/* --- 9. UTILIDADES --- */
-.line-clamp-2 {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+.btn-secondary:hover {
+    background-color: var(--color-primario);
+    color: var(--fondo-tarjeta);
 }
