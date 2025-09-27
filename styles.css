@@ -227,8 +227,7 @@ body {
     -webkit-line-clamp: 2;
 }
 
-
-/* === COPIA Y PEGA ESTE FRAGMENTO AL FINAL DE TU STYLE.CSS === */
+/* === FRAGMENTO FINAL PARA STYLE.CSS (INCLUYE MOVIMIENTO DE ONDAS) === */
 
 .wavy-background {
     background-color: #ffffff;
@@ -245,6 +244,8 @@ body {
     z-index: 0;
     opacity: 0.9;
 }
+
+/* ESTA ES LA PARTE QUE DA MOVIMIENTO A LAS ONDAS */
 .wave-path-animated {
     animation: animateWaves 40s linear infinite alternate;
 }
@@ -256,6 +257,8 @@ body {
     from { transform: translateX(0); }
     to { transform: translateX(-80px); }
 }
+/* FIN DE LA ANIMACIÓN DE ONDAS */
+
 .animated-logo-container {
     position: relative;
     width: 250px;
@@ -303,4 +306,5 @@ body {
 .vitamin-orb-b2 { background-color: #8FD8D3; animation: orbit 14s linear infinite reverse; animation-delay: -10s; }
 .vitamin-orb-a { background-color: #E25E5A; animation: orbit 9s linear infinite; animation-delay: -12s; }
 
-/* --- FIN DEL FRAGMENTO PARA CSS --- */
+/* --- FIN DEL FRAGMENTO --- */
+
