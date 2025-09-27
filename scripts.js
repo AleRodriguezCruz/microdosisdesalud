@@ -334,4 +334,83 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+/* === COPIA Y PEGA ESTE FRAGMENTO AL FINAL DE TU STYLE.CSS === */
+
+.wavy-background {
+    background-color: #ffffff;
+    overflow: hidden;
+    position: relative;
+    min-height: 700px;
+}
+.wavy-background svg.background-waves {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    opacity: 0.9;
+}
+.wave-path-animated {
+    animation: animateWaves 40s linear infinite alternate;
+}
+.wave-path-animated:nth-child(2) {
+    animation-direction: alternate-reverse;
+    animation-delay: -20s;
+}
+@keyframes animateWaves {
+    from { transform: translateX(0); }
+    to { transform: translateX(-80px); }
+}
+.animated-logo-container {
+    position: relative;
+    width: 250px;
+    height: 500px;
+    margin: 0 auto;
+    z-index: 10;
+}
+.animated-logo-container .woman-figure-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 5;
+}
+.vitamin-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 15;
+    --orbit-radius: 110px;
+}
+@keyframes orbit {
+    from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+.vitamin-orb-se { background-color: #BE559B; z-index: 16; transform: translate(-50%, -50%); }
+.vitamin-orb-zn { background-color: #58B4D1; animation: orbit 12s linear infinite; animation-delay: 0s; }
+.vitamin-orb-e { background-color: #E25E5A; animation: orbit 15s linear infinite reverse; animation-delay: -2s; }
+.vitamin-orb-c { background-color: #F8B54E; animation: orbit 10s linear infinite; animation-delay: -4s; }
+.vitamin-orb-mg { background-color: #4CAF50; animation: orbit 13s linear infinite reverse; animation-delay: -6s; }
+.vitamin-orb-d { background-color: #F98745; animation: orbit 11s linear infinite; animation-delay: -8s; }
+.vitamin-orb-b2 { background-color: #8FD8D3; animation: orbit 14s linear infinite reverse; animation-delay: -10s; }
+.vitamin-orb-a { background-color: #E25E5A; animation: orbit 9s linear infinite; animation-delay: -12s; }
+
+/* --- FIN DEL FRAGMENTO PARA CSS --- */
+
+
+
 
