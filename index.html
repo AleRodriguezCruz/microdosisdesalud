@@ -5,12 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Microdosis de Salud - Productos Naturistas</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+ <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: { 'primary-gold': '#B38B59', 'secondary-cream': '#F5F5DC', 'dark-slate': '#2C3E50', 'light-gray': '#ECF0F1', 'elegant-brown': '#7F523D' },
-                    fontFamily: { sans: ['"Playfair Display"', 'serif'], body: ['"Poppins"', 'sans-serif'] },
+                    colors: {
+                        'brand-pink': '#FFC0CB', 
+                        'brand-blue': '#87CEEB', 
+                        'brand-green': '#90EE90', 
+                        'brand-yellow': '#FFD700', 
+                        'dark-slate': '#2C3E50',
+                        'light-gray': '#ECF0F1',
+                        'primary-gold': '#B38B59',
+                        'secondary-cream': '#F5F5DC',
+                        'elegant-brown': '#7F523D'
+                    },
+                    fontFamily: {
+                        sans: ['"Playfair Display"', 'serif'],
+                        body: ['"Poppins"', 'sans-serif']
+                    },
                     borderRadius: { button: '25px' },
                 },
             },
@@ -54,12 +67,36 @@
             </nav>
         </header>
 
-        <main class="flex-grow">
-            <section id="hero" class="hero-section relative">
-                <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0"><source src="video4.mp4" type="video/mp4" onerror="this.onerror=null; this.src='https://placehold.co/1920x500/F5F5DC/B38B59?text=Video';" /></video>
-                <div class="relative z-20 container mx-auto px-6 py-24 max-w-3xl text-white"><h1 class="text-5xl md:text-6xl font-extrabold font-sans leading-tight mb-4 drop-shadow-lg">Microdosis de Salud</h1></div>
+       <main class="flex-grow">
+            <section id="hero" class="wavy-background relative">
+                <svg class="background-waves" viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="wave-gradient-final" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color: #FFC0CB;" />
+                            <stop offset="33%" style="stop-color: #87CEEB;" />
+                            <stop offset="66%" style="stop-color: #90EE90;" />
+                            <stop offset="100%" style="stop-color: #FFD700;" />
+                        </linearGradient>
+                    </defs>
+                    <path class="wave-path-animated" fill="url(#wave-gradient-final)" fill-opacity="0.7" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,154.7C672,128,768,96,864,96C960,96,1056,128,1152,144C1248,160,1344,160,1392,160L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+                    <path class="wave-path-animated" fill="url(#wave-gradient-final)" fill-opacity="0.5" d="M0,224L40,213.3C80,203,160,181,240,186.7C320,192,400,224,480,240C560,256,640,256,720,229.3C800,203,880,149,960,138.7C1040,128,1120,160,1200,165.3C1280,171,1360,149,1400,138.7L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path>
+                </svg>
+                <div class="relative z-20 container mx-auto px-6 py-12 text-center flex flex-col items-center justify-center min-h-[600px]">
+                    <h1 class="text-5xl md:text-6xl font-extrabold font-sans leading-tight mb-4 text-dark-slate drop-shadow-lg">Microdosis de Salud</h1>
+                    <p class="text-xl text-gray-700 mb-8">Una Conexión con tu interior</p>
+                    <div class="animated-logo-container">
+                        <img src="mujer2.png" alt="Silueta de mujer" class="woman-figure-img" />
+                        <div class="vitamin-orb vitamin-orb-se">Se</div>
+                        <div class="vitamin-orb vitamin-orb-zn">Zn</div>
+                        <div class="vitamin-orb vitamin-orb-e">E</div>
+                        <div class="vitamin-orb vitamin-orb-c">C</div>
+                        <div class="vitamin-orb vitamin-orb-mg">Mg</div>
+                        <div class="vitamin-orb vitamin-orb-d">D</div>
+                        <div class="vitamin-orb vitamin-orb-b2">B2</div>
+                        <div class="vitamin-orb vitamin-orb-a">A</div>
+                    </div>
+                </div>
             </section>
-
             <section id="categorias" class="py-20 bg-light-gray">
                 <div class="container mx-auto px-6">
                     <h2 class="text-4xl font-bold font-sans text-center mb-12 text-dark-slate">Explora Nuestras Categorías</h2>
@@ -268,6 +305,7 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
 
 
 
