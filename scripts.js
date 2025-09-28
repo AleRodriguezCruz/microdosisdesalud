@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
 
+// --- REEMPLAZA TU BLOQUE DE "Productos Destacados" CON ESTE ---
 "Productos Destacados": {
     products: [
         { type: 'product', id: 101, name: "TOTAL BEAUTY", price: 55.00, image: 'https://youmatter.mx/cdn/shop/files/Total_Beauty_Choco_Cacahuate.webp?v=1756515869&width=1100', description: "Colágeno Hidrolizado con Biotina y Ácido Hialurónico.", featured: true },
@@ -10,10 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'product', id: 103, name: "DESOL K", price: 48.00, image: 'https://youmatter.mx/cdn/shop/files/Desol_K_120_c6350e93-6a9c-4869-95e5-f538350dd20f.webp?v=1753128713&width=1100', description: "Vitamina D3 y Vitamina K2 (MK-7) para salud ósea.", featured: true },
         { type: 'product', id: 104, name: "Colágeno UP", price: 45.00, image: 'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01032/v/273.jpg', description: "Colágeno Marino con Ácido Hialurónico y Vitamina C.", featured: true },
         { type: 'product', id: 105, name: "Magno Complex", price: 499.00, image: 'https://youmatter.mx/cdn/shop/files/2b466b3e638e4e1e848454e9ea50048a_22012025064332_f2edc9c2-1010-4a12-9fb2-8d410601ee44.jpg?crop=center&height=950&v=1753827017&width=950', description: "Bisglicinato de Magnesio Quelado para relajación y descanso.", featured: true },
-        { type: 'product', id: 106, name: "Total Baby Lactantes", price: 730.00, image: 'https://youmatter.mx/cdn/shop/files/Total_-_Baby_Lactantes__1.jpg?crop=center&height=1100&v=1757110032&width=1100', description: "Probióticos especializados para el bienestar de los lactantes.", featured: true }
+        { type: 'product', id: 106, name: "Total Baby Lactantes", price: 730.00, image: 'https://youmatter.mx/cdn/shop/files/Total_-_Baby_Lactantes__1.jpg?crop=center&height=1100&v=1757110032&width=1100', description: "Probióticos especializados para el bienestar de los lactantes.", featured: true },
+        // --- NUEVOS PRODUCTOS AGREGADOS ---
+        { type: 'product', id: 107, name: "Pre-Entreno CR", price: 650.00, image: 'https://crsuplementos.net/cdn/shop/files/IMG-8542.png?v=1754104992&width=533', description: "Suplemento para mejorar el rendimiento físico.", featured: true },
+        { type: 'product', id: 108, name: "Magnesio + Potasio Lifeed", price: 299.00, image: 'https://http2.mlstatic.com/D_NQ_NP_844802-MLA83640822874_042025-O.webp', description: "Citrato de Magnesio y Potasio para balance electrolítico.", featured: true }
     ]
 },
-// --- FIN DEL FRAGMENTO ---
+
 // --- FIN DEL FRAGMENTO ---
         "Infancia": {
             services: [
@@ -56,15 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Consulta Preconcepcional", description: "Preparamos tu cuerpo para un embarazo saludable con asesoría sobre nutrición, suplementos y cuidados previos.", image: "https://images.unsplash.com/photo-1505453976333-5b235a681358?q=80&w=800&auto=format&fit=crop" },
                 { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico para controlar síntomas y mejorar tu salud hormonal.", image: "https://images.unsplash.com/photo-1622254843325-e490a0a945c9?q=80&w=800&auto=format&fit=crop" }
             ],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo.", featured: true }]
+            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo.", featured: false }]
         },
         "Embarazo": {
             services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", image: "https://images.unsplash.com/photo-1584988223218-975dd76503f1?q=80&w=800&auto=format&fit=crop" }],
-            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://images.unsplash.com/photo-1584308666744-8480404b65ae?q=80&w=800&auto=format&fit=crop', description: "Nutrientes para el desarrollo del bebé.", featured: true }]
+            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://images.unsplash.com/photo-1584308666744-8480404b65ae?q=80&w=800&auto=format&fit=crop', description: "Nutrientes para el desarrollo del bebé.", featured: false }]
         },
         "Climaterio y Menopausia": {
             services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" }],
-            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: true }]
+            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: false }]
         }
     };
 
@@ -345,6 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
 
 
