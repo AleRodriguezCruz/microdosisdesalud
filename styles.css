@@ -308,33 +308,39 @@ body {
 .vitamin-orb-a { background-color: #E25E5A; animation: orbit 9s linear infinite; animation-delay: -12s; }
 
 /* --- FIN DEL FRAGMENTO --- */
-/* === CÓDIGO PARA HACER LAS ONDAS VISIBLES EN MÓVILES === */
+/* === REEMPLAZA TU BLOQUE @media ANTERIOR CON ESTE === */
 
 @media (max-width: 767px) {
 
     /* Ajusta la altura de la sección principal para celulares */
     .wavy-background {
-        min-height: 600px; /* Hacemos la sección un poco más corta */
+        min-height: 650px; /* Damos un poco más de espacio */
     }
 
-    /* Reposiciona las ondas para que sean visibles */
+    /* CAMBIO PRINCIPAL: Anclamos las ondas a la parte inferior en móviles */
     .wavy-background svg.background-waves {
-        top: -60px; /* Las subimos para que se vean mejor */
+        top: auto;        /* Quitamos la posición superior */
+        bottom: 0;        /* Anclamos a la parte de abajo */
+        left: 0;          /* Reseteamos la posición horizontal */
+        width: 100%;      /* Hacemos que ocupe todo el ancho */
+        height: 150px;    /* Damos una altura fija para que sean más notorias */
     }
 
     /* Hacemos el logo un poco más pequeño para que quepa bien */
     .animated-logo-container {
-        width: 200px;
-        height: 400px;
-        transform: scale(0.9); /* Reducimos su tamaño un 10% */
+        transform: scale(0.9);
+        margin-top: -2rem; /* Subimos un poco el logo para compensar */
     }
     
     /* Ajustamos el tamaño del título principal */
     #hero h1 {
-        font-size: 2.5rem; /* Hacemos el texto un poco más pequeño */
+        font-size: 2.5rem;
     }
 }
 
 /* --- FIN DEL FRAGMENTO --- */
+
+/* --- FIN DEL FRAGMENTO --- */
+
 
 
