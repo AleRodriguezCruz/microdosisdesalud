@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
         "Productos Destacados": {
             products: [
@@ -18,25 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
             ],
             products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso." },
                 { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://youmatter.mx/cdn/shop/files/Magno_Complex_160_b790ecaf-f4b0-4895-84ba-1b619dd810c9.webp?crop=center&height=1100&v=1753128762&width=1100', description: "Hidratación suave para pieles sensibles." },
-            ]
-        },
-        "Pubertad y Adolescencia": {
-            services: [
-                { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", image: "pubertad/mestruacion.jpg" },
-            ],
-            products: [
-                { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5c14?q=80&w=800&auto=format&fit=crop', description: "Fórmula suave para pieles jóvenes." }
             ]
         },
         "Edad Reproductiva": {
             services: [
                 { type: 'service', name: "Consulta Ginecológica", description: "Tu revisión es clave para cuidar tu bienestar integral.", image: "ruta/a/imagen_ginecologica.jpg", default: true },
             ],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo." }]
         },
-        // ... y el resto de tus categorías
     };
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -47,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const createProductCard = (product) => `
         <div class="product-card">
-            <img src="${product.image}" alt="${product.name}" class="w-full h-44 object-cover object-center">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-44 object-contain p-2">
             <div class="product-card-content">
                 <h3 class="font-bold line-clamp-2">${product.name}</h3>
                 <p class="text-sm text-gray-600 my-2 line-clamp-2 flex-grow">${product.description}</p>
@@ -67,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="service-button reserve-appointment-btn mt-auto" data-service-name="${service.name}">Reservar Cita</button>
         </div>
     `;
-    
-    // --- LÓGICA DE FILTROS RESTAURADA ---
+
     const renderFilteredResults = (items) => {
         const servicesContainer = document.getElementById('shop-services');
         const productsContainer = document.getElementById('shop-products-grid');
@@ -78,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const shopPrompt = document.getElementById('shop-prompt');
 
         shopPrompt.classList.add('hidden');
-
         const services = items.filter(item => item.type === 'service');
         const products = items.filter(item => item.type === 'product');
 
@@ -92,12 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const applyFilters = () => {
         const checkedCategories = [...document.querySelectorAll('.filter-category:checked')].map(el => el.value);
-        
         if (checkedCategories.length === 0) {
-            renderDefaultServices(); // Muestra los servicios por defecto si no hay filtros
+            renderDefaultServices();
             return;
         }
-        
         const filteredItems = allItems.filter(item => checkedCategories.includes(item.category));
         renderFilteredResults(filteredItems);
     };
@@ -115,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         servicesContainer.innerHTML = defaultServices.map(createServiceCard).join('');
     };
 
-    // --- LÓGICA DEL CARRITO ---
     const addToCart = (productId) => {
         const productToAdd = allItems.find(item => item.id === parseInt(productId));
         if (productToAdd) {
@@ -129,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cart-count').textContent = cart.length;
     };
     
-    // --- INICIALIZACIÓN DE LA PÁGINA ---
     const initPage = () => {
         const featuredProductsContainer = document.getElementById('featured-products');
         if (featuredProductsContainer) {
@@ -153,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartUI();
     };
 
-    // --- MANEJO DE EVENTOS ---
     document.addEventListener('click', (e) => {
         if (e.target.closest('.add-to-cart-btn')) {
             const productId = e.target.closest('.add-to-cart-btn').dataset.productId;
@@ -161,7 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- INICIALIZACIÓN DE SWIPERS ---
     new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
     new Swiper('.products-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
 
