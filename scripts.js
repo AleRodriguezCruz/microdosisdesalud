@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
+        // --- PEGA ESTE BLOQUE JUSTO DEBAJO DE "const data = {" ---
+"Productos Destacados": {
+    products: [
+        { type: 'product', id: 101, name: "TOTAL BEAUTY", price: 55.00, image: 'https://youmatter.mx/cdn/shop/files/Total_Beauty_Choco_Cacahuate.webp?v=1756515869&width=1100', description: "Colágeno Hidrolizado con Biotina y Ácido Hialurónico.", featured: true },
+        { type: 'product', id: 102, name: "YIELPI", price: 60.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?v=1758153793&width=1100', description: "Proteína de Suero de Leche con Probióticos y Prebióticos.", featured: true },
+        { type: 'product', id: 103, name: "DESOL K", price: 48.00, image: 'https://youmatter.mx/cdn/shop/files/Desol_K_120_c6350e93-6a9c-4869-95e5-f538350dd20f.webp?v=1753128713&width=1100', description: "Vitamina D3 y Vitamina K2 (MK-7) para salud ósea.", featured: true },
+        { type: 'product', id: 104, name: "Colágeno UP", price: 45.00, image: 'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01032/v/273.jpg', description: "Colágeno Marino con Ácido Hialurónico y Vitamina C.", featured: true }
+    ]
+},
+// --- FIN DEL FRAGMENTO ---
         "Infancia": {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg" },
@@ -332,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
 
 
