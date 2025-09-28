@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. BASE DE DATOS COMPLETA DE PRODUCTOS Y SERVICIOS ---
+    // --- 1. BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
         "Productos Destacados": {
             products: [
@@ -16,39 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg", default: true },
                 { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
-                { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", image: "infancia/tallaypeso.jpg" },
-                { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", image: "infancia/alergias.jpg" },
-                { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
                 { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso." },
-                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://youmatter.mx/cdn/shop/files/Magno_Complex_160_b790ecaf-f4b0-4895-84ba-1b619dd810c9.webp?crop=center&height=1100&v=1753128762&width=1100', description: "Hidratación suave para pieles sensibles." },
-            ]
-        },
-        "Pubertad y Adolescencia": {
-            services: [
-                { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", image: "pubertad/mestruacion.jpg" },
-                { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", image: "pubertad/SOP.jpg" },
-            ],
-            products: [
-                { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5c14?q=80&w=800&auto=format&fit=crop', description: "Fórmula suave para pieles jóvenes." }
             ]
         },
         "Edad Reproductiva": {
             services: [
                 { type: 'service', name: "Consulta Ginecológica", description: "Tu revisión es clave para cuidar tu bienestar integral.", image: "img/ginecologia.jpg", default: true },
-                { type: 'service', name: "Salud Sexual y ETS", description: "Orientación confidencial sobre salud sexual y ETS.", image: "img/ets.jpg" },
             ],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo." }]
         },
-        "Embarazo": {
-            services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", image: "img/prenatal.jpg" }],
-            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://images.unsplash.com/photo-1584308666744-8480404b65ae?q=80&w=800&auto=format&fit=crop', description: "Nutrientes para el desarrollo del bebé." }]
-        },
-        "Climaterio y Menopausia": {
-            services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", image: "img/terapia_hormonal.jpg" }],
-            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia." }]
-        }
     };
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -133,7 +110,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateCartUI = () => {
         localStorage.setItem('cart', JSON.stringify(cart));
-        document.getElementById('cart-count').textContent = cart.length;
+        renderCartItems();
+        
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = cart.length;
+        cartCount.classList.toggle('hidden', cart.length === 0);
+
+        const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+        document.getElementById('cart-total-price').textContent = `$${totalPrice.toFixed(2)}`;
+    };
+
+    const renderCartItems = () => {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const emptyCartMessage = document.getElementById('cart-empty-message');
+        
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '';
+            emptyCartMessage.classList.remove('hidden');
+            return;
+        }
+
+        emptyCartMessage.classList.add('hidden');
+        cartItemsContainer.innerHTML = cart.map(item => `
+            <div class="flex justify-between items-center border-b pb-2">
+                <div>
+                    <h4 class="font-semibold">${item.name}</h4>
+                    <p class="text-sm text-gray-500">$${item.price.toFixed(2)}</p>
+                </div>
+            </div>
+        `).join('');
     };
     
     const initPage = () => {
@@ -146,12 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const filtersContainer = document.getElementById('filters-categories-desktop');
         if (filtersContainer) {
             const categories = Object.keys(data);
-            filtersContainer.innerHTML = categories.map(cat => `
-                <label class="flex items-center space-x-2 cursor-pointer">
-                    <input type="checkbox" class="filter-category" value="${cat}">
-                    <span>${cat}</span>
-                </label>
-            `).join('');
+            filtersContainer.innerHTML = categories.map(cat => `<label class="flex items-center space-x-2 cursor-pointer"><input type="checkbox" class="filter-category" value="${cat}"><span>${cat}</span></label>`).join('');
             filtersContainer.addEventListener('change', applyFilters);
         }
         
@@ -164,11 +164,38 @@ document.addEventListener('DOMContentLoaded', () => {
             const productId = e.target.closest('.add-to-cart-btn').dataset.productId;
             addToCart(productId);
         }
-        // ... (otros eventos de click)
+        // Lógica para abrir el modal de citas
+        if (e.target.closest('.reserve-appointment-btn')) {
+            const serviceName = e.target.closest('.reserve-appointment-btn').dataset.serviceName;
+            document.getElementById('appointment-service-name').value = serviceName;
+            document.getElementById('appointment-modal').classList.remove('hidden');
+        }
     });
 
-    new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
-    new Swiper('.products-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
+    // --- MANEJO COMPLETO DE MODALES Y MENÚS ---
+    document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+    
+    // Carrito
+    document.getElementById('cart-toggle').addEventListener('click', () => document.getElementById('cart-modal').classList.remove('hidden'));
+    document.getElementById('cart-close-btn').addEventListener('click', () => document.getElementById('cart-modal').classList.add('hidden'));
+    document.getElementById('empty-cart-btn').addEventListener('click', () => {
+        cart = [];
+        updateCartUI();
+    });
+
+    // Citas
+    const appointmentModal = document.getElementById('appointment-modal');
+    document.getElementById('appointment-close-btn').addEventListener('click', () => appointmentModal.classList.add('hidden'));
+    document.getElementById('appointment-form').addEventListener('submit', e => {
+        e.preventDefault();
+        alert('¡Gracias! Tu solicitud de cita ha sido enviada.');
+        document.getElementById('appointment-form').reset();
+        appointmentModal.classList.add('hidden');
+    });
+
+    // Swipers
+    new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
+    new Swiper('.products-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
 
     initPage();
 });
