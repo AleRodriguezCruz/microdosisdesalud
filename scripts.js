@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         "Infancia": {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg", default: true },
-                { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
             ],
             products: [
                 { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso." },
@@ -159,12 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartUI();
     };
 
+    // --- MANEJO DE EVENTOS ---
     document.addEventListener('click', (e) => {
         if (e.target.closest('.add-to-cart-btn')) {
             const productId = e.target.closest('.add-to-cart-btn').dataset.productId;
             addToCart(productId);
         }
-        // Lógica para abrir el modal de citas
         if (e.target.closest('.reserve-appointment-btn')) {
             const serviceName = e.target.closest('.reserve-appointment-btn').dataset.serviceName;
             document.getElementById('appointment-service-name').value = serviceName;
@@ -172,16 +171,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- MANEJO COMPLETO DE MODALES Y MENÚS ---
+    // --- MANEJO COMPLETO DE MODALES Y MENÚS (RESTAURADO) ---
     document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
     
     // Carrito
-    document.getElementById('cart-toggle').addEventListener('click', () => document.getElementById('cart-modal').classList.remove('hidden'));
-    document.getElementById('cart-close-btn').addEventListener('click', () => document.getElementById('cart-modal').classList.add('hidden'));
+    const cartModal = document.getElementById('cart-modal');
+    document.getElementById('cart-toggle').addEventListener('click', () => cartModal.classList.remove('hidden'));
+    document.getElementById('cart-close-btn').addEventListener('click', () => cartModal.classList.add('hidden'));
     document.getElementById('empty-cart-btn').addEventListener('click', () => {
         cart = [];
         updateCartUI();
     });
+
+    // Checkout
+    const checkoutSection = document.getElementById('checkout-section');
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+        cartModal.classList.add('hidden');
+        checkoutSection.classList.remove('hidden');
+        document.getElementById('transfer-total').textContent = document.getElementById('cart-total-price').textContent;
+    });
+    document.getElementById('back-to-shop-btn').addEventListener('click', () => checkoutSection.classList.add('hidden'));
+    document.getElementById('pay-transfer-btn').addEventListener('click', () => document.getElementById('transfer-details-section').classList.remove('hidden'));
+
+    const orderConfirmModal = document.getElementById('order-confirm-modal');
+    document.getElementById('transfer-done-btn').addEventListener('click', () => {
+        checkoutSection.classList.add('hidden');
+        orderConfirmModal.classList.remove('hidden');
+        cart = []; // Vacía el carrito después de confirmar el pago
+        updateCartUI();
+    });
+    document.getElementById('confirm-modal-close-btn').addEventListener('click', () => orderConfirmModal.classList.add('hidden'));
 
     // Citas
     const appointmentModal = document.getElementById('appointment-modal');
