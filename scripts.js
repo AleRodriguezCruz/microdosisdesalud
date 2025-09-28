@@ -16,19 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
             services: [
                 { type: 'service', name: "Consulta Pediátrica General", description: "Atención médica integral para niños y niñas.", image: "infancia/Pediatria.jpg", default: true },
                 { type: 'service', name: "Control de Niño Sano", description: "Seguimiento del crecimiento y desarrollo saludable.", image: "infancia/niño.jpg" },
-                { type: 'service', name: "Peso y Talla", description: "Evaluación y asesoría nutricional para un desarrollo óptimo.", image: "infancia/tallaypeso.jpg" },
-                { type: 'service', name: "Alergias", description: "Diagnóstico y tratamiento de alergias comunes en la infancia.", image: "infancia/alergias.jpg" },
-                { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso.", featured: false },
+                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso." },
                 { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://youmatter.mx/cdn/shop/files/Magno_Complex_160_b790ecaf-f4b0-4895-84ba-1b619dd810c9.webp?crop=center&height=1100&v=1753128762&width=1100', description: "Hidratación suave para pieles sensibles." },
             ]
         },
         "Pubertad y Adolescencia": {
             services: [
                 { type: 'service', name: "Consulta sobre Menstruación", description: "Orientación y manejo del ciclo menstrual.", image: "pubertad/mestruacion.jpg" },
-                { type: 'service', name: "Tratamiento para SOP", description: "Manejo integral del Síndrome de Ovario Poliquístico.", image: "pubertad/SOP.jpg" },
             ],
             products: [
                 { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5c14?q=80&w=800&auto=format&fit=crop', description: "Fórmula suave para pieles jóvenes." }
@@ -37,29 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
         "Edad Reproductiva": {
             services: [
                 { type: 'service', name: "Consulta Ginecológica", description: "Tu revisión es clave para cuidar tu bienestar integral.", image: "ruta/a/imagen_ginecologica.jpg", default: true },
-                { type: 'service', name: "Salud Sexual y ETS", description: "Orientación confidencial sobre salud sexual y ETS.", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" },
             ],
-            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo.", featured: false }]
+            products: [{ type: 'product', id: 30, name: "Ácido Fólico", price: 15.00, image: 'Total_Beauty_Choco_Cacahuate.webp', description: "Esencial para la planificación del embarazo." }]
         },
-        "Embarazo": {
-            services: [{ type: 'service', name: "Control Prenatal Mensual", description: "Seguimiento para un embarazo saludable.", image: "https://images.unsplash.com/photo-1584988223218-975dd76503f1?q=80&w=800&auto=format&fit=crop" }],
-            products: [{ type: 'product', id: 40, name: "Vitaminas Prenatales", price: 35.00, image: 'https://images.unsplash.com/photo-1584308666744-8480404b65ae?q=80&w=800&auto=format&fit=crop', description: "Nutrientes para el desarrollo del bebé.", featured: false }]
-        },
-        "Climaterio y Menopausia": {
-            services: [{ type: 'service', name: "Terapia de Reemplazo Hormonal", description: "Asesoría sobre opciones naturales y bioidénticas.", image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" }],
-            products: [{ type: 'product', id: 50, name: "Suplemento con Isoflavonas", price: 38.00, image: 'https://images.unsplash.com/photo-1627485937980-5427b0a3c27a?q=80&w=800&auto=format&fit=crop', description: "Ayuda a aliviar los síntomas de la menopausia.", featured: false }]
-        }
+        // ... y el resto de tus categorías
     };
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const allItems = Object.values(data).flatMap(content => [
-        ...(content.products || []),
-        ...(content.services || [])
+    const allItems = Object.entries(data).flatMap(([category, content]) => [
+        ...(content.products || []).map(p => ({ ...p, category })),
+        ...(content.services || []).map(s => ({ ...s, category }))
     ]);
 
     const createProductCard = (product) => `
         <div class="product-card">
-            <img src="${product.image}" alt="${product.name}" class="w-full h-44 object-cover">
+            <img src="${product.image}" alt="${product.name}" class="w-full h-44 object-cover object-center">
             <div class="product-card-content">
                 <h3 class="font-bold line-clamp-2">${product.name}</h3>
                 <p class="text-sm text-gray-600 my-2 line-clamp-2 flex-grow">${product.description}</p>
@@ -79,22 +67,57 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="service-button reserve-appointment-btn mt-auto" data-service-name="${service.name}">Reservar Cita</button>
         </div>
     `;
+    
+    // --- LÓGICA DE FILTROS RESTAURADA ---
+    const renderFilteredResults = (items) => {
+        const servicesContainer = document.getElementById('shop-services');
+        const productsContainer = document.getElementById('shop-products-grid');
+        const servicesSection = document.getElementById('services-section');
+        const productsSection = document.getElementById('products-section');
+        const noResultsMsg = document.getElementById('no-results-message');
+        const shopPrompt = document.getElementById('shop-prompt');
+
+        shopPrompt.classList.add('hidden');
+
+        const services = items.filter(item => item.type === 'service');
+        const products = items.filter(item => item.type === 'product');
+
+        servicesSection.classList.toggle('hidden', services.length === 0);
+        productsSection.classList.toggle('hidden', products.length === 0);
+        noResultsMsg.classList.toggle('hidden', items.length > 0);
+
+        servicesContainer.innerHTML = services.map(createServiceCard).join('');
+        productsContainer.innerHTML = products.map(createProductCard).join('');
+    };
+
+    const applyFilters = () => {
+        const checkedCategories = [...document.querySelectorAll('.filter-category:checked')].map(el => el.value);
+        
+        if (checkedCategories.length === 0) {
+            renderDefaultServices(); // Muestra los servicios por defecto si no hay filtros
+            return;
+        }
+        
+        const filteredItems = allItems.filter(item => checkedCategories.includes(item.category));
+        renderFilteredResults(filteredItems);
+    };
 
     const renderDefaultServices = () => {
         const defaultServices = allItems.filter(item => item.type === 'service' && item.default);
         const servicesContainer = document.getElementById('shop-services');
         const servicesSection = document.getElementById('services-section');
+        const productsSection = document.getElementById('products-section');
         const shopPrompt = document.getElementById('shop-prompt');
-
-        if (defaultServices.length > 0 && servicesContainer && servicesSection && shopPrompt) {
-            shopPrompt.classList.add('hidden');
-            servicesSection.classList.remove('hidden');
-            servicesContainer.innerHTML = defaultServices.map(createServiceCard).join('');
-        }
+        
+        shopPrompt.classList.add('hidden');
+        productsSection.classList.add('hidden');
+        servicesSection.classList.remove('hidden');
+        servicesContainer.innerHTML = defaultServices.map(createServiceCard).join('');
     };
 
+    // --- LÓGICA DEL CARRITO ---
     const addToCart = (productId) => {
-        const productToAdd = allItems.find(item => item.id === parseInt(productId) && item.type === 'product');
+        const productToAdd = allItems.find(item => item.id === parseInt(productId));
         if (productToAdd) {
             cart.push(productToAdd);
             updateCartUI();
@@ -103,65 +126,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateCartUI = () => {
         localStorage.setItem('cart', JSON.stringify(cart));
-        const cartCount = document.getElementById('cart-count');
-        if (cartCount) {
-            cartCount.textContent = cart.length;
-        }
-        // Puedes agregar aquí la lógica para actualizar el modal del carrito si es necesario
+        document.getElementById('cart-count').textContent = cart.length;
     };
     
+    // --- INICIALIZACIÓN DE LA PÁGINA ---
     const initPage = () => {
         const featuredProductsContainer = document.getElementById('featured-products');
         if (featuredProductsContainer) {
             const featuredProducts = allItems.filter(item => item.featured);
             featuredProductsContainer.innerHTML = featuredProducts.map(p => `<div class="swiper-slide">${createProductCard(p)}</div>`).join('');
         }
-        renderDefaultServices(); // Muestra los servicios por defecto
+        
+        const filtersContainer = document.getElementById('filters-categories-desktop');
+        if (filtersContainer) {
+            const categories = Object.keys(data);
+            filtersContainer.innerHTML = categories.map(cat => `
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" class="filter-category" value="${cat}">
+                    <span>${cat}</span>
+                </label>
+            `).join('');
+            filtersContainer.addEventListener('change', applyFilters);
+        }
+        
+        renderDefaultServices();
         updateCartUI();
     };
 
+    // --- MANEJO DE EVENTOS ---
     document.addEventListener('click', (e) => {
         if (e.target.closest('.add-to-cart-btn')) {
             const productId = e.target.closest('.add-to-cart-btn').dataset.productId;
             addToCart(productId);
         }
-        if (e.target.closest('.reserve-appointment-btn')) {
-            const serviceName = e.target.closest('.reserve-appointment-btn').dataset.serviceName;
-            document.getElementById('appointment-service-name').value = serviceName;
-            document.getElementById('appointment-modal').classList.remove('hidden');
-        }
     });
 
-    // Manejo de Modales y Menús
-    document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
-    
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal) {
-        document.getElementById('cart-toggle').addEventListener('click', () => cartModal.classList.remove('hidden'));
-        document.getElementById('cart-close-btn').addEventListener('click', () => cartModal.classList.add('hidden'));
-        document.getElementById('empty-cart-btn').addEventListener('click', () => { cart = []; updateCartUI(); });
-    }
-    
-    // ... Tu otro código de modales
-
-    // Inicialización de Swipers
-    if (document.querySelector('.categories-swiper')) {
-        new Swiper('.categories-swiper', { 
-            loop: true, slidesPerView: 1.5, spaceBetween: 15, 
-            navigation: { nextEl: '.categories-swiper .swiper-button-next', prevEl: '.categories-swiper .swiper-button-prev' }, 
-            pagination: { el: '.categories-swiper .swiper-pagination', clickable: true }, 
-            breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } 
-        });
-    }
-
-    if (document.querySelector('.products-swiper')) {
-        new Swiper('.products-swiper', { 
-            loop: true, slidesPerView: 1.5, spaceBetween: 15, 
-            navigation: { nextEl: '.products-swiper .swiper-button-next', prevEl: '.products-swiper .swiper-button-prev' }, 
-            pagination: { el: '.products-swiper .swiper-pagination', clickable: true }, 
-            breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } 
-        });
-    }
+    // --- INICIALIZACIÓN DE SWIPERS ---
+    new Swiper('.categories-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
+    new Swiper('.products-swiper', { loop: true, slidesPerView: 1.5, spaceBetween: 15, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 640: { slidesPerView: 2.5 }, 1024: { slidesPerView: 4 } } });
 
     initPage();
 });
