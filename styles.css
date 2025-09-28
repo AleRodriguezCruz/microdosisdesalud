@@ -310,26 +310,32 @@ body {
 /* --- FIN DEL FRAGMENTO --- */
 /* === REEMPLAZA TU BLOQUE @media ANTERIOR CON ESTE === */
 
+/* === REEMPLAZA TU BLOQUE @media ANTERIOR CON ESTE CÓDIGO FINAL === */
+
 @media (max-width: 767px) {
 
     /* Ajusta la altura de la sección principal para celulares */
     .wavy-background {
-        min-height: 650px; /* Damos un poco más de espacio */
+        min-height: 650px; 
     }
 
-    /* CAMBIO PRINCIPAL: Anclamos las ondas a la parte inferior en móviles */
+    /* CAMBIO CLAVE: Mantiene las ondas arriba y las hace más altas */
     .wavy-background svg.background-waves {
-        top: auto;        /* Quitamos la posición superior */
-        bottom: 0;        /* Anclamos a la parte de abajo */
-        left: 0;          /* Reseteamos la posición horizontal */
-        width: 100%;      /* Hacemos que ocupe todo el ancho */
-        height: 150px;    /* Damos una altura fija para que sean más notorias */
+        top: 0;                  /* Las anclamos en la parte superior */
+        left: 0;                 /* Reseteamos la posición horizontal */
+        width: 100%;             /* Ocupa todo el ancho */
+        height: 200px;           /* Damos una altura fija para que sean notorias */
+        
+        /* Truco para que la onda se vea más alta: ajustamos el viewBox */
+        /* Esto estira verticalmente la vista del SVG sin distorsionarlo */
+        viewBox: 0 0 1440 400;   /* Aumentamos la altura del 'lienzo' visible */
+        preserveAspectRatio: "xMinYMin meet";
     }
 
     /* Hacemos el logo un poco más pequeño para que quepa bien */
     .animated-logo-container {
         transform: scale(0.9);
-        margin-top: -2rem; /* Subimos un poco el logo para compensar */
+        margin-top: -2rem; 
     }
     
     /* Ajustamos el tamaño del título principal */
@@ -339,8 +345,3 @@ body {
 }
 
 /* --- FIN DEL FRAGMENTO --- */
-
-/* --- FIN DEL FRAGMENTO --- */
-
-
-
