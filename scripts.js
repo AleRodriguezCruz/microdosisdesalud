@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'Proteina+Probioticos.png', description: "Refuerzo divertido y delicioso.", featured: true },
-                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop', description: "Hidratación suave para pieles sensibles." },
+                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso.", featured: true },
+                { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://youmatter.mx/cdn/shop/files/Magno_Complex_160_b790ecaf-f4b0-4895-84ba-1b619dd810c9.webp?crop=center&height=1100&v=1753128762&width=1100', description: "Hidratación suave para pieles sensibles." },
                 { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'https://images.unsplash.com/photo-1599462653991-6a41eff238a3?q=80&w=800&auto=format&fit=crop', description: "Fórmula sin lágrimas que limpia y protege." },
                 { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'https://images.unsplash.com/photo-1610422558296-7a8c8a179951?q=80&w=800&auto=format&fit=crop', description: "Limpieza natural que calma la piel." }
             ]
@@ -332,5 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
 
