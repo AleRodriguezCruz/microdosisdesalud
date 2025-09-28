@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 "Productos Destacados": {
     products: [
         { type: 'product', id: 101, name: "TOTAL BEAUTY", price: 55.00, image: 'https://youmatter.mx/cdn/shop/files/Total_Beauty_Choco_Cacahuate.webp?v=1756515869&width=1100', description: "Colágeno Hidrolizado con Biotina y Ácido Hialurónico.", featured: true },
-        { type: 'product', id: 102, name: "YIELPI", price: 60.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?v=1758153793&width=1100', description: "Proteína de Suero de Leche con Probióticos y Prebióticos.", featured: true },
+        { type: 'product', id: 102, name: "YIELPI", price: 60.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?v=1758153793&width=1100', description: "Proteína de Suero de Leche con Probióticos y Prebióticos.", featured: false },
         { type: 'product', id: 103, name: "DESOL K", price: 48.00, image: 'https://youmatter.mx/cdn/shop/files/Desol_K_120_c6350e93-6a9c-4869-95e5-f538350dd20f.webp?v=1753128713&width=1100', description: "Vitamina D3 y Vitamina K2 (MK-7) para salud ósea.", featured: true },
         { type: 'product', id: 104, name: "Colágeno UP", price: 45.00, image: 'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01032/v/273.jpg', description: "Colágeno Marino con Ácido Hialurónico y Vitamina C.", featured: true },
         { type: 'product', id: 105, name: "Magno Complex", price: 499.00, image: 'https://youmatter.mx/cdn/shop/files/2b466b3e638e4e1e848454e9ea50048a_22012025064332_f2edc9c2-1010-4a12-9fb2-8d410601ee44.jpg?crop=center&height=950&v=1753827017&width=950', description: "Bisglicinato de Magnesio Quelado para relajación y descanso.", featured: true },
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Dermatología Pediátrica", description: "Cuidado especializado para la piel delicada de los niños.", image: "infancia/dermatologia.jpg" }
             ],
             products: [
-                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso.", featured: true },
+                { type: 'product', id: 10, name: "Multivitamínico Infantil", price: 25.00, image: 'https://youmatter.mx/cdn/shop/files/CHOCOMENTA.jpg?crop=center&height=1100&v=1758153793&width=1100', description: "Refuerzo divertido y delicioso.", featured: false },
                 { type: 'product', id: 12, name: "Crema Corporal Hipoalergénica", price: 18.00, image: 'https://youmatter.mx/cdn/shop/files/Magno_Complex_160_b790ecaf-f4b0-4895-84ba-1b619dd810c9.webp?crop=center&height=1100&v=1753128762&width=1100', description: "Hidratación suave para pieles sensibles." },
                 { type: 'product', id: 13, name: "Shampoo Suave para Bebé", price: 16.50, image: 'https://images.unsplash.com/photo-1599462653991-6a41eff238a3?q=80&w=800&auto=format&fit=crop', description: "Fórmula sin lágrimas que limpia y protege." },
                 { type: 'product', id: 14, name: "Jabón de Avena y Miel", price: 9.00, image: 'https://images.unsplash.com/photo-1610422558296-7a8c8a179951?q=80&w=800&auto=format&fit=crop', description: "Limpieza natural que calma la piel." }
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { type: 'service', name: "Detección de Riesgos", description: "Apoyo para identificar y manejar comportamientos de riesgo.", image: "pubertad/deteccionderiesgo.jpg" }
             ],
             products: [
-                { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://images.unsplash.com/photo-1604781444060-123f157c11e5?q=80&w=800&auto=format&fit=crop', description: "Todo lo necesario para afrontar la menarquia.", featured: true },
+                { type: 'product', id: 20, name: "Kit Primer Periodo", price: 45.00, image: 'https://images.unsplash.com/photo-1604781444060-123f157c11e5?q=80&w=800&auto=format&fit=crop', description: "Todo lo necesario para afrontar la menarquia.", featured: false },
                 { type: 'product', id: 21, name: "Limpiador Facial Anti-acné", price: 22.00, image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5c14?q=80&w=800&auto=format&fit=crop', description: "Fórmula suave para pieles jóvenes." }
             ]
         },
@@ -345,6 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
 
 
