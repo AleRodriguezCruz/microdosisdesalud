@@ -60,8 +60,9 @@ body {
 
 .product-card img {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    height: 200px;           /* Le damos una altura fija para que todas las tarjetas sean iguales */
+    object-fit: contain;     /* <-- ESTE ES EL CAMBIO CLAVE: La imagen se ajustará sin cortarse */
+    padding: 0.5rem;         /* Añade un pequeño margen interno para que la imagen "respire" */
 }
 
 .product-card-content {
@@ -345,3 +346,4 @@ body {
 }
 
 /* --- FIN DEL FRAGMENTO --- */
+
