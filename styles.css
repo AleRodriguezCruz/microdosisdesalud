@@ -347,3 +347,19 @@ body {
 
 /* --- FIN DEL FRAGMENTO --- */
 
+
+/* === CORRECCIÓN PARA HACER VISIBLES LAS FLECHAS DE PRODUCTOS DESTACADOS === */
+
+.products-swiper .swiper-button-next,
+.products-swiper .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    color: var(--texto-principal) !important;
+}
+
+.products-swiper .swiper-button-next::after,
+.products-swiper .swiper-button-prev::after {
+    font-size: 20px;
+}
