@@ -3,14 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- BASE DE DATOS DE PRODUCTOS Y SERVICIOS ---
     const data = {
 
+// --- REEMPLAZA TU BLOQUE DE "Productos Destacados" CON ESTE ---
 "Productos Destacados": {
     products: [
         { type: 'product', id: 101, name: "TOTAL BEAUTY", price: 55.00, image: 'https://youmatter.mx/cdn/shop/files/Total_Beauty_Choco_Cacahuate.webp?v=1756515869&width=1100', description: "Colágeno Hidrolizado con Biotina y Ácido Hialurónico.", featured: true },
-        
-       
         { type: 'product', id: 104, name: "Colágeno UP", price: 45.00, image: 'https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/cgn/cgn01032/v/273.jpg', description: "Colágeno Marino con Ácido Hialurónico y Vitamina C.", featured: true },
         { type: 'product', id: 105, name: "Magno Complex", price: 499.00, image: 'https://youmatter.mx/cdn/shop/files/2b466b3e638e4e1e848454e9ea50048a_22012025064332_f2edc9c2-1010-4a12-9fb2-8d410601ee44.jpg?crop=center&height=950&v=1753827017&width=950', description: "Bisglicinato de Magnesio Quelado para relajación y descanso.", featured: true },
-        { type: 'product', id: 106, name: "Total Baby Lactantes", price: 730.00, image: 'https://youmatter.mx/cdn/shop/files/Total_-_Baby_Lactantes__1.jpg?crop=center&height=1100&v=1757110032&width=1100', description: "Probióticos especializados para el bienestar de los lactantes.", featured: true }
+        { type: 'product', id: 106, name: "Total Baby Lactantes", price: 730.00, image: 'https://youmatter.mx/cdn/shop/files/Total_-_Baby_Lactantes__1.jpg?crop=center&height=1100&v=1757110032&width=1100', description: "Probióticos especializados para el bienestar de los lactantes.", featured: true },
+        // --- NUEVOS PRODUCTOS AGREGADOS ---
+        { type: 'product', id: 109, name: "SOP Complex", price: 757.00, image: 'https://youmatter.mx/cdn/shop/files/SOP_Complex.webp?crop=center&height=1100&v=1753130877&width=1100', description: "Myo-Inositol y D-Chiro para balance hormonal.", featured: true },
+        { type: 'product', id: 110, name: "Diaria Fem (3 Pack)", price: 1400.00, image: 'https://youmatter.mx/cdn/shop/files/3pack_60_8bb59738-5514-4417-b649-a703e4206bd1.jpg?crop=center&height=1100&v=1753125971&width=1100', description: "Multivitamínico y Multimineral para Mujer, suministro trimestral.", featured: true }
     ]
 },
 // --- FIN DEL FRAGMENTO ---
@@ -345,6 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Listener para redimensionar la ventana y adaptar el layout
     window.addEventListener('resize', debounce(applyFilters));
 });
+
 
 
 
